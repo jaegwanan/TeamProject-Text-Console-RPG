@@ -7,14 +7,12 @@
 
 #include "Item.h"
 
-using namespace std;
-
 class Character
 {
 private:
     static Character* instance;
 
-    string name;
+    std::string name;
     int level;
     int health;
     int maxHealth;
@@ -22,12 +20,12 @@ private:
     int experience;
     int gold;
 
-    vector<Item*> inventory;
+    std::vector<Item*> inventory;
 
 public:
-    Character(string name);
+    Character(std::string name);
 
-    static Character* getInstance(string name = "");
+    static Character* getInstance(std::string name = "");
 
     void displayStatus();
     void levelUp();

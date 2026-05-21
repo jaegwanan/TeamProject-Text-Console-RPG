@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Battle.cpp" />
     <ClCompile Include="TeamProject-Text-Console-RPG.cpp" />
   </ItemGroup>
   <ItemGroup>

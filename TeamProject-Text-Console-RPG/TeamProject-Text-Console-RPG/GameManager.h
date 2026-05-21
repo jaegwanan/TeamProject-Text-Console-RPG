@@ -9,8 +9,6 @@
 #include "Monster.h"
 #include "Character.h"
 
-using namespace std;
-
 class GameManager
 {
 public:
