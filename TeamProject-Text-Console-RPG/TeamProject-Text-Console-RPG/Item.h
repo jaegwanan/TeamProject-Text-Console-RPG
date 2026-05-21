@@ -4,15 +4,13 @@
 
 #include<string>
 
-using namespace std;
-
 class Item
 {
 protected:
-    string name;
+    std::string name;
 
 public:
-    virtual string getName() = 0;
+    virtual std::string getName() = 0;
     virtual void use(Character* character) = 0;
 
     virtual ~Item() {}
@@ -27,7 +25,7 @@ private:
 public:
     HealthPotion();
 
-    string getName() override;
+    std::string getName() override;
     void use(Character* character) override;
 };
 
@@ -40,6 +38,6 @@ private:
 public:
     AttackBoost();
 
-    string getName() override;
+    std::string getName() override;
     void use(Character* character) override;
 };
