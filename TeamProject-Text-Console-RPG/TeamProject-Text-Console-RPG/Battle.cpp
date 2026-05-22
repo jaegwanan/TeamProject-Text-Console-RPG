@@ -13,7 +13,7 @@ using namespace std;
 
 void Basicattack(Character* player, Monster* monster)
 {
-    player->Basicattack(monster); //---------------------------------------------------------------------------------------------Character의 void Attack(Monster* monster) 오버라이드 요구합니다.
+    player->Basicattack(monster); //-----------------------------------------------------------------------------------------Character의 void Attack(Monster* monster) 오버라이드 요구합니다.
 }
 
 bool Skill(Character* player, Monster* monster)
