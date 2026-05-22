@@ -12,10 +12,10 @@ protected:
     int attack;
 
 public:
-    virtual std::string getName() = 0;
-    virtual int getHealth() = 0;
-    virtual int getAttack() = 0;
-    virtual void takeDamage(int damage) = 0;
+    virtual std::string Getname() = 0;
+    virtual int Gethp() = 0;
+    virtual int Getattack() = 0;
+    virtual void Takedamage(int damage) = 0;
 
     virtual ~Monster() {}
 };
@@ -26,10 +26,10 @@ class Goblin : public Monster
 public:
     Goblin(int level);
 
-    std::string getName() override;
-    int getHealth() override;
-    int getAttack() override;
-    void takeDamage(int damage) override;
+    std::string Getname() override;
+    int Gethp() override;
+    int Getattack() override;
+    void Takedamage(int damage) override;
 };
 
 // Orc
@@ -38,10 +38,10 @@ class Orc : public Monster
 public:
     Orc(int level);
 
-    std::string getName() override;
-    int getHealth() override;
-    int getAttack() override;
-    void takeDamage(int damage) override;
+    std::string Getname() override;
+    int Gethp() override;
+    int Getattack() override;
+    void Takedamage(int damage) override;
 };
 
 // Troll
@@ -50,10 +50,10 @@ class Troll : public Monster
 public:
     Troll(int level);
 
-    std::string getName() override;
-    int getHealth() override;
-    int getAttack() override;
-    void takeDamage(int damage) override;
+    std::string Getname() override;
+    int Gethp() override;
+    int Getattack() override;
+    void Takedamage(int damage) override;
 };
 
 // Slime
@@ -62,8 +62,8 @@ class Slime : public Monster
 public:
     Slime(int level);
 
-    std::string getName() override;
-    int getHealth() override;
-    int getAttack() override;
-    void takeDamage(int damage) override;
+    std::string Getname() override;
+    int Gethp() override;
+    int Getattack() override;
+    void Takedamage(int damage) override;
 };
