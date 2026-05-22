@@ -14,8 +14,8 @@ private:
 
     std::string name;
     int level;
-    int health;
-    int maxHealth;
+    int hp;
+    int maxhp;
     int attack;
     int experience;
     int gold;
