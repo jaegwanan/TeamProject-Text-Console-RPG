@@ -44,6 +44,7 @@ public:
     virtual void Basicattack(Monster* monster) = 0;
 
     //setter 설정
+
     void Setjob(std::string job) { this->job = job; }
     void Setlevel(int level) { this->level = level; }
     void Sethp(int hp) { this->hp = hp; }
@@ -53,6 +54,7 @@ public:
     void Setattack(int attack) { this->attack = attack; }
     void Setexp(int exp) { this->exp = exp; }
     void Setgold(int gold) { this->gold = gold; }
+
 
     //getter 설정
     string Getjob() { return job; }
