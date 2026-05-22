@@ -123,10 +123,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AchievementManager.cpp" />
     <ClCompile Include="Battle.cpp" />
     <ClCompile Include="TeamProject-Text-Console-RPG.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AchievementManager.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Item.h" />

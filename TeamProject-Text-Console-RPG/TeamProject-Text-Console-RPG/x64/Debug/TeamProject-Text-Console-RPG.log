@@ -1,0 +1,31 @@
+﻿  Battle.cpp
+  TeamProject-Text-Console-RPG.cpp
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(14,22): error C2061: 구문 오류: 식별자 'Character'
+  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(29,14): error C2061: 구문 오류: 식별자 'Character'
+  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(42,14): error C2061: 구문 오류: 식별자 'Character'
+  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(14,26): error C2039: 'getAttack': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(10,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(32,17): error C2039: 'getHealth': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(10,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(58,17): error C3861: 'skill': 식별자를 찾을 수 없습니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(72,13): error C3861: 'skill': 식별자를 찾을 수 없습니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(101,39): error C2039: 'getLevel': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(10,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(102,41): error C2039: 'getLevel': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(25,1): error C1075: '{': 일치하는 토큰을 찾을 수 없습니다.
+  코드를 생성하고 있습니다...
