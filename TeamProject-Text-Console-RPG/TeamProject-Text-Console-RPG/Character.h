@@ -14,14 +14,14 @@ private:
     static Character* instance;
 
     std::string name;
-    std::string job = "¹«Á÷";
+    std::string job = "ë¬´ì§";
     std::string skillname;
     
     int level = 1 ;
-    int hp = 200 ; // ÇöÀçÃ¼·Â 
-    int maxhp = 200 ; // ÃÖ´ëÃ¼·Â 
-    int mp = 100; // ÇöÀç¸¶³ª 
-    int maxmp = 100; // ÃÖ´ë¸¶³ª 
+    int hp = 200 ; // í˜„ìž¬ì²´ë ¥ 
+    int maxhp = 200 ; // ìµœëŒ€ì²´ë ¥ 
+    int mp = 100; // í˜„ìž¬ë§ˆë‚˜ 
+    int maxmp = 100; // ìµœëŒ€ë§ˆë‚˜ 
     int attack = 30 ;
     int exp = 0;
     int gold;
@@ -43,7 +43,7 @@ public:
     virtual bool Skill (Monster* monster) = 0;
     virtual void Basicattack(Monster* monster) = 0;
 
-    //setter ¼³Á¤
+    //setter ì„¤ì •
     void Setjob(std::string job) { this->job = job; }
     void Setlevel(int level) { this->level = level; }
     void Sethp(int hp) { this->hp = hp; }
@@ -54,7 +54,7 @@ public:
     void Setexp(int exp) { this->exp = exp; }
     void Setgold(int gold) { this->gold = gold; }
 
-    //getter ¼³Á¤
+    //getter ì„¤ì •
     string Getjob() { return job; }
     int Getlevel() { return level; }
     int Gethp() { return hp; }

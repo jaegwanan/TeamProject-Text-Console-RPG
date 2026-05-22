@@ -1,31 +1,73 @@
 ﻿  Battle.cpp
+  Character_fuction.cpp
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(14,22): error C2061: syntax error: identifier 'Character'
+  (compiling source file 'Battle.cpp')
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(29,14): error C2061: syntax error: identifier 'Character'
+  (compiling source file 'Battle.cpp')
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(42,14): error C2061: syntax error: identifier 'Character'
+  (compiling source file 'Battle.cpp')
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,20): error C3646: 'Attackmessage': unknown override specifier
+  (compiling source file 'Battle.cpp')
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,34): error C2059: syntax error: ')'
+  (compiling source file 'Battle.cpp')
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,39): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'Battle.cpp')
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(14,26): error C2039: 'getAttack': is not a member of 'Character'
+      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      see declaration of 'Character'
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(16,14): error C2039: 'takeDamage': is not a member of 'Monster'
+      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      see declaration of 'Monster'
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(32,17): error C2039: 'getHealth': is not a member of 'Character'
+      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      see declaration of 'Character'
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(32,45): error C2039: 'getHealth': is not a member of 'Monster'
+      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      see declaration of 'Monster'
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(58,17): error C3861: 'skill': identifier not found
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(72,13): error C3861: 'skill': identifier not found
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(101,39): error C2039: 'getLevel': is not a member of 'Character'
+      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      see declaration of 'Character'
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(102,41): error C2039: 'getLevel': is not a member of 'Monster'
+      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      see declaration of 'Monster'
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(25,1): error C1075: '{': no matching token found
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(14,22): error C2061: syntax error: identifier 'Character'
+  (compiling source file 'Character_fuction.cpp')
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(29,14): error C2061: syntax error: identifier 'Character'
+  (compiling source file 'Character_fuction.cpp')
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(42,14): error C2061: syntax error: identifier 'Character'
+  (compiling source file 'Character_fuction.cpp')
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,20): error C3646: 'Attackmessage': unknown override specifier
+  (compiling source file 'Character_fuction.cpp')
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,34): error C2059: syntax error: ')'
+  (compiling source file 'Character_fuction.cpp')
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,39): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'Character_fuction.cpp')
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character_fuction.cpp(32,13): error C3861: 'Attackmessage': identifier not found
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character_fuction.cpp(36,14): error C2039: 'Sethp': is not a member of 'Monster'
+      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      see declaration of 'Monster'
+  
+C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character_fuction.cpp(45,1): error C2059: syntax error: '}'
   TeamProject-Text-Console-RPG.cpp
-C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(14,22): error C2061: 구문 오류: 식별자 'Character'
-  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
-  
-C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(29,14): error C2061: 구문 오류: 식별자 'Character'
-  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
-  
-C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(42,14): error C2061: 구문 오류: 식별자 'Character'
-  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
-  
-C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(14,26): error C2039: 'getAttack': 'Character'의 멤버가 아닙니다.
-      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(10,7):
-      'Character' 선언을 참조하십시오.
-  
-C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(32,17): error C2039: 'getHealth': 'Character'의 멤버가 아닙니다.
-      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(10,7):
-      'Character' 선언을 참조하십시오.
-  
-C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(58,17): error C3861: 'skill': 식별자를 찾을 수 없습니다.
-C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(72,13): error C3861: 'skill': 식별자를 찾을 수 없습니다.
-C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(101,39): error C2039: 'getLevel': 'Character'의 멤버가 아닙니다.
-      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(10,7):
-      'Character' 선언을 참조하십시오.
-  
-C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(102,41): error C2039: 'getLevel': 'Monster'의 멤버가 아닙니다.
-      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
-      'Monster' 선언을 참조하십시오.
-  
-C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(25,1): error C1075: '{': 일치하는 토큰을 찾을 수 없습니다.
-  코드를 생성하고 있습니다...
+  Generating Code...

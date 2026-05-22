@@ -14,7 +14,7 @@ class GameManager
 public:
     Monster* generateMonster(int level);
 
-    void battle(Character* player);
+    void Battle(Character* player);
 
     void displayInventory(Character* player);
 };
