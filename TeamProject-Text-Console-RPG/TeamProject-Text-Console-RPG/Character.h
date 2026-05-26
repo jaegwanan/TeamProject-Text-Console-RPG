@@ -47,6 +47,8 @@ public:
     //경험치 관련
     void Gainexp(int amount);
     void Printexpbar();
+    virtual int Getrequiredexp() = 0;
+    virtual void Applylevelupstats() = 0
 
     //setter
     void Setjob(std::string job) { this->job = job; }
