@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
@@ -46,8 +46,7 @@
               "RelativeToolTip": "TeamProject-Text-Console-RPG\\Monster.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-26T06:46:47.977Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-26T06:46:47.977Z"
             },
             {
               "$type": "Document",
@@ -57,7 +56,7 @@
               "RelativeDocumentMoniker": "TeamProject-Text-Console-RPG\\Monster.h",
               "ToolTip": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Monster.h",
               "RelativeToolTip": "TeamProject-Text-Console-RPG\\Monster.h",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACwAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAQwCgAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-05-22T07:59:04.99Z",
               "EditorCaption": ""
@@ -72,8 +71,7 @@
               "RelativeToolTip": "TeamProject-Text-Console-RPG\\Goblin.cpp",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-26T06:19:41.177Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-26T06:19:41.177Z"
             },
             {
               "$type": "Document",
@@ -85,8 +83,7 @@
               "RelativeToolTip": "TeamProject-Text-Console-RPG\\Battle.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-22T08:00:08.948Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-22T08:00:08.948Z"
             },
             {
               "$type": "Document",
@@ -98,8 +95,7 @@
               "RelativeToolTip": "TeamProject-Text-Console-RPG\\Character.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-22T03:09:25.774Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-22T03:09:25.774Z"
             },
             {
               "$type": "Document",
@@ -111,8 +107,7 @@
               "RelativeToolTip": "TeamProject-Text-Console-RPG\\Character.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-21T10:09:20.564Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-21T10:09:20.564Z"
             }
           ]
         }
