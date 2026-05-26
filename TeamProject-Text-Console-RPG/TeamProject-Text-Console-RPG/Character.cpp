@@ -117,7 +117,7 @@ void Character::Displaystatus()
 void Character::Basicattack(Monster* monster)
 {
     int hitcount = 1;
-    int damage = attack();
+    int damage = attack;
     int totaldamage = hitcount * damage;
     
     Attackmessage();
