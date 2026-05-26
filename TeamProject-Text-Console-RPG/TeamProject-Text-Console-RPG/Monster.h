@@ -8,8 +8,8 @@ class Monster
 {
 protected:
     std::string name;
-    int maxhealth;
-    int currenthealth; // Takedamage() 에서 관련 로직 추가해주셔야 ㅎㅏㅂ니다
+    int maxhp;
+    int currenthp; // Takedamage() 에서 관련 로직 추가해주셔야 ㅎㅏㅂ니다
     int attack;
     int level;
     int exp;
@@ -18,14 +18,14 @@ protected:
 
 public:
     Monster(std::string name, int health, int attack)
-        : name(name), maxhealth(health), currenthealth(health),attack(attack) {
+        : name(name), maxhp(health), currenthp(health),attack(attack) {
     } //레벨 별 스탯은 자식에서
 
     //Get 함수 묶음
     std::string Getname() { return name; }
     int Getlevel() { return level; }
-    int Getmaxhealth() { return maxhealth; }
-    int Getcurrenthealth() { return currenthealth; }
+    int Getmaxhealth() { return maxhp; }
+    int Getcurrenthealth() { return currenthp; }
     int Getattack() { return attack; }
     int Getexp() { return exp; }
     int Getgold() { return gold; }
@@ -55,8 +55,8 @@ public:
 
         // 초기화
         int finalhealth = Healthrandom(gen);
-        this->maxhealth = finalhealth;
-        this->currenthealth = finalhealth;
+        this->maxhp = finalhealth;
+        this->currenthp = finalhealth;
         this->attack = Attackrandom(gen);
 
         this->level = level;
