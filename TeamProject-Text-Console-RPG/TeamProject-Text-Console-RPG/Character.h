@@ -54,9 +54,9 @@ public:
     void Setjob(std::string job) { this->job = job; }
     void Setlevel(int level) { this->level = level; }
     void Sethp(int hp) { this->hp = hp; }
-    void Sethp(int maxhp) { this->maxhp = hp; }
+    void Setmaxhp(int maxhp) { this->maxhp = hp; }
     void Setmp(int mp) { this->mp = mp; }
-    void Setmp(int maxmp) { this->maxmp = mp; }
+    void Setmaxmp(int maxmp) { this->maxmp = mp; }
     void Setattack(int attack) { this->attack = attack; }
     void Setexp(int exp) { this->exp = exp; }
     void Setgold(int gold) { this->gold = gold; }
