@@ -239,13 +239,14 @@ void GameManager::Battle(Character* player)
             int playermp = player->Getmp(); // //----------------------------------------------------------------------------------------------Character의 현재 HP 게터 요구함니다.
             int monsterhp = monster->Gethp(); // //----------------------------------------------------------------------------------------------monster의 현재 HP 게터 요구함니다.
             int randomvalue = rand() % 100 + 1;
+            int mp = 100; // 이 친구만 바꾼다면
 
-            if (monsterhp < playerhp && playermp < 100) // 적의 체력이 플레이어보다 적고&& 플레이어 MP가 100보다 적으면 일반공격
+            if (monsterhp < playerhp && playermp < mp) // 적의 체력이 플레이어보다 적고&& 플레이어 MP가 100보다 적으면 일반공격
             {
                 Basicattack(player, monster);
                 break;
             }
-            else if (monsterhp < playerhp && playermp >= 100) // 적의 체력이 플레이어 보다 적고&& 플레이어 MP가 100보다 많으면 스킬사용
+            else if (monsterhp < playerhp && playermp >= mp) // 적의 체력이 플레이어 보다 적고&& 플레이어 MP가 100보다 많으면 스킬사용
             {
                 if (Skill(player, monster))
                 {
@@ -261,7 +262,7 @@ void GameManager::Battle(Character* player)
                     continue;
                 }
             }
-            else if (monsterhp >= playerhp && playermp < 100) // 적의 체력이 플레이어 보다 많고&& 플레이어 MP가 100보다 적으면
+            else if (monsterhp >= playerhp && playermp < mp) // 적의 체력이 플레이어 보다 많고&& 플레이어 MP가 100보다 적으면
             {
                 if (randomvalue > 70) // 70 퍼센트 확률로 아이템 사용
                 {
