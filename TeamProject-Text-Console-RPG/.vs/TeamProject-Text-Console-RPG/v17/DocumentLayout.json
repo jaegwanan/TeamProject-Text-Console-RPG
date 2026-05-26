@@ -1,30 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\",
+  "WorkspaceRootPath": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\AchievementManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|solutionrelative:TeamProject-Text-Console-RPG\\AchievementManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|solutionrelative:TeamProject-Text-Console-RPG\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|solutionrelative:TeamProject-Text-Console-RPG\\Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Monster.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Monster.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|solutionrelative:TeamProject-Text-Console-RPG\\Monster.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|solutionrelative:TeamProject-Text-Console-RPG\\Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Monster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|solutionrelative:TeamProject-Text-Console-RPG\\Monster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Battle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Battle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|solutionrelative:TeamProject-Text-Console-RPG\\Battle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|solutionrelative:TeamProject-Text-Console-RPG\\Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|solutionrelative:TeamProject-Text-Console-RPG\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Goblin.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{496AD4AE-C59F-4118-BECB-B38C9441F042}|TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG.vcxproj|solutionrelative:TeamProject-Text-Console-RPG\\Goblin.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,77 +34,80 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AchievementManager.h",
-              "DocumentMoniker": "C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\AchievementManager.h",
-              "RelativeDocumentMoniker": "TeamProject-Text-Console-RPG\\AchievementManager.h",
-              "ToolTip": "C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\AchievementManager.h",
-              "RelativeToolTip": "TeamProject-Text-Console-RPG\\AchievementManager.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-22T11:22:49.539Z",
+              "DocumentIndex": 1,
+              "Title": "Monster.cpp",
+              "DocumentMoniker": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Monster.cpp",
+              "RelativeDocumentMoniker": "TeamProject-Text-Console-RPG\\Monster.cpp",
+              "ToolTip": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Monster.cpp",
+              "RelativeToolTip": "TeamProject-Text-Console-RPG\\Monster.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-26T06:46:47.977Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Item.h",
-              "DocumentMoniker": "C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Item.h",
-              "RelativeDocumentMoniker": "TeamProject-Text-Console-RPG\\Item.h",
-              "ToolTip": "C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Item.h",
-              "RelativeToolTip": "TeamProject-Text-Console-RPG\\Item.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Monster.h",
+              "DocumentMoniker": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Monster.h",
+              "RelativeDocumentMoniker": "TeamProject-Text-Console-RPG\\Monster.h",
+              "ToolTip": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Monster.h",
+              "RelativeToolTip": "TeamProject-Text-Console-RPG\\Monster.h",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-22T08:29:00.525Z"
+              "WhenOpened": "2026-05-22T07:59:04.99Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Battle.cpp",
-              "DocumentMoniker": "C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Battle.cpp",
-              "RelativeDocumentMoniker": "TeamProject-Text-Console-RPG\\Battle.cpp",
-              "ToolTip": "C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Battle.cpp",
-              "RelativeToolTip": "TeamProject-Text-Console-RPG\\Battle.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAfAAAAAAAAAA==",
+              "Title": "Goblin.cpp",
+              "DocumentMoniker": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Goblin.cpp",
+              "RelativeDocumentMoniker": "TeamProject-Text-Console-RPG\\Goblin.cpp",
+              "ToolTip": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Goblin.cpp",
+              "RelativeToolTip": "TeamProject-Text-Console-RPG\\Goblin.cpp",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-22T08:00:08.948Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Monster.h",
-              "DocumentMoniker": "C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Monster.h",
-              "RelativeDocumentMoniker": "TeamProject-Text-Console-RPG\\Monster.h",
-              "ToolTip": "C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Monster.h",
-              "RelativeToolTip": "TeamProject-Text-Console-RPG\\Monster.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-22T07:59:04.99Z"
+              "WhenOpened": "2026-05-26T06:19:41.177Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Battle.cpp",
+              "DocumentMoniker": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Battle.cpp",
+              "RelativeDocumentMoniker": "TeamProject-Text-Console-RPG\\Battle.cpp",
+              "ToolTip": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Battle.cpp",
+              "RelativeToolTip": "TeamProject-Text-Console-RPG\\Battle.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-22T08:00:08.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Character.cpp",
-              "DocumentMoniker": "C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Character.cpp",
+              "DocumentMoniker": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Character.cpp",
               "RelativeDocumentMoniker": "TeamProject-Text-Console-RPG\\Character.cpp",
-              "ToolTip": "C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Character.cpp",
+              "ToolTip": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Character.cpp",
               "RelativeToolTip": "TeamProject-Text-Console-RPG\\Character.cpp",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-05-22T03:09:25.774Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Character.h",
-              "DocumentMoniker": "C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Character.h",
+              "DocumentMoniker": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Character.h",
               "RelativeDocumentMoniker": "TeamProject-Text-Console-RPG\\Character.h",
-              "ToolTip": "C:\\UnrealCpp\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Character.h",
+              "ToolTip": "C:\\Users\\82105\\Desktop\\\uB0B4\uBC30\uCEA0\\c\u002B\u002B\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\TeamProject-Text-Console-RPG\\Character.h",
               "RelativeToolTip": "TeamProject-Text-Console-RPG\\Character.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
