@@ -1,21 +1,41 @@
-// Monster
-
 #pragma once
-
-#include<string>
+#include <string>
+#include <iostream>
+#include <random>
+class Character;
 
 class Monster
 {
 protected:
     std::string name;
-    int health;
+    int maxhealth;
+    int currenthealth; // Takedamage() ���� ���� ���� �߰����ּž� �������ϴ�
     int attack;
+    int level;
+    int exp;
+    int gold;
+    std::string itemname;
 
 public:
-    virtual std::string Getname() = 0;
-    virtual int Gethp() = 0;
-    virtual int Getattack() = 0;
-    virtual void Takedamage(int damage) = 0;
+    Monster(std::string name, int health, int attack)
+        : name(name), maxhealth(health), currenthealth(health),attack(attack) {
+    } //���� �� ������ �ڽĿ���
+
+    //Get �Լ� ����
+    std::string Getname() { return name; }
+    int Getlevel() { return level; }
+    int Getmaxhealth() { return maxhealth; }
+    int Getcurrenthealth() { return currenthealth; }
+    int Getattack() { return attack; }
+    int Getexp() { return exp; }
+    int Getgold() { return gold; }
+    std::string Getitemname() { return itemname; }
+
+    //���� �Լ� ����
+    virtual void Basicattack(Character* player); //�Ϲݰ��� ����
+    virtual void Specialattack(Character* player); //Ư������ ����
+        
+    void Takedamage(int damage);
 
     virtual ~Monster() {}
 };
@@ -24,12 +44,30 @@ public:
 class Goblin : public Monster
 {
 public:
-    Goblin(int level);
+    Goblin(int level)
+        : Monster("������", 0, 0) // �ӽð�
+    {
+        std::random_device rd;  // ���� �õ� ����
+        std::mt19937 gen(rd()); // ���� ���� ����
 
-    std::string Getname() override;
-    int Gethp() override;
-    int Getattack() override;
-    void Takedamage(int damage) override;
+        std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
+        std::uniform_int_distribution<int> Attackrandom(level * 5, level * 10);
+
+        // �ʱ�ȭ
+        int finalhealth = Healthrandom(gen);
+        this->maxhealth = finalhealth;
+        this->currenthealth = finalhealth;
+        this->attack = Attackrandom(gen);
+
+        this->level = level;
+        this->exp = 15 + (level * 5);
+        this->gold = 10 + (level * 3);
+        this->itemname = "�������� ���߱⸧";
+    }
+
+    // ���� �ʿ�
+    void Basicattack(Character* player) override;
+    void Specialattack(Character* player) override;
 };
 
 // Orc
@@ -38,10 +76,8 @@ class Orc : public Monster
 public:
     Orc(int level);
 
-    std::string Getname() override;
-    int Gethp() override;
-    int Getattack() override;
-    void Takedamage(int damage) override;
+    void Basicattack(Character* player) override;
+    void Specialattack(Character* player) override;
 };
 
 // Troll
@@ -50,10 +86,8 @@ class Troll : public Monster
 public:
     Troll(int level);
 
-    std::string Getname() override;
-    int Gethp() override;
-    int Getattack() override;
-    void Takedamage(int damage) override;
+    void Basicattack(Character* player) override;
+    void Specialattack(Character* player) override;
 };
 
 // Slime
@@ -62,8 +96,6 @@ class Slime : public Monster
 public:
     Slime(int level);
 
-    std::string Getname() override;
-    int Gethp() override;
-    int Getattack() override;
-    void Takedamage(int damage) override;
+    void Basicattack(Character* player) override;
+    void Specialattack(Character* player) override;
 };
