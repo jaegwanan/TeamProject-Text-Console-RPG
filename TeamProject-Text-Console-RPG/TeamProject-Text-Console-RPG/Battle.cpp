@@ -18,7 +18,8 @@ void Basicattack(Character* player, Monster* monster)
 
 bool Skill(Character* player, Monster* monster)
 {
-    return player->Skill(monster); // //---------------------------Character의 bool Skill(Monster* monster); bool인 이유는 사용 성공시 true 리턴 요구합니다. 오버라이드 부탁합니다.
+    cout << "스킬을 사용했다.";
+    return true; // //---------------------------Character의 bool Skill(Monster* monster); bool인 이유는 사용 성공시 true 리턴 요구합니다. 오버라이드 부탁합니다.
 }
 
 bool Pantierun(Character* player, int monsterlevel)
@@ -73,7 +74,7 @@ Monster* Generatemonster(Character* player) // 몬스터 랜덤 생성 함수
     int level = Generatemonsterlevel(player); // 적 레벨 +-1 랜덤 함수
     if (randomvalue4 <= 35)
     {
-        return new Slime(level); // 35프로
+        return new Goblin(level); // 35프로
     }
 
     else if (randomvalue4 <= 65)
@@ -83,11 +84,11 @@ Monster* Generatemonster(Character* player) // 몬스터 랜덤 생성 함수
 
     else if (randomvalue4 <= 85)
     {
-        return new Orc(level); // 20프로
+        return new Goblin(level); // 20프로
     }
     else
     {
-        return new Troll(level); // 15프로
+        return new Goblin(level); // 15프로
     }
 }
 
@@ -125,8 +126,16 @@ void Monsterattack(Character* player, Monster* monster) // 이 함수 하나로 몬스터
 
 }
 
-bool Useitem(); // 나중에 지울 거----------------------------------------------------------------------------------------------------------------------Useiitem(); 함수 요구합니다.
-void Additem(string item); //---------------------------------------------------------------------------------------------------------------------------Additem() 함수 요구합니다.
+bool Useitem()
+{
+    cout << "아이템을 사용했다.\n";
+    return true;
+}// 나중에 지울 거----------------------------------------------------------------------------------------------------------------------Useiitem(); 함수 요구합니다.
+void Additem(string item)
+{
+    cout << item << "\n";
+}//---------------------------------------------------------------------------------------------------------------------------Additem() 함수 요구합니다.
+
 
 void GameManager::Battle(Character* player)
 {
@@ -371,7 +380,7 @@ void GameManager::Battle(Character* player)
         string item = monster->Getitemname(); //-------------------------------------------------------------------------------------------------몬스터에게 아이템 이름 받아오는 함수 요구합니다.
         int exp = monster->Getexp(); // //---------------------------------------------------------------------------------------------------------------------- 몬스터 경험치 게터 요구합니다.
         int gold = monster->Getgold(); // //-------------------------------------------------------------------------------------------------------------------- 몬스터 경험치 게터 요구합니다.
-        player->Setexp(player->Getexp() + (exp)); //-------------------------------------------------------------------------------------------------------------- 경험치 세터/게터 요구합니다.
+        player->Gainexp(exp); //-------------------------------------------------------------------------------------------------------------- 경험치 세터/게터 요구합니다.
         ////-------------------------------------------------------------------------------------------------------------------------------------- 세터에 maxexp 때리면 레벨업 함수 불러와주세요.
         player->Setgold(player->Getgold() + gold * randomvalue5); //골드는 인트형이기에 소수점 자동 변환----------------------------------------------------------------- 골드 세터/게터 요구합니다.
         cout << "당신은 " << exp << " 만큼의 경험치와 " << gold << " 골드를 획득했다.\n";
