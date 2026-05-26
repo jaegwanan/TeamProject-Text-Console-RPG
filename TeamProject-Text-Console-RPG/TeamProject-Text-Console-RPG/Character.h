@@ -10,7 +10,7 @@
 
 class Character
 {
-protected:
+private:
     static Character* instance;
 
     std::string name;
@@ -18,10 +18,10 @@ protected:
     std::string skillname;
     
     int level = 1 ;
-    int hp = 200 ; // ?„ì¬ì²´ë ¥ 
-    int maxhp = 200 ; // ìµœë?ì²´ë ¥ 
-    int mp = 100; // ?„ì¬ë§ˆë‚˜ 
-    int maxmp = 100; // ìµœë?ë§ˆë‚˜ 
+    int hp = 200 ; 
+    int maxhp = 200 ; 
+    int mp = 100; 
+    int maxmp = 100; 
     int attack = 30 ;
     int exp = 0;
     int gold;
@@ -34,34 +34,28 @@ public:
     static Character* getInstance(std::string name = "");
 
     void Displaystatus();
+    void Levelup();
     void Useitem(int index);
     bool Skill(Monster* monster);
     void Additem(string item);
-
-    // °æÇèÄ¡, ·¹º§ °ü·Ã
-    virtual int Getrequiredexp() = 0;
-    virtual void Applylevelupstats() = 0;
-
-    void Gainexp(int amount); // °æÇèÄ¡ È¹µæ
-    void Printexpbar(); // °æÇèÄ¡¹Ù Ãâ·Â
-
-
+        
     virtual string Attackmessage() = 0;
     virtual bool Skill (Monster* monster) = 0;
-    virtual void Basicattack(Monster* monster) = 0;
+    void Basicattack(Monster* monster);
+    void Takedamage(int monsterattack);
 
-    //setter ?¤ì •
+    //setter
     void Setjob(std::string job) { this->job = job; }
     void Setlevel(int level) { this->level = level; }
     void Sethp(int hp) { this->hp = hp; }
-    void Setmaxhp(int maxhp) { this->maxhp = hp; }
+    void Sethp(int maxhp) { this->maxhp = hp; }
     void Setmp(int mp) { this->mp = mp; }
-    void Setmaxmp(int maxmp) { this->maxmp = mp; }
+    void Setmp(int maxmp) { this->maxmp = mp; }
     void Setattack(int attack) { this->attack = attack; }
     void Setexp(int exp) { this->exp = exp; }
     void Setgold(int gold) { this->gold = gold; }
 
-    //getter ?¤ì •
+    //getter 
     string Getjob() { return job; }
     int Getlevel() { return level; }
     int Gethp() { return hp; }
