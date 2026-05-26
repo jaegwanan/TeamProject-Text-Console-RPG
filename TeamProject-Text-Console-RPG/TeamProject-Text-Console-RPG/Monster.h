@@ -8,8 +8,8 @@ class Monster
 {
 protected:
     std::string name;
-    int maxhealth;
-    int currenthealth; // Takedamage() ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ï¿½Ö¼Å¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½
+    int maxhp;
+    int currenthp; // Takedamage() ¿¡¼­ °ü·Ã ·ÎÁ÷ Ãß°¡ÇØÁÖ¼Å¾ß ¤¾¤¿¤²´Ï´Ù
     int attack;
     int level;
     int exp;
@@ -18,22 +18,22 @@ protected:
 
 public:
     Monster(std::string name, int health, int attack)
-        : name(name), maxhealth(health), currenthealth(health),attack(attack) {
-    } //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½Ä¿ï¿½ï¿½ï¿½
+        : name(name), maxhp(health), currenthp(health),attack(attack) {
+    } //·¹º§ º° ½ºÅÈÀº ÀÚ½Ä¿¡¼­
 
-    //Get ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½
+    //Get ÇÔ¼ö ¹­À½
     std::string Getname() { return name; }
     int Getlevel() { return level; }
-    int Getmaxhealth() { return maxhealth; }
-    int Getcurrenthealth() { return currenthealth; }
+    int Getmaxhp() { return maxhp; }
+    int Getcurrenthp() { return currenthp; }
     int Getattack() { return attack; }
     int Getexp() { return exp; }
     int Getgold() { return gold; }
     std::string Getitemname() { return itemname; }
 
-    //ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½
-    virtual void Basicattack(Character* player); //ï¿½Ï¹Ý°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-    virtual void Specialattack(Character* player); //Æ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    //°ø°Ý ÇÔ¼ö ¼±¾ð
+    virtual void Basicattack(Character* player); //ÀÏ¹Ý°ø°Ý °¡»ó
+    virtual void Specialattack(Character* player); //Æ¯¼ö°ø°Ý °¡»ó
         
     void Takedamage(int damage);
 
@@ -45,27 +45,27 @@ class Goblin : public Monster
 {
 public:
     Goblin(int level)
-        : Monster("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", 0, 0) // ï¿½Ó½Ã°ï¿½
+        : Monster("°íºí¸°", 0, 0) // ÀÓ½Ã°ª
     {
-        std::random_device rd;  // ï¿½ï¿½ï¿½ï¿½ ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½
-        std::mt19937 gen(rd()); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        std::random_device rd;  // ³­¼ö ½Ãµå »ý¼º
+        std::mt19937 gen(rd()); // ³­¼ö »ý¼º ¿£Áø
 
         std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
         std::uniform_int_distribution<int> Attackrandom(level * 5, level * 10);
 
-        // ï¿½Ê±ï¿½È­
+        // ÃÊ±âÈ­
         int finalhealth = Healthrandom(gen);
-        this->maxhealth = finalhealth;
-        this->currenthealth = finalhealth;
+        this->maxhp = finalhealth;
+        this->currenthp = finalhealth;
         this->attack = Attackrandom(gen);
 
         this->level = level;
         this->exp = 15 + (level * 5);
         this->gold = 10 + (level * 3);
-        this->itemname = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß±â¸§";
+        this->itemname = "°íºí¸°ÀÇ °íÃß±â¸§";
     }
 
-    // ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
+    // ±¸Çö ÇÊ¿ä
     void Basicattack(Character* player) override;
     void Specialattack(Character* player) override;
 };
