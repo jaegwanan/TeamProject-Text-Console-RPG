@@ -140,7 +140,6 @@ void Character::Takedamage(int monsterattack)
         cout << endl;
     }
 }
-}
 
 void Character::Gainexp(int amount)
 {   
