@@ -1,22 +1,105 @@
-﻿// TeamProject-Text-Console-RPG.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
-//
+﻿#include <iostream>
+#include <string>
+#include <ctime>
 
-#include <iostream>
+#include "Character.h"
+#include "GameManager.h"
 
+#include "Warrior.h"
+#include "Mage.h"
+#include "Thief.h"
+#include "Archer.h"
 
+using namespace std;
+
+class Warrior;
+class Mage;
+class Thief;
+class Archer;
+
+Character* CreateCharacter()
+{
+    string name;
+    int choice;
+
+    cout << " 캐릭터 이름을 입력하세요: ";
+    cin >> name;
+
+    while (true)
+    {
+        cout << " 직업을 선택하세요." << endl;
+        cout << " 1. 전사" << endl;
+        cout << " 2. 마법사" << endl;
+        cout << " 3. 도적" << endl;
+        cout << " 4. 궁수" << endl;
+        cout << " 선택: ";
+        cin >> choice;
+
+        if (choice == 1) return new Warrior(name);
+        if (choice == 2) return new Mage(name);
+        if (choice == 3) return new Thief(name);
+        if (choice == 4) return new Archer(name);
+
+        cout << "잘못된 입력입니다. 다시 선택하세요.\n";
+    }
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    GameManager gameManager;
+    Character* player = CreateCharacter();
+    
+    cout << endl;
+    cout << " 캐릭터 생성 완료! " << endl;
+    player->Displaystatus();
+
+    cin.ignore();
+    cin.get();
+
+    while (true)
+    {
+        system("cls");
+
+        cout << "============================" << endl;
+        cout << "        TEXT RPG" << endl;
+        cout << "============================" << endl;
+        cout << " 1. 상태 보기" <<endl;
+        cout << " 2. 전투 시작" << endl;
+        cout << " 3. 인벤토리" << endl;
+        cout << " 4. 게임 종료" << endl;
+        cout << "============================" << endl;
+        cout << " 선택: ";
+
+        int menu;
+        cin >> menu;
+
+        switch (menu)
+        {
+        case 1:
+            system("cls");
+            player->Displaystatus();
+            cin.ignore();
+            cin.get();
+            break;
+
+        case 2:
+            gameManager.Battle(player);
+            break;
+
+        case 3:
+            gameManager.displayInventory(player);
+            break;
+
+        case 4:
+            delete player;
+            cout << " 게임을 종료합니다." << endl;
+            return 0;
+
+        default: 
+            cout << " 잘못된 입력입니다." << endl;
+            cin.ignore();
+            cin.get();
+            break;
+        }
+    }
 }
-
-// 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
-// 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
-
-// 시작을 위한 팁: 
-//   1. [솔루션 탐색기] 창을 사용하여 파일을 추가/관리합니다.
-//   2. [팀 탐색기] 창을 사용하여 소스 제어에 연결합니다.
-//   3. [출력] 창을 사용하여 빌드 출력 및 기타 메시지를 확인합니다.
-//   4. [오류 목록] 창을 사용하여 오류를 봅니다.
-//   5. [프로젝트] > [새 항목 추가]로 이동하여 새 코드 파일을 만들거나, [프로젝트] > [기존 항목 추가]로 이동하여 기존 코드 파일을 프로젝트에 추가합니다.
-//   6. 나중에 이 프로젝트를 다시 열려면 [파일] > [열기] > [프로젝트]로 이동하고 .sln 파일을 선택합니다.

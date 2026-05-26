@@ -24,7 +24,7 @@ protected:
     int maxmp = 100; 
     int attack = 30 ;
     int exp = 0;
-    int gold;
+    int gold = 0;
 
     std::vector<Item*> inventory;
 
@@ -32,6 +32,7 @@ public:
     Character(std::string name);
 
     static Character* getInstance(std::string name = "");
+    virtual ~Character() {}
 
     void Displaystatus();
     void Levelup();
@@ -39,7 +40,7 @@ public:
     bool Skill(Monster* monster);
     void Additem(string item);*/
         
-    virtual string Attackmessage() = 0;
+    virtual std::string Attackmessage() = 0;
  
     void Basicattack(Monster* monster);
     void Takedamage(int monsterattack);
@@ -48,21 +49,21 @@ public:
     void Gainexp(int amount);
     void Printexpbar();
     virtual int Getrequiredexp() = 0;
-    virtual void Applylevelupstats() = 0
+    virtual void Applylevelupstats() = 0;
 
     //setter
     void Setjob(std::string job) { this->job = job; }
     void Setlevel(int level) { this->level = level; }
     void Sethp(int hp) { this->hp = hp; }
-    void Setmaxhp(int maxhp) { this->maxhp = hp; }
+    void Setmaxhp(int maxhp) { this->maxhp = maxhp; }
     void Setmp(int mp) { this->mp = mp; }
-    void Setmaxmp(int maxmp) { this->maxmp = mp; }
+    void Setmaxmp(int maxmp) { this->maxmp = maxmp; }
     void Setattack(int attack) { this->attack = attack; }
     void Setexp(int exp) { this->exp = exp; }
     void Setgold(int gold) { this->gold = gold; }
 
     //getter 
-    string Getjob() { return job; }
+    std::string Getjob() { return job; }
     int Getlevel() { return level; }
     int Gethp() { return hp; }
     int Getmaxhp() { return maxhp; }
