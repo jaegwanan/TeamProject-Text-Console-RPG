@@ -1,23 +1,41 @@
-// Monster
-
 #pragma once
-
-#include<string>
-
-using namespace std;
+#include <string>
+#include <iostream>
+#include <random>
+class Character;
 
 class Monster
 {
 protected:
-    string name;
-    int health;
+    std::string name;
+    int maxhealth;
+    int currenthealth; // Takedamage() 에서 관련 로직 추가해주셔야 ㅎㅏㅂ니다
     int attack;
+    int level;
+    int exp;
+    int gold;
+    std::string itemname;
 
 public:
-    virtual string getName() = 0;
-    virtual int getHealth() = 0;
-    virtual int getAttack() = 0;
-    virtual void takeDamage(int damage) = 0;
+    Monster(std::string name, int health, int attack)
+        : name(name), maxhealth(health), currenthealth(health),attack(attack) {
+    } //레벨 별 스탯은 자식에서
+
+    //Get 함수 묶음
+    std::string Getname() { return name; }
+    int Getlevel() { return level; }
+    int Getmaxhealth() { return maxhealth; }
+    int Getcurrenthealth() { return currenthealth; }
+    int Getattack() { return attack; }
+    int Getexp() { return exp; }
+    int Getgold() { return gold; }
+    std::string Getitemname() { return itemname; }
+
+    //공격 함수 선언
+    virtual void Basicattack(Character* player); //일반공격 가상
+    virtual void Specialattack(Character* player); //특수공격 가상
+        
+    void Takedamage(int damage);
 
     virtual ~Monster() {}
 };
@@ -26,12 +44,30 @@ public:
 class Goblin : public Monster
 {
 public:
-    Goblin(int level);
+    Goblin(int level)
+        : Monster("고블린", 0, 0) // 임시값
+    {
+        std::random_device rd;  // 난수 시드 생성
+        std::mt19937 gen(rd()); // 난수 생성 엔진
 
-    string getName() override;
-    int getHealth() override;
-    int getAttack() override;
-    void takeDamage(int damage) override;
+        std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
+        std::uniform_int_distribution<int> Attackrandom(level * 5, level * 10);
+
+        // 초기화
+        int finalhealth = Healthrandom(gen);
+        this->maxhealth = finalhealth;
+        this->currenthealth = finalhealth;
+        this->attack = Attackrandom(gen);
+
+        this->level = level;
+        this->exp = 15 + (level * 5);
+        this->gold = 10 + (level * 3);
+        this->itemname = "고블린의 고추기름";
+    }
+
+    // 구현 필요
+    void Basicattack(Character* player) override;
+    void Specialattack(Character* player) override;
 };
 
 // Orc
@@ -40,10 +76,8 @@ class Orc : public Monster
 public:
     Orc(int level);
 
-    string getName() override;
-    int getHealth() override;
-    int getAttack() override;
-    void takeDamage(int damage) override;
+    void Basicattack(Character* player) override;
+    void Specialattack(Character* player) override;
 };
 
 // Troll
@@ -52,10 +86,8 @@ class Troll : public Monster
 public:
     Troll(int level);
 
-    string getName() override;
-    int getHealth() override;
-    int getAttack() override;
-    void takeDamage(int damage) override;
+    void Basicattack(Character* player) override;
+    void Specialattack(Character* player) override;
 };
 
 // Slime
@@ -64,8 +96,6 @@ class Slime : public Monster
 public:
     Slime(int level);
 
-    string getName() override;
-    int getHealth() override;
-    int getAttack() override;
-    void takeDamage(int damage) override;
+    void Basicattack(Character* player) override;
+    void Specialattack(Character* player) override;
 };
