@@ -33,14 +33,36 @@ Character* CreateCharacter()
         cout << " 3. 도적" << endl;
         cout << " 4. 궁수" << endl;
         cout << " 선택: ";
-        cin >> choice;
 
-        if (choice == 1) return new Warrior(name);
-        if (choice == 2) return new Mage(name);
-        if (choice == 3) return new Thief(name);
-        if (choice == 4) return new Archer(name);
+        if (!(cin >> choice)) // 여기서 입력 받고
+        {
+            system("cls");
+            cout << "잘못된 입력입니다.\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cin.get();
 
-        cout << "잘못된 입력입니다. 다시 선택하세요.\n";
+            continue;
+        }
+
+        switch (choice)
+        {
+        case 1:
+            return new Warrior(name);
+        case 2:
+            return new Mage(name);
+        case 3:
+            return new Thief(name);
+        case 4:
+            return new Archer(name);
+        default:
+            system("cls");
+            cout << "잘못된 입력입니다\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cin.get();
+            continue;
+        }
     }
 }
 
@@ -71,7 +93,17 @@ int main()
         cout << " 선택: ";
 
         int menu;
-        cin >> menu;
+
+        if (!(cin >> menu)) // 여기서 입력 받고
+        {
+            system("cls");
+            cout << "잘못된 입력입니다.\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cin.get();
+
+            continue;
+        }
 
         switch (menu)
         {
@@ -87,7 +119,7 @@ int main()
             break;
 
         case 3:
-            gameManager.displayInventory(player);
+            // gameManager.displayInventory(player);
             break;
 
         case 4:
@@ -96,10 +128,11 @@ int main()
             return 0;
 
         default: 
+            system("cls");
             cout << " 잘못된 입력입니다." << endl;
             cin.ignore();
             cin.get();
-            break;
+            continue;
         }
     }
 }
