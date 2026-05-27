@@ -45,6 +45,9 @@ public:
     void Basicattack(Monster* monster);
     void Takedamage(int monsterattack);
 
+    virtual bool Skill(Monster* monster) = 0;
+    virtual std::string Getskillname() = 0;
+
     //경험치 관련
     void Gainexp(int amount);
     void Printexpbar();
