@@ -1,73 +1,90 @@
-﻿  Battle.cpp
-  Character_fuction.cpp
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(14,22): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Battle.cpp')
+﻿  AAT.cpp
+  AchievementManager.cpp
+\AchievementManager.cpp(1,1): error C1083: 소스 파일을 열 수 없습니다. 'AchievementManager.cpp': No such file or directory
+  (소스 파일 '/AchievementManager.cpp'을(를) 컴파일하는 중)
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(29,14): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Battle.cpp')
+  Archer.cpp
+  Battle.cpp
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(341,24): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(342,24): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(382,43): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Character.cpp
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(73,16): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Goblin.cpp
+  Inventory.cpp
+  Item.cpp
+  Mage.cpp
+  Monster.cpp
+  Orc.cpp
+  shop.cpp
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(83,59): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(42,14): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Battle.cpp')
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(111,63): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,20): error C3646: 'Attackmessage': unknown override specifier
-  (compiling source file 'Battle.cpp')
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(132,81): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,34): error C2059: syntax error: ')'
-  (compiling source file 'Battle.cpp')
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(158,17): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,39): error C2238: unexpected token(s) preceding ';'
-  (compiling source file 'Battle.cpp')
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(160,21): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(14,26): error C2039: 'getAttack': is not a member of 'Character'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
-      see declaration of 'Character'
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(172,59): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(16,14): error C2039: 'takeDamage': is not a member of 'Monster'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
-      see declaration of 'Monster'
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(180,36): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(32,17): error C2039: 'getHealth': is not a member of 'Character'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
-      see declaration of 'Character'
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(200,21): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(32,45): error C2039: 'getHealth': is not a member of 'Monster'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
-      see declaration of 'Monster'
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(202,63): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(58,17): error C3861: 'skill': identifier not found
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(72,13): error C3861: 'skill': identifier not found
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(101,39): error C2039: 'getLevel': is not a member of 'Character'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
-      see declaration of 'Character'
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(230,39): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(102,41): error C2039: 'getLevel': is not a member of 'Monster'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
-      see declaration of 'Monster'
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(232,29): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(25,1): error C1075: '{': no matching token found
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(14,22): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Character_fuction.cpp')
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(245,13): error C2039: 'SetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(29,14): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Character_fuction.cpp')
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(245,30): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(42,14): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Character_fuction.cpp')
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(263,39): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,20): error C3646: 'Attackmessage': unknown override specifier
-  (compiling source file 'Character_fuction.cpp')
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(280,13): error C2039: 'SetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,34): error C2059: syntax error: ')'
-  (compiling source file 'Character_fuction.cpp')
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(280,30): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,39): error C2238: unexpected token(s) preceding ';'
-  (compiling source file 'Character_fuction.cpp')
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character_fuction.cpp(32,13): error C3861: 'Attackmessage': identifier not found
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character_fuction.cpp(36,14): error C2039: 'Sethp': is not a member of 'Monster'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
-      see declaration of 'Monster'
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character_fuction.cpp(45,1): error C2059: syntax error: '}'
+  Slime.cpp
   TeamProject-Text-Console-RPG.cpp
-  Generating Code...
+  Thief.cpp
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Thief.cpp(46,20): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Troll.cpp
+  Warrior.cpp
+  코드를 생성하고 있습니다...

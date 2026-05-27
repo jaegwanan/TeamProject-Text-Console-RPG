@@ -22,7 +22,7 @@ void Goblin::Specialattack(Character* player)
 	int damage = Getattack();
 	int totaldamage = hitcount * damage;
 
-	cout << "고블린이 3연속 공격을 한다!\n" << endl;
+	cout << "고블린이 " << hitcount << "연속 공격을 한다!\n" << endl;
 
 	for (int i = 0; i < hitcount; i++)
 	{
