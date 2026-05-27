@@ -1,73 +1,19 @@
-﻿  Battle.cpp
-  Character_fuction.cpp
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(14,22): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Battle.cpp')
+﻿  AchievementManager.cpp
+  Archer.cpp
+\AchievementManager.cpp(1,1): error C1083: Cannot open source file: 'AchievementManager.cpp': No such file or directory
+  (compiling source file '/AchievementManager.cpp')
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(29,14): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Battle.cpp')
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(42,14): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Battle.cpp')
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,20): error C3646: 'Attackmessage': unknown override specifier
-  (compiling source file 'Battle.cpp')
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,34): error C2059: syntax error: ')'
-  (compiling source file 'Battle.cpp')
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,39): error C2238: unexpected token(s) preceding ';'
-  (compiling source file 'Battle.cpp')
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(14,26): error C2039: 'getAttack': is not a member of 'Character'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
-      see declaration of 'Character'
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(16,14): error C2039: 'takeDamage': is not a member of 'Monster'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
-      see declaration of 'Monster'
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(32,17): error C2039: 'getHealth': is not a member of 'Character'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
-      see declaration of 'Character'
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(32,45): error C2039: 'getHealth': is not a member of 'Monster'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
-      see declaration of 'Monster'
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(58,17): error C3861: 'skill': identifier not found
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(72,13): error C3861: 'skill': identifier not found
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(101,39): error C2039: 'getLevel': is not a member of 'Character'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
-      see declaration of 'Character'
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(102,41): error C2039: 'getLevel': is not a member of 'Monster'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
-      see declaration of 'Monster'
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(25,1): error C1075: '{': no matching token found
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(14,22): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Character_fuction.cpp')
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(29,14): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Character_fuction.cpp')
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(42,14): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Character_fuction.cpp')
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,20): error C3646: 'Attackmessage': unknown override specifier
-  (compiling source file 'Character_fuction.cpp')
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,34): error C2059: syntax error: ')'
-  (compiling source file 'Character_fuction.cpp')
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,39): error C2238: unexpected token(s) preceding ';'
-  (compiling source file 'Character_fuction.cpp')
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character_fuction.cpp(32,13): error C3861: 'Attackmessage': identifier not found
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character_fuction.cpp(36,14): error C2039: 'Sethp': is not a member of 'Monster'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
-      see declaration of 'Monster'
-  
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character_fuction.cpp(45,1): error C2059: syntax error: '}'
+  Battle.cpp
+C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(341,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(342,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(382,43): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Character.cpp
+C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(73,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Goblin.cpp
+  Mage.cpp
+  Monster.cpp
   TeamProject-Text-Console-RPG.cpp
+  Thief.cpp
+C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Thief.cpp(46,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Warrior.cpp
   Generating Code...
