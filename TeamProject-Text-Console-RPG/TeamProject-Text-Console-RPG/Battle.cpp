@@ -256,6 +256,9 @@ void GameManager::Battle(Character* player)
             if (monsterhp < playerhp && playermp < mp) // 적의 체력이 플레이어보다 적고&& 플레이어 MP가 100보다 적으면 일반공격
             {
                 Basicattack(player, monster);
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cin.get();
                 break;
             }
             else if (monsterhp < playerhp && playermp >= mp) // 적의 체력이 플레이어 보다 적고&& 플레이어 MP가 100보다 많으면 스킬사용

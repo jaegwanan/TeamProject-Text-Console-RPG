@@ -13,6 +13,9 @@ void Goblin::Basicattack(Character* player)
 	cout << "고블린이 주먹질을 한다!\n" << damage << " 대미지" << endl;
 
 	player->Takedamage(totaldamage);
+	cin.clear();
+	cin.ignore(1000, '\n');
+	cin.get();
 }
 
 void Goblin::Specialattack(Character* player)
@@ -30,5 +33,7 @@ void Goblin::Specialattack(Character* player)
 	}
 
 	player->Takedamage(totaldamage);
-	
+	cin.clear();
+	cin.ignore(1000, '\n');
+	cin.get();
 }
