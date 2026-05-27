@@ -121,16 +121,101 @@ void Monsterattack(Character* player, Monster* monster) // 이 함수 하나로 몬스터
 
 }
 
-bool Useitem()
+bool Useitem(Character* player)
 {
-    cout << " 아이템을 사용했다.\n";
-    return true;
-}/// 나중에 지울 거----------------------------------------------------------------------------------------------------------------------Useiitem(); 함수 요구합니다.
-void Additem(string item)
-{
-    cout << item << "\n";
-}//---------------------------------------------------------------------------------------------------------------------------Additem() ?⑥닔 ?붽뎄?⑸땲??
+    vector<Item>* bag = player->GetInventory()->GetBag();
 
+    if (bag->empty())
+    {
+        cout << "사용할 아이템이 없습니다.\n";
+        return false;
+    }
+
+    cout << "===== 아이템 목록 =====\n";
+
+    for (int i = 0; i < bag->size(); ++i)
+    {
+        cout << i + 1 << ". ";
+        cout << bag->at(i).GetName();
+        cout << " x" << bag->at(i).GetCount() << "\n";
+    }
+
+    int select;
+
+    cout << "사용할 아이템 번호 : ";
+    cin >> select;
+
+    if (select <= 0 || select > bag->size())
+    {
+        return false;
+    }
+
+    Item& item = bag->at(select - 1);
+
+    switch (item.GetType())
+    {
+    case ITEM::ITEM_HP_POTION:
+        player->Sethp(player->Gethp() + item.GetAbility());
+        cout << "HP가" << item.GetAbility() << "회복되었다.\n";
+        break;
+
+    case ITEM::ITEM_MP_POTION:
+        player->Setmp(player->Getmp() + item.GetAbility());
+        cout << "MP가" << item.GetAbility() << "회복되었다.\n";
+        break;
+
+    case ITEM::ITEM_ATTACK_POTION:
+        player->Setattack(player->Getattack() + item.GetAbility());
+        cout << "공격력이" << item.GetAbility() << "증가했다.\n";
+        break;
+
+    default:
+        cout << "사용할 수 없는 아이템이다.\n";
+        return false;
+    }
+
+    item.SetCount(item.GetCount() - 1);
+
+    if (item.GetCount() <= 0)
+    {
+        bag->erase(bag->begin() + (select - 1));
+    }
+    cin.get();
+
+    return true;
+}
+
+void AddDropItem(Character* player, Item item)
+{
+    vector<Item>* playerBag = player->GetInventory()->GetBag();
+
+    int existItem = player->GetInventory()->IsItemExist(item.GetName());
+
+    if (existItem > -1)
+    {
+        playerBag->at(existItem).SetPrice(item.GetPrice());
+        playerBag->at(existItem).SetCount(playerBag->at(existItem).GetCount() + 1);
+    }
+    else
+    {
+        item.SetCount(1);
+        playerBag->push_back(item);
+    }
+}
+
+Item CreateDropItem(string itemName)
+{
+    if (itemName == "고블린의 고추기름")
+    {
+        return Item(ITEM::ITEM_EMPTY, "고블린의 고추기름", 5, 0, "고블린에게서 얻은 전리품", 1);
+    }
+    else if (itemName == "슬라임 젤")
+    {
+        return Item(ITEM::ITEM_EMPTY, "슬라임 젤", 3, 0, "슬라임에게서 얻은 끈적한 젤", 1);
+    }
+
+    return Item(ITEM::ITEM_EMPTY, itemName, 1, 0, "정체불명의 전리품", 1);
+}
 
 void GameManager::Battle(Character* player)
 {
@@ -213,7 +298,7 @@ void GameManager::Battle(Character* player)
         {
             system("cls");
             //------------------------------------------------------------------------------------------아이템 사용 함수 bool UseItem(); 사용 성공시 리턴 true 요구합니다.
-            if (Useitem()) // 아이템 사용 성공시 break로 턴 넘어감
+            if (Useitem(player)) // 아이템 사용 성공시 break로 턴 넘어감
             {
                 break;
             }
@@ -279,7 +364,7 @@ void GameManager::Battle(Character* player)
                 if (randomvalue > 70) // 70 퍼센트 확률로 아이템 사용
                 {
                     system("cls");
-                    if (Useitem()) // 아이템 사용 성공시 break로 턴 넘어감
+                    if (Useitem(player)) // 아이템 사용 성공시 break로 턴 넘어감
                     {
                         break;
                     }
@@ -332,8 +417,6 @@ void GameManager::Battle(Character* player)
         {
             system("cls");
             cout << "잘못된 입력입니다.\n";
-            cin.clear();
-            cin.ignore(1000, '\n');
             cin.get();
             continue;
         }
@@ -384,8 +467,9 @@ void GameManager::Battle(Character* player)
         if (randomvalue3 >= 30)
         {
             cin.get();
-            Additem(item);
-            cout << "잘 찾아보니 " << monstername << "에게서" << item << "을(를) 얻을 수 있었다.\n";
+            Item dropItem = CreateDropItem(item);
+            AddDropItem(player, dropItem);
+            cout << "잘 찾아보니 " << monstername << "에게서 " << dropItem.GetName() << "을(를) 얻을 수 있었다.\n";
         }
         cin.get();
     }
