@@ -7,7 +7,7 @@ using namespace std;
 Character::Character(std::string name)
 {
     this->name = name;
-    new Inventory();
+    m_inventory = new Inventory();
 }
 
 void Character::Displaystatus()

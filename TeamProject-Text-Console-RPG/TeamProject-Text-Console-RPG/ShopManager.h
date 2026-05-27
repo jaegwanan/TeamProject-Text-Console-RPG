@@ -13,13 +13,11 @@ private:
 	int m_mainSelectNum;
 
 public:
-	MainGame();
+	MainGame(Character* player);
 	~MainGame();
 
 	Character* GetPlayer() { return m_player; }
 	Shop* GetShop() { return m_shop; }
-
-	void Update();
 
 	void ShowMainPage();
 	void ShowShopPage();

@@ -37,7 +37,10 @@ public:
     Character(std::string name);
 
     static Character* getInstance(std::string name = "");
-    virtual ~Character() {}
+    virtual ~Character()
+    {
+        delete m_inventory;
+    }
 
     void Displaystatus();
     void Levelup();

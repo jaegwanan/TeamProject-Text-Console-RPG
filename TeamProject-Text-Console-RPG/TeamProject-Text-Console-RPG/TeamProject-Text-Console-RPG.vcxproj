@@ -123,7 +123,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AchievementManager.cpp" />
     <ClCompile Include="Archer.cpp" />
     <ClCompile Include="Battle.cpp" />
     <ClCompile Include="Character.cpp" />
@@ -135,11 +134,9 @@
     <ClCompile Include="shop.cpp" />
     <ClCompile Include="TeamProject-Text-Console-RPG.cpp" />
     <ClCompile Include="Thief.cpp" />
-    <ClCompile Include="UIManager.cpp" />
     <ClCompile Include="Warrior.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AchievementManager.h" />
     <ClInclude Include="Archer.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="GameManager.h" />
@@ -149,8 +146,8 @@
     <ClInclude Include="Mage.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="shop.h" />
+    <ClInclude Include="ShopManager.h" />
     <ClInclude Include="Thief.h" />
-    <ClInclude Include="UIManager.h" />
     <ClInclude Include="Warrior.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

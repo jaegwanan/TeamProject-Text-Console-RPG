@@ -19,14 +19,12 @@ class Mage;
 class Thief;
 class Archer;
 
-MainGame::MainGame() : m_mainSelectNum((int)LOCATION::LOCATION_TOWN)
+MainGame::MainGame(Character* player) : m_player(player), m_shop(new Shop()), m_mainSelectNum((int)LOCATION::LOCATION_TOWN)
 {
-    m_shop = new Shop();
 }
 
 MainGame::~MainGame()
 {
-    delete m_player;
     delete m_shop;
 }
 
@@ -138,14 +136,13 @@ Character* CreateCharacter()
 
 int main()
 {
-
-    MainGame mainGame;
     GameManager gameManager;
-    Character* m_player = CreateCharacter();
+    Character* player = CreateCharacter();
+    MainGame mainGame(player);
     
     cout << endl;
     cout << " 캐릭터 생성 완료! " << endl;
-    m_player->Displaystatus();
+    player->Displaystatus();
 
     cin.ignore();
     cin.get();
@@ -160,7 +157,8 @@ int main()
         cout << " 1. 상태 보기" <<endl;
         cout << " 2. 전투 시작" << endl;
         cout << " 3. 인벤토리" << endl;
-        cout << " 4. 게임 종료" << endl;
+        cout << " 4. 상점" << endl;
+        cout << " 0. 게임 종료" << endl;
         cout << "============================" << endl;
         cout << " 선택: ";
 
@@ -181,21 +179,24 @@ int main()
         {
         case 1:
             system("cls");
-            m_player->Displaystatus();
+            player->Displaystatus();
             cin.ignore();
             cin.get();
             break;
 
         case 2:
-            gameManager.Battle(m_player);
+            gameManager.Battle(player);
             break;
-
         case 3:
-            mainGame.ShowShopPage();
+            mainGame.ShowInventoryPage(player);
             break;
 
         case 4:
-            delete m_player;
+            mainGame.ShowShopPage();
+            break;
+
+        case 0:
+            delete player;
             cout << " 게임을 종료합니다." << endl;
             return 0;
 
