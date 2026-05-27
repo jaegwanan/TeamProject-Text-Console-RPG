@@ -1,73 +1,424 @@
-﻿  Battle.cpp
-  Character_fuction.cpp
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(14,22): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Battle.cpp')
+﻿  AchievementManager.cpp
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.h(39,25): error C2061: 구문 오류: 식별자 'Character'
+  (소스 파일 'AchievementManager.cpp'을(를) 컴파일하는 중)
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(29,14): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Battle.cpp')
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(39,18): error C2061: 구문 오류: 식별자 'string'
+  (소스 파일 'AchievementManager.cpp'을(를) 컴파일하는 중)
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(42,14): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Battle.cpp')
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,20): error C3646: 'Attackmessage': 알 수 없는 재정의 지정자입니다.
+  (소스 파일 'AchievementManager.cpp'을(를) 컴파일하는 중)
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,20): error C3646: 'Attackmessage': unknown override specifier
-  (compiling source file 'Battle.cpp')
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,34): error C2059: 구문 오류: ')'
+  (소스 파일 'AchievementManager.cpp'을(를) 컴파일하는 중)
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,34): error C2059: syntax error: ')'
-  (compiling source file 'Battle.cpp')
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,39): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
+  (소스 파일 'AchievementManager.cpp'을(를) 컴파일하는 중)
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,39): error C2238: unexpected token(s) preceding ';'
-  (compiling source file 'Battle.cpp')
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(50,18): error C2535: 'bool Character::Skill(Monster *)': 멤버 함수를 이미 정의했거나 선언했습니다.
+  (소스 파일 'AchievementManager.cpp'을(를) 컴파일하는 중)
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(38,10):
+      'Character::Skill' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(14,26): error C2039: 'getAttack': is not a member of 'Character'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
-      see declaration of 'Character'
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,12): error C3646: 'Getjob': 알 수 없는 재정의 지정자입니다.
+  (소스 파일 'AchievementManager.cpp'을(를) 컴파일하는 중)
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(16,14): error C2039: 'takeDamage': is not a member of 'Monster'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
-      see declaration of 'Monster'
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,18): error C2059: 구문 오류: '('
+  (소스 파일 'AchievementManager.cpp'을(를) 컴파일하는 중)
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(32,17): error C2039: 'getHealth': is not a member of 'Character'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
-      see declaration of 'Character'
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,21): error C2334: '{' 앞에 예기치 않은 토큰이 있습니다. 명백한 함수 본문을 건너뜁니다.
+  (소스 파일 'AchievementManager.cpp'을(를) 컴파일하는 중)
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(32,45): error C2039: 'getHealth': is not a member of 'Monster'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
-      see declaration of 'Monster'
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(10,5): error C2065: 'achievementList': 선언되지 않은 식별자입니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(12,5): error C2065: 'achievementList': 선언되지 않은 식별자입니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(13,5): error C2065: 'achievementList': 선언되지 않은 식별자입니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(15,5): error C2065: 'achievementList': 선언되지 않은 식별자입니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(17,5): error C2065: 'achievementList': 선언되지 않은 식별자입니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(28,22): error C2065: 'achievementList': 선언되지 않은 식별자입니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(28,5): error C2530: 'ach': 참조를 초기화해야 합니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(28,5): error C3531: 'ach': 형식에 'auto'이(가) 포함된 기호에는 이니셜라이저가 있어야 합니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(28,20): error C2143: 구문 오류: ';'이(가) ':' 앞에 없습니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(28,37): error C2143: 구문 오류: ';'이(가) ')' 앞에 없습니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(37,22): error C2065: 'achievementList': 선언되지 않은 식별자입니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(37,5): error C2530: 'ach': 참조를 초기화해야 합니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(37,5): error C3531: 'ach': 형식에 'auto'이(가) 포함된 기호에는 이니셜라이저가 있어야 합니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(37,20): error C2143: 구문 오류: ';'이(가) ':' 앞에 없습니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(37,37): error C2143: 구문 오류: ';'이(가) ')' 앞에 없습니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(59,26): error C2511: 'void AchievementManager::EquipTitleMenu(Character *)': 오버로드된 멤버 함수가 'AchievementManager'에 없습니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.h(22,7):
+      'AchievementManager' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(58,17): error C3861: 'skill': identifier not found
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(72,13): error C3861: 'skill': identifier not found
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(101,39): error C2039: 'getLevel': is not a member of 'Character'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
-      see declaration of 'Character'
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(66,25): error C2039: 'getActiveTitle': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(102,41): error C2039: 'getLevel': is not a member of 'Monster'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
-      see declaration of 'Monster'
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(66,71): error C2039: 'getActiveTitle': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(25,1): error C1075: '{': no matching token found
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(14,22): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Character_fuction.cpp')
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(73,26): error C2065: 'achievementList': 선언되지 않은 식별자입니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(73,9): error C2530: 'ach': 참조를 초기화해야 합니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(73,9): error C3531: 'ach': 형식에 'auto'이(가) 포함된 기호에는 이니셜라이저가 있어야 합니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(73,24): error C2143: 구문 오류: ';'이(가) ':' 앞에 없습니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(73,41): error C2143: 구문 오류: ';'이(가) ')' 앞에 없습니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,29): error C2665: 'std::vector<Achievement *,std::allocator<Achievement *>>::push_back': 모든 인수 형식을 변환할 수 있는 오버로드된 함수가 없습니다.
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23):
+      'void std::vector<Achievement *,std::allocator<Achievement *>>::push_back(_Ty &&)'일 수 있습니다.
+          with
+          [
+              _Ty=Achievement *
+          ]
+          C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,29):
+          'void std::vector<Achievement *,std::allocator<Achievement *>>::push_back(_Ty &&)': 인수 1을(를) 'int *'에서 '_Ty &&'(으)로 변환할 수 없습니다.
+          with
+          [
+              _Ty=Achievement *
+          ]
+              C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,40):
+              원인: 'int *'에서 '_Ty'(으)로 변환할 수 없습니다.
+          with
+          [
+              _Ty=Achievement *
+          ]
+              C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,40):
+              가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
+      또는       'void std::vector<Achievement *,std::allocator<Achievement *>>::push_back(const _Ty &)'
+          with
+          [
+              _Ty=Achievement *
+          ]
+          C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,29):
+          'void std::vector<Achievement *,std::allocator<Achievement *>>::push_back(const _Ty &)': 인수 1을(를) 'int *'에서 'const _Ty &'(으)로 변환할 수 없습니다.
+          with
+          [
+              _Ty=Achievement *
+          ]
+              C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,40):
+              원인: 'int *'에서 'const _Ty'(으)로 변환할 수 없습니다.
+          with
+          [
+              _Ty=Achievement *
+          ]
+              C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,40):
+              가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,29):
+      인수 목록 '(int *)'을(를) 일치시키는 동안
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(29,14): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Character_fuction.cpp')
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(95,21): error C2039: 'setActiveTitle': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Item.h(42,14): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'Character_fuction.cpp')
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(104,21): error C2039: 'setActiveTitle': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,20): error C3646: 'Attackmessage': unknown override specifier
-  (compiling source file 'Character_fuction.cpp')
+  Battle.cpp
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(39,18): error C2061: 구문 오류: 식별자 'string'
+  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,34): error C2059: syntax error: ')'
-  (compiling source file 'Character_fuction.cpp')
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,20): error C3646: 'Attackmessage': 알 수 없는 재정의 지정자입니다.
+  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(36,39): error C2238: unexpected token(s) preceding ';'
-  (compiling source file 'Character_fuction.cpp')
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,34): error C2059: 구문 오류: ')'
+  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character_fuction.cpp(32,13): error C3861: 'Attackmessage': identifier not found
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character_fuction.cpp(36,14): error C2039: 'Sethp': is not a member of 'Monster'
-      C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
-      see declaration of 'Monster'
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,39): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
+  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
   
-C:\Users\ghdwh\Homework\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character_fuction.cpp(45,1): error C2059: syntax error: '}'
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(50,18): error C2535: 'bool Character::Skill(Monster *)': 멤버 함수를 이미 정의했거나 선언했습니다.
+  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(38,10):
+      'Character::Skill' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,12): error C3646: 'Getjob': 알 수 없는 재정의 지정자입니다.
+  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,18): error C2059: 구문 오류: '('
+  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,21): error C2334: '{' 앞에 예기치 않은 토큰이 있습니다. 명백한 함수 본문을 건너뜁니다.
+  (소스 파일 'Battle.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(96,30): error C2039: 'Gethp': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(137,32): error C2039: 'Getskillname': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(147,44): error C2039: 'Gethp': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(246,38): error C2039: 'Gethp': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(341,22): error C2039: 'Gethp': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(348,42): error C2039: 'Gethp': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(366,23): error C2039: 'Gethp': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(381,43): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(385,19): error C2660: 'Character::Additem': 함수는 1개의 인수를 사용하지 않습니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(39,10):
+      'Character::Additem' 선언을 참조하십시오.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(385,19):
+      인수 목록 '(std::string)'을(를) 일치시키는 동안
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(149,5): error C1075: '{': 일치하는 토큰을 찾을 수 없습니다.
+  Character.cpp
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(39,18): error C2061: 구문 오류: 식별자 'string'
+  (소스 파일 'Character.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,20): error C3646: 'Attackmessage': 알 수 없는 재정의 지정자입니다.
+  (소스 파일 'Character.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,34): error C2059: 구문 오류: ')'
+  (소스 파일 'Character.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,39): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
+  (소스 파일 'Character.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(50,18): error C2535: 'bool Character::Skill(Monster *)': 멤버 함수를 이미 정의했거나 선언했습니다.
+  (소스 파일 'Character.cpp'을(를) 컴파일하는 중)
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(38,10):
+      'Character::Skill' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,12): error C3646: 'Getjob': 알 수 없는 재정의 지정자입니다.
+  (소스 파일 'Character.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,18): error C2059: 구문 오류: '('
+  (소스 파일 'Character.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,21): error C2334: '{' 앞에 예기치 않은 토큰이 있습니다. 명백한 함수 본문을 건너뜁니다.
+  (소스 파일 'Character.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(125,36): error C2039: 'Gethp': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(128,22): error C2039: 'Gethp': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(132,17): error C3861: 'Attackmessage': 식별자를 찾을 수 없습니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(134,59): error C2039: 'Gethp': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(134,87): error C2039: 'Gethp': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(136,18): error C2039: 'Sethp': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(136,33): error C2039: 'Gethp': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(138,22): error C2039: 'Gethp': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(192,16): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Goblin.cpp
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Goblin.cpp(14,2): error C2027: 정의되지 않은 형식 'Character'을(를) 사용했습니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(5,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Goblin.cpp(31,2): error C2027: 정의되지 않은 형식 'Character'을(를) 사용했습니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(5,7):
+      'Character' 선언을 참조하십시오.
+  
+  Monster.cpp
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(39,18): error C2061: 구문 오류: 식별자 'string'
+  (소스 파일 'Monster.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,20): error C3646: 'Attackmessage': 알 수 없는 재정의 지정자입니다.
+  (소스 파일 'Monster.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,34): error C2059: 구문 오류: ')'
+  (소스 파일 'Monster.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,39): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
+  (소스 파일 'Monster.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(50,18): error C2535: 'bool Character::Skill(Monster *)': 멤버 함수를 이미 정의했거나 선언했습니다.
+  (소스 파일 'Monster.cpp'을(를) 컴파일하는 중)
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(38,10):
+      'Character::Skill' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,12): error C3646: 'Getjob': 알 수 없는 재정의 지정자입니다.
+  (소스 파일 'Monster.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,18): error C2059: 구문 오류: '('
+  (소스 파일 'Monster.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,21): error C2334: '{' 앞에 예기치 않은 토큰이 있습니다. 명백한 함수 본문을 건너뜁니다.
+  (소스 파일 'Monster.cpp'을(를) 컴파일하는 중)
+  
   TeamProject-Text-Console-RPG.cpp
-  Generating Code...
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(39,18): error C2061: 구문 오류: 식별자 'string'
+  (소스 파일 'TeamProject-Text-Console-RPG.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,20): error C3646: 'Attackmessage': 알 수 없는 재정의 지정자입니다.
+  (소스 파일 'TeamProject-Text-Console-RPG.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,34): error C2059: 구문 오류: ')'
+  (소스 파일 'TeamProject-Text-Console-RPG.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,39): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
+  (소스 파일 'TeamProject-Text-Console-RPG.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(50,18): error C2535: 'bool Character::Skill(Monster *)': 멤버 함수를 이미 정의했거나 선언했습니다.
+  (소스 파일 'TeamProject-Text-Console-RPG.cpp'을(를) 컴파일하는 중)
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(38,10):
+      'Character::Skill' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,12): error C3646: 'Getjob': 알 수 없는 재정의 지정자입니다.
+  (소스 파일 'TeamProject-Text-Console-RPG.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,18): error C2059: 구문 오류: '('
+  (소스 파일 'TeamProject-Text-Console-RPG.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,21): error C2334: '{' 앞에 예기치 않은 토큰이 있습니다. 명백한 함수 본문을 건너뜁니다.
+  (소스 파일 'TeamProject-Text-Console-RPG.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG.cpp(10,33): error C2259: 'Character': 추상 클래스를 인스턴스화할 수 없습니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG.cpp(10,33):
+      다음 멤버가 원인입니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG.cpp(10,33):
+      'int Character::Getrequiredexp(void)': abstract입니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(42,17):
+      'Character::Getrequiredexp' 선언을 참조하십시오.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG.cpp(10,33):
+      'void Character::Applylevelupstats(void)': abstract입니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(43,18):
+      'Character::Applylevelupstats' 선언을 참조하십시오.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG.cpp(10,33):
+      'void Character::Basicattack(Monster *)': abstract입니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(51,18):
+      'Character::Basicattack' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG.cpp(10,42): error C2259: 'Character': 추상 클래스를 인스턴스화할 수 없습니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG.cpp(10,42):
+      다음 멤버가 원인입니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG.cpp(10,42):
+      'int Character::Getrequiredexp(void)': abstract입니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(42,17):
+      'Character::Getrequiredexp' 선언을 참조하십시오.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG.cpp(10,42):
+      'void Character::Applylevelupstats(void)': abstract입니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(43,18):
+      'Character::Applylevelupstats' 선언을 참조하십시오.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG.cpp(10,42):
+      'void Character::Basicattack(Monster *)': abstract입니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(51,18):
+      'Character::Basicattack' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG.cpp(28,5): error C3861: 'gotoxy': 식별자를 찾을 수 없습니다.
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG.cpp(30,5): error C3861: '_getch': 식별자를 찾을 수 없습니다.
+  UIManager.cpp
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(39,18): error C2061: 구문 오류: 식별자 'string'
+  (소스 파일 'UIManager.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,20): error C3646: 'Attackmessage': 알 수 없는 재정의 지정자입니다.
+  (소스 파일 'UIManager.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,34): error C2059: 구문 오류: ')'
+  (소스 파일 'UIManager.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(49,39): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
+  (소스 파일 'UIManager.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(50,18): error C2535: 'bool Character::Skill(Monster *)': 멤버 함수를 이미 정의했거나 선언했습니다.
+  (소스 파일 'UIManager.cpp'을(를) 컴파일하는 중)
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(38,10):
+      'Character::Skill' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,12): error C3646: 'Getjob': 알 수 없는 재정의 지정자입니다.
+  (소스 파일 'UIManager.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,18): error C2059: 구문 오류: '('
+  (소스 파일 'UIManager.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(65,21): error C2334: '{' 앞에 예기치 않은 토큰이 있습니다. 명백한 함수 본문을 건너뜁니다.
+  (소스 파일 'UIManager.cpp'을(를) 컴파일하는 중)
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(58,22): error C2039: 'getName': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(58,55): error C2039: 'getLevel': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(62,44): error C2039: 'getHealth': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(62,66): error C2039: 'getMaxHealth': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(63,28): error C2039: 'getHealth': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(63,59): error C2039: 'getMaxHealth': 'Monster'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Monster.h(7,7):
+      'Monster' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(73,18): error C2039: 'getActiveTitle': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(74,25): error C2039: 'getActiveTitle': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(79,21): error C2039: 'getName': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(79,53): error C2039: 'getLevel': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(85,43): error C2039: 'getHealth': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(85,64): error C2039: 'getMaxHealth': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(86,27): error C2039: 'getHealth': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(86,57): error C2039: 'getMaxHealth': 'Character'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.cpp(122,16): error C2039: 'ShowTitleScreen': 'UIManager'의 멤버가 아닙니다.
+      C:\UnrealCpp\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\UIManager.h(7,7):
+      'UIManager' 선언을 참조하십시오.
+  
+  코드를 생성하고 있습니다...
