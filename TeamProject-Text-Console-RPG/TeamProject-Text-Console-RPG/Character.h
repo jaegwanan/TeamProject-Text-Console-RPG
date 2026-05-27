@@ -18,11 +18,11 @@ protected:
     std::string skillname;
     
     int level = 1 ;
-    int hp = 200 ; 
-    int maxhp = 200 ; 
+    int hp = 10 ; 
+    int maxhp = 10 ; 
     int mp = 100; 
     int maxmp = 100; 
-    int attack = 30 ;
+    int attack = 1 ;
     int exp = 0;
     int gold = 0;
 

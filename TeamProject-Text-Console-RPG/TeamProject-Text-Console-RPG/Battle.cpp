@@ -180,8 +180,6 @@ void GameManager::Battle(Character* player)
         {
         case 1:
             Basicattack(player, monster); // 일반 공격 함수
-            cin.clear();
-            cin.ignore(1000, '\n');
             cin.get();
             break;
 
@@ -365,8 +363,6 @@ void GameManager::Battle(Character* player)
     {
         system("cls");
         cout << "당신은 " << monstername << "과(와) 공멸했다.\n";
-        cin.clear();
-        cin.ignore(1000, '\n');
         cin.get();
         player->Sethp(1);
     }
@@ -374,8 +370,6 @@ void GameManager::Battle(Character* player)
     {
         system("cls");
         cout << "당신은 " << monstername << "에게 패배했다.\n";
-        cin.clear();
-        cin.ignore(1000, '\n');
         cin.get();
         player->Sethp(1);//-----------------------------------------------------------------------------------------------------------------------캐릭터 hp 세터
     }
@@ -386,8 +380,6 @@ void GameManager::Battle(Character* player)
         system("cls");
         //  --------------------------------------------------------------------------------------------------------------------------------------------------업적 시스템[몬스터] 카운팅 함수
         cout << "당신은 " << monstername << "에게 승리했다.\n";
-        cin.clear();
-        cin.ignore(1000, '\n');
         cin.get();
         string item = monster->Getitemname(); //-------------------------------------------------------------------------------------------------몬스터에게 아이템 이름 받아오는 함수 요구합니다.
         int exp = monster->Getexp(); // //---------------------------------------------------------------------------------------------------------------------- 몬스터 경험치 게터 요구합니다.
@@ -401,8 +393,6 @@ void GameManager::Battle(Character* player)
             Additem(item);
             cout << "잘 찾아보니 " << monstername << "에게서" << item << "을(를) 얻을 수 있었다.\n";
         }
-        cin.clear();
-        cin.ignore(1000, '\n');
         cin.get();
     }
     else
