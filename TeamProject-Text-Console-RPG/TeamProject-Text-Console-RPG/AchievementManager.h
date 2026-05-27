@@ -3,19 +3,20 @@
 #include <vector>
 #include <map>  
 
+class Character; // ★ 핵심: Character 클래스가 있다고 미리 알려줌 (전방 선언)
+
 enum class AchType {
-    KILL,       
-    LEVEL,      
-    ITEM_USE,   
-    RUN_AWAY  
+    KILL,
+    LEVEL,
+    ITEM_USE,
+    RUN_AWAY
 };
 
-// 2. 구조체를 확장합니다.
 struct Achievement {
     std::string titleName;
-    AchType type;          
-    std::string targetString; 
-    int targetValue;        
+    AchType type;
+    std::string targetString;
+    int targetValue;
     bool isUnlocked;
 };
 
@@ -23,7 +24,7 @@ class AchievementManager {
 private:
     std::map<std::string, int> killStats;
     std::map<std::string, int> itemStats;
-    int runAwayCount = 0;              
+    int runAwayCount = 0;
 
 public:
     AchievementManager();

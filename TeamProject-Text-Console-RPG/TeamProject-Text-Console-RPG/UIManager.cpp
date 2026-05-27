@@ -54,13 +54,13 @@ void UIManager::PrintMonsterAppear(string monsterName)
 void UIManager::DrawMonsterStatus(Monster* monster)
 {
     gotoxy(45, 2);
-    // 주의: Monster.h에 getName()과 getLevel() 게터가 선언되어 있어야 합니다.
-    cout << monster->getName() << " (Lv." << monster->getLevel() << ")";
+    // 팀원 코드 호환: Getname(), Getlevel()
+    cout << monster->Getname() << " (Lv." << monster->Getlevel() << ")";
 
     gotoxy(45, 3);
-    // 주의: Monster.h에 getHealth()와 getMaxHealth() 게터가 선언되어 있어야 합니다.
-    cout << "HP: " << GetGaugeBar(monster->getHealth(), monster->getMaxHealth(), 15)
-        << " " << monster->getHealth() << "/" << monster->getMaxHealth();
+    // 팀원 코드 호환: Gethp(), Getmaxhp()
+    cout << "HP: " << GetGaugeBar(monster->Gethp(), monster->Getmaxhp(), 15)
+        << " " << monster->Gethp() << "/" << monster->Getmaxhp();
 }
 
 // 전투 화면 좌측 하단에 플레이어의 상태창을 그리는 함수
@@ -68,22 +68,16 @@ void UIManager::DrawPlayerStatus(Character* player)
 {
     gotoxy(5, 8);
 
-    // 1. 플레이어가 칭호를 장착하고 있다면 이름 앞에 먼저 출력
-    // 주의: Character.h에 getActiveTitle() 게터가 선언되어 있어야 합니다.
     if (!player->getActiveTitle().empty()) {
         cout << player->getActiveTitle() << " ";
     }
-
-    // 2. 이어서 이름과 레벨 출력
-    // 주의: Character.h에 getName()과 getLevel() 게터가 선언되어 있어야 합니다.
-    cout << player->getName() << " (Lv." << player->getLevel() << ")";
+    // 팀원 코드 호환: Getname(), Getlevel()
+    cout << player->Getname() << " (Lv." << player->Getlevel() << ")";
 
     gotoxy(5, 9);
-
-    // 3. 체력 바와 수치 출력
-    // 주의: Character.h에 getHealth()와 getMaxHealth() 게터가 선언되어 있어야 합니다.
-    cout << "HP: " << GetGaugeBar(player->getHealth(), player->getMaxHealth(), 15)
-        << " " << player->getHealth() << "/" << player->getMaxHealth();
+    // 팀원 코드 호환: Gethp(), Getmaxhp()
+    cout << "HP: " << GetGaugeBar(player->Gethp(), player->Getmaxhp(), 15)
+        << " " << player->Gethp() << "/" << player->Getmaxhp();
 }
 
 // 매 턴마다 하단에 전투 선택지 메뉴를 띄우는 함수

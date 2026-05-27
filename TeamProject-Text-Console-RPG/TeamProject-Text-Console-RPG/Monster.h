@@ -9,7 +9,7 @@ class Monster
 protected:
     std::string name;
     int maxhp;
-    int hp; // Takedamage() ���� ���� ���� �߰����ּž� �������ϴ�
+    int hp; // Takedamage() 에서 관련 로직 추가해주셔야 ㅎㅏㅂ니다
     int attack;
     int level;
     int exp;
@@ -18,10 +18,10 @@ protected:
 
 public:
     Monster(std::string name, int health, int attack)
-        : name(name), maxhp(health), hp(health),attack(attack) {
-    } //���� �� ������ �ڽĿ���
+        : name(name), maxhp(health), hp(health), attack(attack) {
+    } //레벨 별 스탯은 자식에서
 
-    //Get Set
+    //Get 함수 묶음
     std::string Getname() { return name; }
     int Getlevel() { return level; }
     int Getmaxhp() { return maxhp; }
@@ -40,10 +40,10 @@ public:
     void Setgold(int gold) { this->gold = gold; }
     void Setitemname(std::string itemname) { this->itemname = itemname; }
 
-    //���� �Լ� ����
-    virtual void Basicattack(Character* player); //�Ϲݰ��� ����
-    virtual void Specialattack(Character* player); //Ư������ ����
-        
+    //공격 함수 선언
+    virtual void Basicattack(Character* player); //일반공격 가상
+    virtual void Specialattack(Character* player); //특수공격 가상
+
     void Takedamage(int damage);
 
     virtual ~Monster() {}
@@ -54,15 +54,15 @@ class Goblin : public Monster
 {
 public:
     Goblin(int level)
-        : Monster("������", 0, 0) // �ӽð�
+        : Monster("고블린", 0, 0) // 임시값
     {
-        std::random_device rd;  // ���� �õ� ����
-        std::mt19937 gen(rd()); // ���� ���� ����
+        std::random_device rd;  // 난수 시드 생성
+        std::mt19937 gen(rd()); // 난수 생성 엔진
 
         std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
         std::uniform_int_distribution<int> Attackrandom(level * 5, level * 10);
 
-        // �ʱ�ȭ
+        // 초기화
         int finalhealth = Healthrandom(gen);
         this->maxhp = finalhealth;
         this->hp = finalhealth;
@@ -71,10 +71,10 @@ public:
         this->level = level;
         this->exp = 15 + (level * 5);
         this->gold = 10 + (level * 3);
-        this->itemname = "�������� ���߱⸧";
+        this->itemname = "고블린의 고추기름";
     }
 
-    // ���� �ʿ�
+    // 구현 필요
     void Basicattack(Character* player) override;
     void Specialattack(Character* player) override;
 };
@@ -84,15 +84,15 @@ class Orc : public Monster
 {
 public:
     Orc(int level)
-        : Monster("��ũ", 0, 0) // �ӽð�
+        : Monster("오크", 0, 0) // 임시값
     {
-        std::random_device rd;  // ���� �õ� ����
-        std::mt19937 gen(rd()); // ���� ���� ����
+        std::random_device rd;  // 난수 시드 생성
+        std::mt19937 gen(rd()); // 난수 생성 엔진
 
         std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
         std::uniform_int_distribution<int> Attackrandom(level * 7, level * 12);
 
-        // �ʱ�ȭ
+        // 초기화
         int finalhealth = Healthrandom(gen);
         this->maxhp = finalhealth;
         this->hp = finalhealth;
@@ -101,7 +101,7 @@ public:
         this->level = level;
         this->exp = 15 + (level * 5);
         this->gold = 10 + (level * 3);
-        this->itemname = "��ũ�� �ܵ���̶�";
+        this->itemname = "오크의 겨드랑이때";
     }
 
     void Basicattack(Character* player) override;
@@ -113,15 +113,15 @@ class Troll : public Monster
 {
 public:
     Troll(int level)
-        : Monster("Ʈ��", 0, 0) // �ӽð�
+        : Monster("트롤", 0, 0) // 임시값
     {
-        std::random_device rd;  // ���� �õ� ����
-        std::mt19937 gen(rd()); // ���� ���� ����
+        std::random_device rd;  // 난수 시드 생성
+        std::mt19937 gen(rd()); // 난수 생성 엔진
 
         std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
         std::uniform_int_distribution<int> Attackrandom(level * 3, level * 8);
 
-        // �ʱ�ȭ
+        // 초기화
         int finalhealth = Healthrandom(gen);
         this->maxhp = finalhealth;
         this->hp = finalhealth;
@@ -130,7 +130,7 @@ public:
         this->level = level;
         this->exp = 15 + (level * 5);
         this->gold = 10 + (level * 3);
-        this->itemname = "Ʈ���� ����";
+        this->itemname = "트롤의 발톱";
     }
 
     void Basicattack(Character* player) override;
@@ -142,15 +142,15 @@ class Slime : public Monster
 {
 public:
     Slime(int level)
-        : Monster("������", 0, 0) // �ӽð�
+        : Monster("슬라임", 0, 0) // 임시값
     {
-        std::random_device rd;  // ���� �õ� ����
-        std::mt19937 gen(rd()); // ���� ���� ����
+        std::random_device rd;  // 난수 시드 생성
+        std::mt19937 gen(rd()); // 난수 생성 엔진
 
         std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
         std::uniform_int_distribution<int> Attackrandom(level * 1, level * 3);
 
-        // �ʱ�ȭ
+        // 초기화
         int finalhealth = Healthrandom(gen);
         this->maxhp = finalhealth;
         this->hp = finalhealth;
@@ -159,7 +159,7 @@ public:
         this->level = level;
         this->exp = 15 + (level * 5);
         this->gold = 10 + (level * 3);
-        this->itemname = "�������� �����";
+        this->itemname = "슬라임의 착즙액";
     }
 
     void Basicattack(Character* player) override;

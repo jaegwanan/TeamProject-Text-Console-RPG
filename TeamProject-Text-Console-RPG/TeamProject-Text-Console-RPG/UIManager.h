@@ -27,4 +27,6 @@ public:
     static void PrintRunFail();
 
     static void PrintWrongInput();
+
+    static int ShowTitleScreen();
 };
