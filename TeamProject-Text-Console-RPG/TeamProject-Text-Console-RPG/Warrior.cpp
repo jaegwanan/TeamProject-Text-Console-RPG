@@ -50,3 +50,4 @@ string Warrior::Getskillname()
 {
     return " 파워 스트라이크";
 }
+
