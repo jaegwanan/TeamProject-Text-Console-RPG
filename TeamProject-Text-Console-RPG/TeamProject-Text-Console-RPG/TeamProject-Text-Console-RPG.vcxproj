@@ -123,19 +123,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AAT.cpp" />
     <ClCompile Include="AchievementManager.cpp" />
+    <ClCompile Include="Archer.cpp" />
     <ClCompile Include="Battle.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Goblin.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Mage.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Orc.cpp" />
+    <ClCompile Include="shop.cpp" />
+    <ClCompile Include="Slime.cpp" />
     <ClCompile Include="TeamProject-Text-Console-RPG.cpp" />
+    <ClCompile Include="Thief.cpp" />
+    <ClCompile Include="Troll.cpp" />
+    <ClCompile Include="Warrior.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AchievementManager.h" />
+    <ClInclude Include="Archer.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Header.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Mage.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="shop.h" />
+    <ClInclude Include="Thief.h" />
+    <ClInclude Include="Warrior.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
