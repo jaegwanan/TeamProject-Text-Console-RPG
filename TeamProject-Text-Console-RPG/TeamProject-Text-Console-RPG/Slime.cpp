@@ -4,25 +4,25 @@
 
 using namespace std;
 
-void Goblin::Basicattack(Character* player)
+void Slime::Basicattack(Character* player)
 {
 	int hitcount = 1;
 	int damage = Getattack();
 	int totaldamage = hitcount * damage;
 
-	cout << "고블린이 주먹질을 한다!\n" << damage << " 대미지" << endl;
+	cout << "슬라임이 끈끈이를 날린다!\n" << damage << " 대미지" << endl;
 
 	player->Takedamage(totaldamage);
 	cin.get();
 }
 
-void Goblin::Specialattack(Character* player)
+void Slime::Specialattack(Character* player)
 {
 	int hitcount = 3;
 	int damage = Getattack();
 	int totaldamage = hitcount * damage;
 
-	cout << "고블린이 " << hitcount << "연속 공격을 한다!\n" << endl;
+	cout << "슬라임이 " << hitcount << "연속 공격을 한다!\n" << endl;
 
 	for (int i = 0; i < hitcount; i++)
 	{

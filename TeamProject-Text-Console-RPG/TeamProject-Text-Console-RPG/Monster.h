@@ -56,8 +56,8 @@ public:
     Goblin(int level)
         : Monster("고블린", 0, 0) // 임시값
     {
-        std::random_device rd;  // 난수 시드 생성
-        std::mt19937 gen(rd()); // 난수 생성 엔진
+        static std::random_device rd;  // 난수 시드 생성
+        static std::mt19937 gen(rd()); // 난수 생성 엔진
 
         std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
         std::uniform_int_distribution<int> Attackrandom(level * 5, level * 10);
@@ -86,8 +86,8 @@ public:
     Orc(int level)
         : Monster("오크", 0, 0) // 임시값
     {
-        std::random_device rd;  // 난수 시드 생성
-        std::mt19937 gen(rd()); // 난수 생성 엔진
+        static std::random_device rd;  // 난수 시드 생성
+        static std::mt19937 gen(rd()); // 난수 생성 엔진
 
         std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
         std::uniform_int_distribution<int> Attackrandom(level * 7, level * 12);
@@ -115,8 +115,8 @@ public:
     Troll(int level)
         : Monster("트롤", 0, 0) // 임시값
     {
-        std::random_device rd;  // 난수 시드 생성
-        std::mt19937 gen(rd()); // 난수 생성 엔진
+        static std::random_device rd;  // 난수 시드 생성
+        static std::mt19937 gen(rd()); // 난수 생성 엔진
 
         std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
         std::uniform_int_distribution<int> Attackrandom(level * 3, level * 8);
@@ -144,8 +144,8 @@ public:
     Slime(int level)
         : Monster("슬라임", 0, 0) // 임시값
     {
-        std::random_device rd;  // 난수 시드 생성
-        std::mt19937 gen(rd()); // 난수 생성 엔진
+        static std::random_device rd;  // 난수 시드 생성
+        static std::mt19937 gen(rd()); // 난수 생성 엔진
 
         std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
         std::uniform_int_distribution<int> Attackrandom(level * 1, level * 3);
