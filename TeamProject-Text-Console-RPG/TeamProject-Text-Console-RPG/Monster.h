@@ -41,8 +41,8 @@ public:
     void Setitemname(std::string itemname) { this->itemname = itemname; }
 
     //공격 함수 선언
-    virtual void Basicattack(Character* player); //일반공격 가상
-    virtual void Specialattack(Character* player); //특수공격 가상
+    virtual void Basicattack(Character* player) = 0; //일반공격 가상
+    virtual void Specialattack(Character* player) = 0; //특수공격 가상
         
     void Takedamage(int damage);
 
