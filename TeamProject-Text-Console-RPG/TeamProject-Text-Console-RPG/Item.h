@@ -28,7 +28,7 @@ public:
         int count
     );
 
-    ITEM GetType()
+    ITEM GetType() const
     {
         return m_itemType;
     }
@@ -48,7 +48,7 @@ public:
         m_name = name;
     }
 
-    int GetPrice()
+    int GetPrice() const
     {
         return m_price;
     }
@@ -58,7 +58,7 @@ public:
         m_price = price;
     }
 
-    int GetAbility()
+    int GetAbility() const
     {
         return m_ability;
     }
@@ -78,7 +78,7 @@ public:
         m_description = description;
     }
 
-    int GetCount()
+    int GetCount() const
     {
         return m_count;
     }

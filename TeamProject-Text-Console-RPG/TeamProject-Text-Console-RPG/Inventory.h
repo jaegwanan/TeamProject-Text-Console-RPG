@@ -40,7 +40,7 @@ public:
         return m_equipAccessory;
     }
 
-    int GetBagItemCount()
+    int GetBagItemCount() const
     {
         return m_bagItemCount;
     }

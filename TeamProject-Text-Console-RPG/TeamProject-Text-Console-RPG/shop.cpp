@@ -1,4 +1,4 @@
-#include "Shop.h"
+#include "shop.h"
 
 // »ý¼ºÀÚ
 Shop::Shop() : m_itemCount(0), m_shopSelectNum((int)SHOP::SHOP_TOWN)
@@ -129,7 +129,10 @@ void Shop::ShopBuyItemPage(Character* player)
             WrongSelect = ((m_shopSelectNum < 0) || (m_shopSelectNum > m_itemCount));
         }
 
-        bool NotEnoughMoney = m_vItem[m_shopSelectNum - 1].GetPrice() > player->GetMoney();
+        int selectedIndex = m_shopSelectNum - 1;
+
+        bool NotEnoughMoney =
+            m_vItem[selectedIndex].GetPrice() > player->GetMoney();
 
         if (NotEnoughMoney)
         {
