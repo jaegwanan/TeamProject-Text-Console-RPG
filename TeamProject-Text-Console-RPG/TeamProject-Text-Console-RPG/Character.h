@@ -31,8 +31,6 @@ protected:
     int exp = 0;
     int gold = 0;
 
-    std::vector<Item*> inventory;
-
     std::string activeTitle = "";
 
 public:
