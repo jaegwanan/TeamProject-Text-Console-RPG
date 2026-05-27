@@ -9,7 +9,7 @@ class Monster
 protected:
     std::string name;
     int maxhp;
-    int currenthp; // Takedamage() ¿¡¼­ °ü·Ã ·ÎÁ÷ Ãß°¡ÇØÁÖ¼Å¾ß ¤¾¤¿¤²´Ï´Ù
+    int hp; // Takedamage() ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ï¿½Ö¼Å¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½
     int attack;
     int level;
     int exp;
@@ -18,14 +18,14 @@ protected:
 
 public:
     Monster(std::string name, int health, int attack)
-        : name(name), maxhp(health), currenthp(health),attack(attack) {
-    } //·¹º§ º° ½ºÅÈÀº ÀÚ½Ä¿¡¼­
+        : name(name), maxhp(health), hp(health),attack(attack) {
+    } //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½Ä¿ï¿½ï¿½ï¿½
 
     //Get Set
     std::string Getname() { return name; }
     int Getlevel() { return level; }
     int Getmaxhp() { return maxhp; }
-    int Getcurrenthp() { return currenthp; }
+    int Gethp() { return hp; }
     int Getattack() { return attack; }
     int Getexp() { return exp; }
     int Getgold() { return gold; }
@@ -33,16 +33,16 @@ public:
 
     void Setname(std::string name) { this->name = name; }
     void Setmaxhp(int maxhp) { this->maxhp = maxhp; }
-    void Setcurrenthp(int currenthp) { this->currenthp = currenthp; }
+    void Sethp(int hp) { this->hp = hp; }
     void Setattack(int attack) { this->attack = attack; }
     void Setlevel(int level) { this->level = level; }
     void Setexp(int exp) { this->exp = exp; }
     void Setgold(int gold) { this->gold = gold; }
     void Setitemname(std::string itemname) { this->itemname = itemname; }
 
-    //°ø°Ý ÇÔ¼ö ¼±¾ð
-    virtual void Basicattack(Character* player); //ÀÏ¹Ý°ø°Ý °¡»ó
-    virtual void Specialattack(Character* player); //Æ¯¼ö°ø°Ý °¡»ó
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½
+    virtual void Basicattack(Character* player); //ï¿½Ï¹Ý°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    virtual void Specialattack(Character* player); //Æ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         
     void Takedamage(int damage);
 
@@ -54,27 +54,27 @@ class Goblin : public Monster
 {
 public:
     Goblin(int level)
-        : Monster("°íºí¸°", 0, 0) // ÀÓ½Ã°ª
+        : Monster("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", 0, 0) // ï¿½Ó½Ã°ï¿½
     {
-        std::random_device rd;  // ³­¼ö ½Ãµå »ý¼º
-        std::mt19937 gen(rd()); // ³­¼ö »ý¼º ¿£Áø
+        std::random_device rd;  // ï¿½ï¿½ï¿½ï¿½ ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½
+        std::mt19937 gen(rd()); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
         std::uniform_int_distribution<int> Attackrandom(level * 5, level * 10);
 
-        // ÃÊ±âÈ­
+        // ï¿½Ê±ï¿½È­
         int finalhealth = Healthrandom(gen);
         this->maxhp = finalhealth;
-        this->currenthp = finalhealth;
+        this->hp = finalhealth;
         this->attack = Attackrandom(gen);
 
         this->level = level;
         this->exp = 15 + (level * 5);
         this->gold = 10 + (level * 3);
-        this->itemname = "°íºí¸°ÀÇ °íÃß±â¸§";
+        this->itemname = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß±â¸§";
     }
 
-    // ±¸Çö ÇÊ¿ä
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
     void Basicattack(Character* player) override;
     void Specialattack(Character* player) override;
 };
@@ -84,24 +84,24 @@ class Orc : public Monster
 {
 public:
     Orc(int level)
-        : Monster("¿ÀÅ©", 0, 0) // ÀÓ½Ã°ª
+        : Monster("ï¿½ï¿½Å©", 0, 0) // ï¿½Ó½Ã°ï¿½
     {
-        std::random_device rd;  // ³­¼ö ½Ãµå »ý¼º
-        std::mt19937 gen(rd()); // ³­¼ö »ý¼º ¿£Áø
+        std::random_device rd;  // ï¿½ï¿½ï¿½ï¿½ ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½
+        std::mt19937 gen(rd()); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
         std::uniform_int_distribution<int> Attackrandom(level * 7, level * 12);
 
-        // ÃÊ±âÈ­
+        // ï¿½Ê±ï¿½È­
         int finalhealth = Healthrandom(gen);
         this->maxhp = finalhealth;
-        this->currenthp = finalhealth;
+        this->hp = finalhealth;
         this->attack = Attackrandom(gen);
 
         this->level = level;
         this->exp = 15 + (level * 5);
         this->gold = 10 + (level * 3);
-        this->itemname = "¿ÀÅ©ÀÇ °Üµå¶ûÀÌ¶§";
+        this->itemname = "ï¿½ï¿½Å©ï¿½ï¿½ ï¿½Üµï¿½ï¿½ï¿½Ì¶ï¿½";
     }
 
     void Basicattack(Character* player) override;
@@ -113,24 +113,24 @@ class Troll : public Monster
 {
 public:
     Troll(int level)
-        : Monster("Æ®·Ñ", 0, 0) // ÀÓ½Ã°ª
+        : Monster("Æ®ï¿½ï¿½", 0, 0) // ï¿½Ó½Ã°ï¿½
     {
-        std::random_device rd;  // ³­¼ö ½Ãµå »ý¼º
-        std::mt19937 gen(rd()); // ³­¼ö »ý¼º ¿£Áø
+        std::random_device rd;  // ï¿½ï¿½ï¿½ï¿½ ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½
+        std::mt19937 gen(rd()); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
         std::uniform_int_distribution<int> Attackrandom(level * 3, level * 8);
 
-        // ÃÊ±âÈ­
+        // ï¿½Ê±ï¿½È­
         int finalhealth = Healthrandom(gen);
         this->maxhp = finalhealth;
-        this->currenthp = finalhealth;
+        this->hp = finalhealth;
         this->attack = Attackrandom(gen);
 
         this->level = level;
         this->exp = 15 + (level * 5);
         this->gold = 10 + (level * 3);
-        this->itemname = "Æ®·ÑÀÇ ¹ßÅé";
+        this->itemname = "Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½";
     }
 
     void Basicattack(Character* player) override;
@@ -142,24 +142,24 @@ class Slime : public Monster
 {
 public:
     Slime(int level)
-        : Monster("½½¶óÀÓ", 0, 0) // ÀÓ½Ã°ª
+        : Monster("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", 0, 0) // ï¿½Ó½Ã°ï¿½
     {
-        std::random_device rd;  // ³­¼ö ½Ãµå »ý¼º
-        std::mt19937 gen(rd()); // ³­¼ö »ý¼º ¿£Áø
+        std::random_device rd;  // ï¿½ï¿½ï¿½ï¿½ ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½
+        std::mt19937 gen(rd()); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
         std::uniform_int_distribution<int> Attackrandom(level * 1, level * 3);
 
-        // ÃÊ±âÈ­
+        // ï¿½Ê±ï¿½È­
         int finalhealth = Healthrandom(gen);
         this->maxhp = finalhealth;
-        this->currenthp = finalhealth;
+        this->hp = finalhealth;
         this->attack = Attackrandom(gen);
 
         this->level = level;
         this->exp = 15 + (level * 5);
         this->gold = 10 + (level * 3);
-        this->itemname = "½½¶óÀÓÀÇ ÂøÁó¾×";
+        this->itemname = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½";
     }
 
     void Basicattack(Character* player) override;
