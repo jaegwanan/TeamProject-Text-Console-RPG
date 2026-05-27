@@ -1,93 +1,90 @@
-﻿  AchievementManager.cpp
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.h(39,25): error C2061: syntax error: identifier 'Character'
-  (compiling source file 'AchievementManager.cpp')
-  
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(10,5): error C2065: 'achievementList': undeclared identifier
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(12,5): error C2065: 'achievementList': undeclared identifier
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(13,5): error C2065: 'achievementList': undeclared identifier
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(15,5): error C2065: 'achievementList': undeclared identifier
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(17,5): error C2065: 'achievementList': undeclared identifier
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(28,22): error C2065: 'achievementList': undeclared identifier
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(28,5): error C2530: 'ach': references must be initialized
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(28,5): error C3531: 'ach': a symbol whose type contains 'auto' must have an initializer
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(28,20): error C2143: syntax error: missing ';' before ':'
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(28,37): error C2143: syntax error: missing ';' before ')'
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(37,22): error C2065: 'achievementList': undeclared identifier
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(37,5): error C2530: 'ach': references must be initialized
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(37,5): error C3531: 'ach': a symbol whose type contains 'auto' must have an initializer
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(37,20): error C2143: syntax error: missing ';' before ':'
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(37,37): error C2143: syntax error: missing ';' before ')'
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(59,26): error C2511: 'void AchievementManager::EquipTitleMenu(Character *)': overloaded member function not found in 'AchievementManager'
-      C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.h(22,7):
-      see declaration of 'AchievementManager'
-  
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(73,26): error C2065: 'achievementList': undeclared identifier
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(73,9): error C2530: 'ach': references must be initialized
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(73,9): error C3531: 'ach': a symbol whose type contains 'auto' must have an initializer
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(73,24): error C2143: syntax error: missing ';' before ':'
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(73,41): error C2143: syntax error: missing ';' before ')'
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,29): error C2665: 'std::vector<Achievement *,std::allocator<Achievement *>>::push_back': no overloaded function could convert all the argument types
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23):
-      could be 'void std::vector<Achievement *,std::allocator<Achievement *>>::push_back(_Ty &&)'
-          with
-          [
-              _Ty=Achievement *
-          ]
-          C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,29):
-          'void std::vector<Achievement *,std::allocator<Achievement *>>::push_back(_Ty &&)': cannot convert argument 1 from 'int *' to '_Ty &&'
-          with
-          [
-              _Ty=Achievement *
-          ]
-              C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,40):
-              Reason: cannot convert from 'int *' to '_Ty'
-          with
-          [
-              _Ty=Achievement *
-          ]
-              C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,40):
-              Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
-      or       'void std::vector<Achievement *,std::allocator<Achievement *>>::push_back(const _Ty &)'
-          with
-          [
-              _Ty=Achievement *
-          ]
-          C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,29):
-          'void std::vector<Achievement *,std::allocator<Achievement *>>::push_back(const _Ty &)': cannot convert argument 1 from 'int *' to 'const _Ty &'
-          with
-          [
-              _Ty=Achievement *
-          ]
-              C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,40):
-              Reason: cannot convert from 'int *' to 'const _Ty'
-          with
-          [
-              _Ty=Achievement *
-          ]
-              C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,40):
-              Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
-      C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\AchievementManager.cpp(76,29):
-      while trying to match the argument list '(int *)'
+﻿  AAT.cpp
+  AchievementManager.cpp
+\AchievementManager.cpp(1,1): error C1083: 소스 파일을 열 수 없습니다. 'AchievementManager.cpp': No such file or directory
+  (소스 파일 '/AchievementManager.cpp'을(를) 컴파일하는 중)
   
   Archer.cpp
   Battle.cpp
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(341,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(342,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(382,43): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(341,24): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(342,24): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Battle.cpp(382,43): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Character.cpp
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(12,13): error C2084: function 'Character::~Character(void)' already has a body
-      C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(42,14):
-      see previous definition of '{dtor}'
-  
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(78,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.cpp(73,16): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Goblin.cpp
+  Inventory.cpp
+  Item.cpp
   Mage.cpp
   Monster.cpp
+  Orc.cpp
   shop.cpp
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(83,59): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(111,63): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(132,81): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(158,17): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(160,21): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(172,59): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(180,36): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(200,21): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(202,63): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(230,39): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(232,29): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(245,13): error C2039: 'SetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(245,30): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(263,39): error C2039: 'GetInventory': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(280,13): error C2039: 'SetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\shop.cpp(280,30): error C2039: 'GetMoney': 'Character'의 멤버가 아닙니다.
+      C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Character.h(11,7):
+      'Character' 선언을 참조하십시오.
+  
+  Slime.cpp
   TeamProject-Text-Console-RPG.cpp
   Thief.cpp
-C:\Users\OEM\Documents\GitHub\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Thief.cpp(46,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  UIManager.cpp
+C:\Users\82105\Desktop\내배캠\c++\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\TeamProject-Text-Console-RPG\Thief.cpp(46,20): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Troll.cpp
   Warrior.cpp
-  Generating Code...
+  코드를 생성하고 있습니다...
