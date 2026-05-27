@@ -138,6 +138,8 @@ void GameManager::Battle(Character* player)
 
     int choice; // 함수 내에서 사용할 변수 선언
 
+    bool autobattle = false;
+
     string skillname = player->Getskillname();
 
     string monstername = monster->Getname(); //이제 변동없는 게터를 지역함수로 선언
@@ -166,14 +168,23 @@ void GameManager::Battle(Character* player)
         cout << "4. 도주\n";
         cout << "5. 자동사냥\n";
 
-        if (!(cin >> choice)) // 여기서 입력 받고
+        if (autobattle == true)
         {
-            system("cls");
-            cout << "잘못된 입력입니다.\n";
-            cin.clear();
-            cin.ignore(1000, '\n');
+            choice = 5;
+        }
+        else
+        {
+            if (!(cin >> choice)) // 여기서 입력 받고
+            {
+                system("cls");
+                cout << "잘못된 입력입니다.\n";
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cin.get();
 
-            continue;
+                continue;
+            }
+            cin.ignore(1000, '\n');
         }
 
         switch (choice)
@@ -187,8 +198,6 @@ void GameManager::Battle(Character* player)
         {
             if (player->Skill(monster)) // 스킬 사용 성공시 break로 턴 넘어감
             {
-                cin.clear();
-                cin.ignore(1000, '\n');
                 cin.get();
                 break;
             }
@@ -196,8 +205,6 @@ void GameManager::Battle(Character* player)
             {
                 system("cls");
                 cout << "MP가 부족해 스킬을 사용 할 수 없다.\n";
-                cin.clear();
-                cin.ignore(1000, '\n');
                 cin.get();
                 continue;
             }
@@ -214,8 +221,6 @@ void GameManager::Battle(Character* player)
             {
                 system("cls");
                 cout << "아이템을 사용하지 않았다.\n";
-                cin.clear();
-                cin.ignore(1000, '\n');
                 cin.get();
                 continue;
             }
@@ -227,8 +232,6 @@ void GameManager::Battle(Character* player)
             {
                 system("cls");
                 cout << "무사히 도망쳤다.\n";
-                cin.clear();
-                cin.ignore(1000, '\n');
                 cin.get();
                 delete monster;
                 return;
@@ -237,14 +240,13 @@ void GameManager::Battle(Character* player)
             {
                 system("cls");
                 cout << "도망치지 못 했다.\n";
-                cin.clear();
-                cin.ignore(1000, '\n');
                 cin.get();
                 break;
             }
         }
         case 5: // 선택지 자동
         {
+            autobattle = true;
             int playerhp = player->Gethp(); //----------------------------------------------------------------------------------------------Character의 현재 HP 게터 요구함니다.
             int playermp = player->Getmp(); // //----------------------------------------------------------------------------------------------Character의 현재 HP 게터 요구함니다.
             int monsterhp = monster->Gethp(); // //----------------------------------------------------------------------------------------------monster의 현재 HP 게터 요구함니다.
@@ -254,8 +256,6 @@ void GameManager::Battle(Character* player)
             if (monsterhp < playerhp && playermp < mp) // 적의 체력이 플레이어보다 적고&& 플레이어 MP가 100보다 적으면 일반공격
             {
                 Basicattack(player, monster);
-                cin.clear();
-                cin.ignore(1000, '\n');
                 cin.get();
                 break;
             }
@@ -263,8 +263,6 @@ void GameManager::Battle(Character* player)
             {
                 if (player->Skill(monster))
                 {
-                    cin.clear();
-                    cin.ignore(1000, '\n');
                     cin.get();
                     break;
                 }
@@ -272,8 +270,6 @@ void GameManager::Battle(Character* player)
                 {
                     system("cls");
                     cout << "MP가 부족해 스킬을 사용 할 수 없다.\n";
-                    cin.clear();
-                    cin.ignore(1000, '\n');
                     cin.get();
                     continue;
                 }
@@ -291,8 +287,6 @@ void GameManager::Battle(Character* player)
                     {
                         system("cls");
                         cout << "아이템을 사용하지 않았다.\n";
-                        cin.clear();
-                        cin.ignore(1000, '\n');
                         cin.get();
                         continue;
                     }
@@ -303,8 +297,6 @@ void GameManager::Battle(Character* player)
                     {
                         system("cls");
                         cout << "무사히 도망쳤다.\n";
-                        cin.clear();
-                        cin.ignore(1000, '\n');
                         cin.get();
                         delete monster;
                         return;
@@ -313,8 +305,6 @@ void GameManager::Battle(Character* player)
                     {
                         system("cls");
                         cout << "도망치지 못 했다.\n";
-                        cin.clear();
-                        cin.ignore(1000, '\n');
                         cin.get();
                         break;
                     }
@@ -324,8 +314,6 @@ void GameManager::Battle(Character* player)
             {
                 if (player->Skill(monster))
                 {
-                    cin.clear();
-                    cin.ignore(1000, '\n');
                     cin.get();
                     break;
                 }
@@ -333,8 +321,6 @@ void GameManager::Battle(Character* player)
                 {
                     system("cls");
                     cout << "MP가 부족해 스킬을 사용 할 수 없다.\n";
-                    cin.clear();
-                    cin.ignore(1000, '\n');
                     cin.get();
                     continue;
                 }
@@ -352,6 +338,13 @@ void GameManager::Battle(Character* player)
             continue;
         }
         } // 스위치 끝
+        int hprecovery = player->Gethp() * 0.05;
+        int mprecovery = player->Getmp() * 0.05;
+        player->Sethp(player->Gethp()+ hprecovery);
+        player->Setmp(player->Getmp()+ mprecovery);
+        cout << "\n시간 경과에 따라 당신의 체력이 " << hprecovery << "마나가 " << mprecovery << "회복 되었다.\n\n";
+        cin.get();
+
         if (monster->Gethp() > 0)
         {
             Monsterattack(player, monster);
@@ -390,6 +383,7 @@ void GameManager::Battle(Character* player)
         cout << "당신은 " << exp << " 만큼의 경험치와 " << gold << " 골드를 획득했다.\n";
         if (randomvalue3 >= 30)
         {
+            cin.get();
             Additem(item);
             cout << "잘 찾아보니 " << monstername << "에게서" << item << "을(를) 얻을 수 있었다.\n";
         }
