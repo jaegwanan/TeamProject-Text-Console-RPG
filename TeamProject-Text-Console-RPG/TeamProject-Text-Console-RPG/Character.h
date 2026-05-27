@@ -5,11 +5,16 @@
 #include<string>
 #include<vector>
 
+#include "Header.h"
+#include "Inventory.h"
+
 #include "Monster.h"
 #include "Item.h"
 
 class Character
 {
+private:
+    Inventory* m_inventory;
 protected:
     static Character* instance;
 
@@ -27,6 +32,8 @@ protected:
     int gold = 0;
 
     std::vector<Item*> inventory;
+
+    std::string activeTitle = "";
 
 public:
     Character(std::string name);
@@ -64,9 +71,12 @@ public:
     void Setattack(int attack);
     void Setexp(int exp);
     void Setgold(int gold);
+    void setActiveTitle(std::string title) { activeTitle = title; }
 
     // getter
+    std::string getActiveTitle() { return activeTitle; }
     std::string Getjob();
+    std::string Getname() { return name; }
     int Getlevel();
     int Gethp();
     int Getmaxhp();
@@ -75,4 +85,6 @@ public:
     int Getattack();
     int Getexp();
     int Getgold();
+
+    Inventory* GetInventory() { return m_inventory; }
 };

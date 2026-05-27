@@ -4,9 +4,14 @@
 
 using namespace std;
 
-Character::Character(std::string name)
+Character::Character(std::string name) : m_inventory(new Inventory())
 {
     this->name = name;
+}
+
+Character::~Character()
+{
+    delete m_inventory;
 }
 
 void Character::Displaystatus()

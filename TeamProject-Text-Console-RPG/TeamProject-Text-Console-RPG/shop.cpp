@@ -80,7 +80,7 @@ void Shop::ShopBuyItemPage(Character* player)
 
         cout << "상점 주인 : 저희는 쓸만한 것만 들여놓습니다!" << endl;
         cout << "=================================================" << endl;
-        cout << "플레이어의 소지금 : " << player->GetMoney() << endl;
+        cout << "플레이어의 소지금 : " << player->Getgold() << endl;
         cout << "=================================================" << endl;
         cout << "어느 물건을 사시겠습니까?" << endl;
         cout << "상점 메뉴로 돌아가려면 0을 입력하세요." << endl;
@@ -108,7 +108,7 @@ void Shop::ShopBuyItemPage(Character* player)
 
             ShowShopItem();
 
-            cout << "플레이어의 소지금 : " << player->GetMoney() << endl;
+            cout << "플레이어의 소지금 : " << player->Getgold() << endl;
             cout << "=================================================" << endl;
             cout << "상점 주인 : 뭘 달라고 하시는 거죠? 거기엔 아무것도 없습니다!" << endl;
             cout << "다시 입력하세요." << endl;
@@ -129,7 +129,7 @@ void Shop::ShopBuyItemPage(Character* player)
             WrongSelect = ((m_shopSelectNum < 0) || (m_shopSelectNum > m_itemCount));
         }
 
-        bool NotEnoughMoney = m_vItem[m_shopSelectNum - 1].GetPrice() > player->GetMoney();
+        bool NotEnoughMoney = m_vItem[m_shopSelectNum - 1].GetPrice() > player->Getgold();
 
         if (NotEnoughMoney)
         {
@@ -169,7 +169,7 @@ void Shop::ShopSellItemPage(Character* player)
 
         cout << "상점 주인 : 어떤 물건을 판매하실건가요!" << endl;
         cout << "=================================================" << endl;
-        cout << "플레이어의 소지금 : " << player->GetMoney() << endl;
+        cout << "플레이어의 소지금 : " << player->Getgold() << endl;
         cout << "=================================================" << endl;
         cout << "어느 물건을 파시겠습니까?" << endl;
         cout << "상점 메뉴로 돌아가려면 0을 입력하세요." << endl;
@@ -199,7 +199,7 @@ void Shop::ShopSellItemPage(Character* player)
 
             player->GetInventory()->ShowPlayerBag();
 
-            cout << "플레이어의 소지금 : " << player->GetMoney() << endl;
+            cout << "플레이어의 소지금 : " << player->Getgold() << endl;
             cout << "=================================================" << endl;
             cout << "그곳엔 아이템이 없습니다." << endl;
             cout << "다시 입력하세요." << endl;
@@ -242,7 +242,7 @@ void Shop::BuyItem(int itemIdx, Character* player)
         playerBag->push_back(tempItem);
     }
 
-    player->SetMoney(player->GetMoney() - m_vItem[itemIdx].GetPrice());
+    player->Setgold(player->Getgold() - m_vItem[itemIdx].GetPrice());
 
     m_vItem[itemIdx].SetCount(m_vItem[itemIdx].GetCount() - 1);
 
@@ -277,7 +277,7 @@ void Shop::SellItem(int itemIdx, Character* player)
         m_vItem.push_back(tempItem);
     }
 
-    player->SetMoney(player->GetMoney() + sellPrice);
+    player->Setgold(player->Getgold() + sellPrice);
 
     playerBag->at(itemIdx).SetCount(playerBag->at(itemIdx).GetCount() - 1);
 

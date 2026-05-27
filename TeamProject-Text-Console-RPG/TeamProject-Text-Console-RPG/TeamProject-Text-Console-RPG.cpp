@@ -119,7 +119,7 @@ int main()
             break;
 
         case 3:
-            // gameManager.displayInventory(player);
+            gameManager.displayInventory(player);
             break;
 
         case 4:
