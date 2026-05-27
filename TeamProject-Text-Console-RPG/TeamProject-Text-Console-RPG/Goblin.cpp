@@ -1,5 +1,6 @@
 #include "Monster.h"
 #include <Windows.h>
+#include "Character.h"
 
 using namespace std;
 
