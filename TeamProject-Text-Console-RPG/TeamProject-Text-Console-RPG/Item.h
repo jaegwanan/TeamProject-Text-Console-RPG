@@ -1,43 +1,92 @@
-// Item
-
 #pragma once
 
-#include<string>
+#include "Header.h"
 
 class Item
 {
-protected:
-    std::string name;
-
-public:
-    virtual std::string getName() = 0;
-    virtual void use(Character* character) = 0;
-
-    virtual ~Item() {}
-};
-
-// HealthPotion
-class HealthPotion : public Item
-{
 private:
-    int healthRestore;
+    ITEM m_itemType;
+
+    string m_name;
+
+    int m_price;
+
+    int m_ability;
+
+    string m_description;
+
+    int m_count;
 
 public:
-    HealthPotion();
+    // »ý¼ºÀÚ
+    Item(
+        ITEM itemType,
+        string name,
+        int price,
+        int ability,
+        string description,
+        int count
+    );
 
-    std::string getName() override;
-    void use(Character* character) override;
-};
+    ITEM GetType()
+    {
+        return m_itemType;
+    }
 
-// AttackBoost
-class AttackBoost : public Item
-{
-private:
-    int attackIncrease;
+    void SetType(const ITEM itemType)
+    {
+        m_itemType = itemType;
+    }
 
-public:
-    AttackBoost();
+    string GetName()
+    {
+        return m_name;
+    }
 
-    std::string getName() override;
-    void use(Character* character) override;
+    void SetName(const string name)
+    {
+        m_name = name;
+    }
+
+    int GetPrice()
+    {
+        return m_price;
+    }
+
+    void SetPrice(const int price)
+    {
+        m_price = price;
+    }
+
+    int GetAbility()
+    {
+        return m_ability;
+    }
+
+    void SetAbility(const int ability)
+    {
+        m_ability = ability;
+    }
+
+    string GetDescription()
+    {
+        return m_description;
+    }
+
+    void SetDescription(const string description)
+    {
+        m_description = description;
+    }
+
+    int GetCount()
+    {
+        return m_count;
+    }
+
+    void SetCount(const int count)
+    {
+        m_count = count;
+    }
+
+    void ShowItemInfo();
 };
