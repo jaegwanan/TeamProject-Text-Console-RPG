@@ -3,8 +3,6 @@
 #include <vector>
 #include <map>  
 
-class Character; // ★ 핵심: Character 클래스가 있다고 미리 알려줌 (전방 선언)
-
 enum class AchType {
     KILL,
     LEVEL,

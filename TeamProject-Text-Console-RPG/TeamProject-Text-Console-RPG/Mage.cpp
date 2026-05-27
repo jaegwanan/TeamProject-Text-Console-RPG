@@ -1,4 +1,8 @@
 #include "Mage.h"
+#include <iostream>
+#include "string.h"
+
+using namespace std;
 
 Mage::Mage(std::string name) : Character(name)
 {
@@ -23,3 +27,28 @@ void Mage::Applylevelupstats()
     mp = maxmp;
     attack += 9;
 }
+
+bool Mage::Skill(Monster* monster)
+{
+    if (mp < 30)
+    {
+        return false;
+    }
+
+    mp -= 30;
+
+    int damage = attack * (3 + rand() % 3);
+
+    cout << " 파이어 볼!" << endl;
+
+    monster->Takedamage(damage);
+
+    return true;
+}
+
+string Mage::Getskillname()
+{
+    return " 파이어 볼";
+}
+
+

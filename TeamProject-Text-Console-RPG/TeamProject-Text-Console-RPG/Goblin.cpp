@@ -1,5 +1,6 @@
 #include "Monster.h"
 #include <Windows.h>
+#include "Character.h"
 
 using namespace std;
 
@@ -12,6 +13,7 @@ void Goblin::Basicattack(Character* player)
 	cout << "고블린이 주먹질을 한다!\n" << damage << " 대미지" << endl;
 
 	player->Takedamage(totaldamage);
+	cin.get();
 }
 
 void Goblin::Specialattack(Character* player)
@@ -25,9 +27,9 @@ void Goblin::Specialattack(Character* player)
 	for (int i = 0; i < hitcount; i++)
 	{
 		cout << damage << "의 대미지!" << endl;
-		Sleep(500);
+		Sleep(150);
 	}
 
 	player->Takedamage(totaldamage);
-	
+	cin.get();
 }

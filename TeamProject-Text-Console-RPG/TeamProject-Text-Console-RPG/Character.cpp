@@ -4,6 +4,15 @@
 
 using namespace std;
 
+Character::Character(std::string name) : m_inventory(new Inventory())
+{
+    this->name = name;
+}
+
+Character::~Character()
+{
+    delete m_inventory;
+}
 
 void Character::Displaystatus()
 {
@@ -19,7 +28,7 @@ void Character::Basicattack(Monster* monster)
     int damage = attack;
     int totaldamage = hitcount * damage;
     
-    Attackmessage();
+    cout << "\n" << Attackmessage() << endl;
     monster->Takedamage(totaldamage);
 }
 
@@ -82,4 +91,110 @@ void Character::Printexpbar()
 
     cout << exp << " / " << requiredExp;
     cout << " (" << (int)(ratio * 100) << "%)" << endl;
+}
+
+// setter
+void Character::Setjob(std::string job)
+{
+    this->job = job;
+}
+
+void Character::Setlevel(int level)
+{
+    this->level = level;
+}
+
+void Character::Sethp(int hp)
+{
+    if (hp > maxhp)
+    {
+        this->hp = maxhp;
+    }
+    else
+    {
+        this->hp = hp;
+    }
+}
+
+void Character::Setmaxhp(int maxhp)
+{
+    this->maxhp = maxhp;
+}
+
+void Character::Setmp(int mp)
+{
+    if (mp > maxmp)
+    {
+        this->mp = maxmp;
+    }
+    else
+    {
+        this->mp = mp;
+    }
+}
+
+void Character::Setmaxmp(int maxmp)
+{
+    this->maxmp = maxmp;
+}
+
+void Character::Setattack(int attack)
+{
+    this->attack = attack;
+}
+
+void Character::Setexp(int exp)
+{
+    this->exp = exp;
+}
+
+void Character::Setgold(int gold)
+{
+    this->gold = gold;
+}
+
+// getter
+std::string Character::Getjob()
+{
+    return job;
+}
+
+int Character::Getlevel()
+{
+    return level;
+}
+
+int Character::Gethp()
+{
+    return hp;
+}
+
+int Character::Getmaxhp()
+{
+    return maxhp;
+}
+
+int Character::Getmp()
+{
+    return mp;
+}
+
+int Character::Getmaxmp()
+{
+    return maxmp;
+}
+
+int Character::Getattack()
+{
+    return attack;
+}
+
+int Character::Getexp()
+{
+    return exp;
+}
+
+int Character::Getgold()
+{
+    return gold;
 }

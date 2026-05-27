@@ -1,4 +1,8 @@
 #include "Warrior.h"
+#include <iostream>
+#include "string.h"
+
+using namespace std;
 
 Warrior::Warrior(std::string name) : Character(name)
 {
@@ -23,3 +27,27 @@ void Warrior::Applylevelupstats()
     mp = maxmp;
     attack += 7;
 }
+
+bool Warrior::Skill(Monster* monster)
+{
+    if (mp < 20)
+    {
+        return false;
+    }
+
+    mp -= 20;
+
+    int damage = attack * 2;
+
+    cout << " 파워 스트라이크!" << endl;
+
+    monster->Takedamage(damage);
+
+    return true;
+}
+
+string Warrior::Getskillname()
+{
+    return " 파워 스트라이크";
+}
+
