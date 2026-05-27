@@ -116,51 +116,30 @@ void Character::Displaystatus()
 
 void Character::Basicattack(Monster* monster)
 {
-    string result1, result2;
-   
-    std :: cout << "[ 전투시작! ]" << name << "(" << job << ") vs (" << monster->Getname() << endl;
+    int hitcount = 1;
+    int damage = attack;
+    int totaldamage = hitcount * damage;
     
-    
-    
-    while (Gethp() > 0 && monster->Gethp() > 0)
-    {   
-        // 사용자의 턴
-        if (monster->Gethp() - Getattack() > 0) { result1 = "생존"; }
-        else { result1 = "사망"; }
+    Attackmessage();
+    monster->Takedamage(totaldamage);
+}
+}
 
-        cout << "--- " << name << "의 턴" << " ---" << endl;
-        cout << Attackmessage() << endl;
-        cout << monster->Getname() << "에게 " << Getattack() << "의 데미지" << endl;
-        cout << monster->Getname() << " HP: " << monster->Gethp() << "->" << monster->Gethp() - Getattack() << "(" << result1 << ")" << endl;
+void Character::Takedamage(int monsterattack)
+{
+    //대미지 공식
+    int damage = monsterattack;
+    if (damage < 0) damage = 1;
+    cout << name << "에게 " << damage << " 대미지!" << endl;
+
+    //실제 체력 소모
+    int beforehp = currenthp;
+    currenthp -= damage;
+    if (currenthp < 0) {
+        cout << name << "HP : " << beforehp << " -> " << currenthp << "(사망)" << endl;
         cout << endl;
-        monster->Sethp(monster->Gethp() - Getattack());
-
-        if (monster->Gethp() <= 0)
-        {
-            cout << endl << " ★ 전투 승리!" << endl;
-            
-            break;
-        }
-
-
-        // 몬스터의 턴
-        if (Gethp() - monster->Getattack() > 0) { result2 = "생존"; }
-        else { result2 = "사망"; }
-
-        cout << "--- " << monster->Getname() << "턴" << " --- " << endl;
-        cout << name << "에게 " << monster->Getattack() << "의 데미지" << endl;
-        cout << name << " HP: " << Gethp() << "->" << Gethp() - monster->Getattack() << "(" << result2 << ")" << endl;
-        cout << endl;
-        Sethp(Gethp() - monster->Getattack());
-
-        if (Gethp() <= 0)
-        {
-            cout << endl << name << " 사망. 패배" << endl;
-
-            break;
-        }
     }
-    
+}
 }
 
 void Character::Gainexp(int amount)
