@@ -9,7 +9,7 @@ AchievementManager::AchievementManager() {
     // 킬 관련 업적
     achievementList.push_back({ "슬라임 학살자", AchType::KILL, "Slime", 3, false });
     // 레벨 관련 업적
-    achievementList.push_back({ "견습 기사", AchType::LEVEL, "", 5, false });
+    achievementList.push_back({ "견습 기사", AchType::LEVEL, "", 5, false });S
     achievementList.push_back({ "소드 마스터", AchType::LEVEL, "", 10, false });
     // 아이템 관련 업적
     achievementList.push_back({ "물약 중독자", AchType::ITEM_USE, "HealthPotion", 5, false });
