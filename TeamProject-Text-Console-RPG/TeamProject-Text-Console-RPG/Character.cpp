@@ -23,7 +23,8 @@ void Character::Basicattack(Monster* monster)
     int damage = attack;
     int totaldamage = hitcount * damage;
     
-    Attackmessage();
+    cout << Attackmessage() << endl;
+    cin.get();
     monster->Takedamage(totaldamage);
 }
 
