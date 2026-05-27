@@ -1,8 +1,10 @@
 #pragma once
+#include <vector>
+#include <string>
+#include "item.h"
+#include "character.h"
 
-#include "Header.h"
-#include "Character.h"
-#include "Item.h"
+using namespace std;
 
 class Shop
 {
@@ -21,18 +23,16 @@ private:
 
 public:
     Shop();
-
-    // 상점 아이템 출력
     void ShowShopItem();
-
-    // 아이템 구매 / 판매 페이지
     void ShopBuyItemPage(Character* player);
     void ShopSellItemPage(Character* player);
-
-    // 실제 구매 / 판매
     void BuyItem(int itemIdx, Character* player);
     void SellItem(int itemIdx, Character* player);
-
-    // 같은 아이템 존재 확인
     int IsItemExist(const string& itemName);
+
+private:
+    vector<Item> m_vItem;
+    vector<Item>::iterator m_viItem;
+    int m_itemCount;
+    int m_shopSelectNum;
 };

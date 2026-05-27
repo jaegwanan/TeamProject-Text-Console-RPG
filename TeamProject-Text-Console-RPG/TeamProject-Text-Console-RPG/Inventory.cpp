@@ -159,7 +159,9 @@ void Inventory::ShowPlayerEquip()
         WrongSelect = ((0 > m_inventorySelectNum) || (m_inventorySelectNum > m_bagItemCount));
     }
 
-    bool WrongType = selectItemType != m_vBag[m_inventorySelectNum - 1].GetType();
+    int selectedIndex = m_inventorySelectNum - 1;
+
+    bool WrongType = selectItemType != m_vBag[selectedIndex].GetType();
 
     if (WrongType)
     {
