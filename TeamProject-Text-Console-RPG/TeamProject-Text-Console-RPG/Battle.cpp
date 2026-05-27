@@ -16,11 +16,6 @@ void Basicattack(Character* player, Monster* monster)
     player->Basicattack(monster); //-----------------------------------------------------------------------------------------Character의 void Attack(Monster* monster) 오버라이드 요구합니다.
 }
 
-bool Skill(Character* player, Monster* monster)
-{
-    cout << " 스킬을 사용했다.";
-    return true; // //---------------------------Character의 bool Skill(Monster* monster); bool인 이유는 사용 성공시 true 리턴 요구합니다. 오버라이드 부탁합니다.
-}
 
 bool Pantierun(Character* player, int monsterlevel)
 {
@@ -185,12 +180,18 @@ void GameManager::Battle(Character* player)
         {
         case 1:
             Basicattack(player, monster); // 일반 공격 함수
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cin.get();
             break;
 
         case 2:
         {
-            if (Skill(player, monster)) // 스킬 사용 성공시 break로 턴 넘어감
+            if (player->Skill(monster)) // 스킬 사용 성공시 break로 턴 넘어감
             {
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cin.get();
                 break;
             }
             else // 스킬 사용 실패시 턴 소모 없이 continue으로 다시 선택
@@ -259,8 +260,11 @@ void GameManager::Battle(Character* player)
             }
             else if (monsterhp < playerhp && playermp >= mp) // 적의 체력이 플레이어 보다 적고&& 플레이어 MP가 100보다 많으면 스킬사용
             {
-                if (Skill(player, monster))
+                if (player->Skill(monster))
                 {
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    cin.get();
                     break;
                 }
                 else
@@ -317,8 +321,11 @@ void GameManager::Battle(Character* player)
             }
             else if (monsterhp >= playerhp && playermp >= 100) // 적의 체력이 플레이어 보다 많고&& 플레이어 MP가 100보다 많으면 스킬사용
             {
-                if (Skill(player, monster))
+                if (player->Skill(monster))
                 {
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    cin.get();
                     break;
                 }
                 else
