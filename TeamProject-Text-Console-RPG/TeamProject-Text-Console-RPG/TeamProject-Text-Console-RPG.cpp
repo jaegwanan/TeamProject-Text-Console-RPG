@@ -4,6 +4,8 @@
 
 #include "Character.h"
 #include "GameManager.h"
+#include "shop.h"
+#include "ShopManager.h"
 
 #include "Warrior.h"
 #include "Mage.h"
@@ -16,6 +18,72 @@ class Warrior;
 class Mage;
 class Thief;
 class Archer;
+
+MainGame::MainGame(Character* player) : m_player(player), m_shop(new Shop()), m_mainSelectNum((int)LOCATION::LOCATION_TOWN)
+{
+}
+
+MainGame::~MainGame()
+{
+    delete m_shop;
+}
+
+void MainGame::ShowShopPage()
+{
+    int Num;
+
+    while (true)
+    {
+        system("cls");
+
+        std::cout << "=================================================" << std::endl;
+        std::cout << "상점에 들어왔습니다." << std::endl;
+        std::cout << "상점에서 할 행동을 선택하세요." << std::endl;
+        std::cout << "=================================================" << std::endl;
+        std::cout << "1. 물건 사기" << std::endl;
+        std::cout << "2. 물건 팔기" << std::endl;
+        std::cout << "0. 마을로 돌아가기" << std::endl;
+        std::cout << "=================================================" << std::endl;
+        std::cout << "입력 : ";
+
+        if (!(cin >> Num)) // 여기서 입력 받고
+        {
+            system("cls");
+            cout << "잘못된 입력입니다.\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cin.get();
+
+            continue;
+        }
+
+        switch (Num)
+        {
+        case 1:
+            m_shop->ShopBuyItemPage(m_player);
+            break;
+
+        case 2:
+            m_shop->ShopSellItemPage(m_player);
+            break;
+
+        case 0:
+            std::cout << "=================================================" << std::endl;
+            std::cout << "마을로 돌아갑니다." << std::endl;
+            std::cout << "=================================================" << std::endl;
+            Sleep(500);
+            return;
+
+        default:
+            std::cout << "=================================================" << std::endl;
+            std::cout << "잘못 입력했습니다. 다시 입력하세요." << std::endl;
+            std::cout << "=================================================" << std::endl;
+            Sleep(1000);
+            break;
+        }
+    }
+}
+
 
 Character* CreateCharacter()
 {
@@ -70,6 +138,7 @@ int main()
 {
     GameManager gameManager;
     Character* player = CreateCharacter();
+    MainGame mainGame(player);
     
     cout << endl;
     cout << " 캐릭터 생성 완료! " << endl;
@@ -88,7 +157,8 @@ int main()
         cout << " 1. 상태 보기" <<endl;
         cout << " 2. 전투 시작" << endl;
         cout << " 3. 인벤토리" << endl;
-        cout << " 4. 게임 종료" << endl;
+        cout << " 4. 상점" << endl;
+        cout << " 0. 게임 종료" << endl;
         cout << "============================" << endl;
         cout << " 선택: ";
 
@@ -117,12 +187,15 @@ int main()
         case 2:
             gameManager.Battle(player);
             break;
-
         case 3:
-            gameManager.displayInventory(player);
+            mainGame.ShowInventoryPage(player);
             break;
 
         case 4:
+            mainGame.ShowShopPage();
+            break;
+
+        case 0:
             delete player;
             cout << " 게임을 종료합니다." << endl;
             return 0;
@@ -135,4 +208,129 @@ int main()
             continue;
         }
     }
+}
+
+
+void MainGame::ShowInventoryPage(Character* player)
+{
+    while (true)
+    {
+        system("cls");
+
+        std::cout << "=================================================" << std::endl;
+        std::cout << "인벤토리를 열었습니다." << std::endl;
+        std::cout << "원하는 행동을 선택하세요." << std::endl;
+        std::cout << "=================================================" << std::endl;
+        std::cout << "1. 가방 보기" << std::endl;
+        std::cout << "2. 장비 확인 / 교체" << std::endl;
+        std::cout << "3. 스탯 확인" << std::endl;
+        std::cout << "0. 마을로 돌아가기" << std::endl;
+        std::cout << "=================================================" << std::endl;
+        std::cout << "입력 : ";
+
+        std::cin >> m_mainSelectNum;
+
+        switch (m_mainSelectNum)
+        {
+        case 1:
+            system("cls");
+            m_player->GetInventory()->ShowPlayerBag();
+            std::cout << "아무 키나 입력하면 인벤토리로 돌아갑니다." << std::endl;
+            system("pause");
+            break;
+
+        case 2:
+            m_player->GetInventory()->ShowPlayerEquip();
+            break;
+
+        case 3:
+            system("cls");
+            player->Displaystatus();
+            cin.ignore();
+            cin.get();
+            break;
+
+        case 0:
+            std::cout << "=================================================" << std::endl;
+            std::cout << "마을로 돌아갑니다." << std::endl;
+            std::cout << "=================================================" << std::endl;
+            Sleep(500);
+            return;
+
+        default:
+            std::cout << "=================================================" << std::endl;
+            std::cout << "잘못 입력했습니다. 다시 입력하세요." << std::endl;
+            std::cout << "=================================================" << std::endl;
+            Sleep(1000);
+            break;
+        }
+    }
+}
+
+void MainGame::RandomUseItem()
+{
+    vector<Item>* bag = m_player->GetInventory()->GetBag();
+
+    if (bag->empty())
+    {
+        std::cout << "=================================================" << std::endl;
+        std::cout << "사용할 아이템이 없습니다." << std::endl;
+        std::cout << "=================================================" << std::endl;
+        return;
+    }
+
+    int randomIndex = rand() % bag->size();
+
+    string itemName = bag->at(randomIndex).GetName();
+
+    std::cout << "=================================================" << std::endl;
+    std::cout << itemName << "을(를) 랜덤으로 사용했습니다!" << std::endl;
+
+    if (itemName == "HP 포션")
+    {
+        m_player->Sethp(m_player->Gethp() + 50);
+        std::cout << "체력이 50 회복되었습니다." << std::endl;
+    }
+    else if (itemName == "MP 포션")
+    {
+        m_player->Setmp(m_player->Getmp() + 30);
+        std::cout << "MP가 30 회복되었습니다." << std::endl;
+    }
+    else if (itemName == "공격력 증가 포션")
+    {
+        m_player->Setattack(m_player->Getattack() + 10);
+        std::cout << "공격력이 10 증가했습니다." << std::endl;
+    }
+    else
+    {
+        std::cout << "이 아이템은 전투 중 사용할 수 없습니다." << std::endl;
+        std::cout << "=================================================" << std::endl;
+        return;
+    }
+
+    bag->at(randomIndex).SetCount(bag->at(randomIndex).GetCount() - 1);
+
+    if (bag->at(randomIndex).GetCount() <= 0)
+    {
+        bag->erase(bag->begin() + randomIndex);
+    }
+
+    std::cout << "=================================================" << std::endl;
+}
+
+void MainGame::ShowMainPage()
+{
+    system("cls");
+
+    std::cout << "=================================================" << std::endl;
+    std::cout << "당신은 마을에 있습니다." << std::endl;
+    std::cout << "당신의 행동을 선택하세요." << std::endl;
+    std::cout << "게임을 종료하려면 0을 입력하세요." << std::endl;
+    std::cout << "=================================================" << std::endl;
+    std::cout << "1. 상점에 가기" << std::endl;
+    std::cout << "2. 인벤토리 열기" << std::endl;
+    std::cout << "3. 전투 시작" << std::endl;
+    std::cout << "4. 스탯 확인" << std::endl;
+    std::cout << "=================================================" << std::endl;
+    std::cout << "입력 : ";
 }

@@ -72,20 +72,14 @@
     <ClCompile Include="Goblin.cpp">
       <Filter>소스 파일\Enemy\Enemylist</Filter>
     </ClCompile>
-    <ClCompile Include="Inventory.cpp">
-      <Filter>소스 파일\Item</Filter>
-    </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>소스 파일\Item</Filter>
     </ClCompile>
     <ClCompile Include="shop.cpp">
       <Filter>소스 파일\Item</Filter>
     </ClCompile>
-    <ClCompile Include="AchievementManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="UIManager.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>소스 파일\Item</Filter>
     </ClCompile>
     <ClCompile Include="UIManager.cpp">
       <Filter>소스 파일</Filter>
@@ -143,20 +137,23 @@
     <ClInclude Include="Monster.h">
       <Filter>헤더 파일\EnemyH</Filter>
     </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>헤더 파일\PlayerH</Filter>
+    </ClInclude>
+    <ClInclude Include="shop.h">
+      <Filter>헤더 파일\ItemH</Filter>
+    </ClInclude>
     <ClInclude Include="Header.h">
       <Filter>헤더 파일\ItemH</Filter>
     </ClInclude>
     <ClInclude Include="Inventory.h">
       <Filter>헤더 파일\ItemH</Filter>
     </ClInclude>
-    <ClInclude Include="shop.h">
-      <Filter>헤더 파일\ItemH</Filter>
-    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>헤더 파일\ItemH</Filter>
     </ClInclude>
-    <ClInclude Include="AchievementManager.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="ShopManager.h">
+      <Filter>헤더 파일\ItemH</Filter>
     </ClInclude>
     <ClInclude Include="Warrior.h">
       <Filter>헤더 파일</Filter>

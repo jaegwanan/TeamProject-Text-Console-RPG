@@ -13,6 +13,4 @@ class GameManager
 {
 public:
     void Battle(Character* player);
-
-    void displayInventory(Character* player);
 };

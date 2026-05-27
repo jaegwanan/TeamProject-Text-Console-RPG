@@ -31,15 +31,16 @@ protected:
     int exp = 0;
     int gold = 0;
 
-    std::vector<Item*> inventory;
-
     std::string activeTitle = "";
 
 public:
     Character(std::string name);
 
     static Character* getInstance(std::string name = "");
-    virtual ~Character() {}
+    virtual ~Character()
+    {
+        delete m_inventory;
+    }
 
     void Displaystatus();
     void Levelup();
