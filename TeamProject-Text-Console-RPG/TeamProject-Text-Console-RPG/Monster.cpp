@@ -11,10 +11,10 @@ void Monster::Takedamage(int playerattack)
 	cout << name << "에게 " << damage << " 대미지!" << endl;
 
 	//실제 체력 소모
-	int beforehp = currenthp;
-	currenthp -= damage;
-	if (currenthp < 0) {
-		cout << name << "HP : " << beforehp << " -> " << currenthp << "(사망)" << endl;
+	int beforehp = hp;
+	hp -= damage;
+	if (hp < 0) {
+		cout << name << "HP : " << beforehp << " -> " << hp << "(사망)" << endl;
 		cout << endl;
 	}
 }
