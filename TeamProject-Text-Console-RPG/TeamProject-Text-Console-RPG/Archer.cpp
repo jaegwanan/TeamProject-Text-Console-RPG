@@ -61,3 +61,4 @@ string Archer::Getskillname()
 {
     return "집중 사격";
 }
+

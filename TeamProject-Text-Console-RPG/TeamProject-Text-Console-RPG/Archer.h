@@ -14,3 +14,4 @@ public:
 
     std::string Getskillname() override;
 };
+

@@ -50,3 +50,5 @@ string Mage::Getskillname()
 {
     return " 파이어 볼";
 }
+
+
