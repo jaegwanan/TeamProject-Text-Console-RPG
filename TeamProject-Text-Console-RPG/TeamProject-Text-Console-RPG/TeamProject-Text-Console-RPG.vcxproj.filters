@@ -120,6 +120,9 @@
     <ClCompile Include="Orc.cpp">
       <Filter>소스 파일\Enemy\Enemylist</Filter>
     </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>소스 파일\Enemy\Enemylist</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
