@@ -8,6 +8,7 @@
 #include "GameManager.h"
 #include "shop.h"
 #include "ShopManager.h"
+#include "Inventory.h"
 
 #include "Warrior.h"
 #include "Mage.h"
@@ -380,12 +381,13 @@ int main()
             continue;
         }
 
+        cin.ignore(1000, '\n');
+
         switch (menu)
         {
         case 1:
             system("cls");
             player->Displaystatus();
-            cin.ignore();
             cin.get();
             break;
 
@@ -400,15 +402,15 @@ int main()
             {
                 cout << "½Â¸®\n";
             }
-            else if (battel == 2)
+            else if (battle == 2)
             {
                 cout << "°ø¸ê\n";
             }
-            else if (battel == 3)
+            else if (battle == 3)
             {
                 cout << "ÆÐ¹è\n";
             }
-            else if (battel == 4)
+            else if (battle == 4)
             {
                 cout << "µµ¸Á\n";
             }
@@ -427,8 +429,8 @@ int main()
             break;
         case 5:
         {
-            int hprecovery = static_cast<int>(player->Gethp() * 0.05);
-            int mprecovery = static_cast<int>(player->Getmp() * 0.05);
+            int hprecovery = static_cast<int>(player->Getmaxhp() * 0.4);
+            int mprecovery = static_cast<int>(player->Getmaxmp() * 0.4);
 
             player->Sethp(player->Gethp() + hprecovery);
             player->Setmp(player->Getmp() + mprecovery);
@@ -526,7 +528,7 @@ void MainGame::ShowInventoryPage(Character* player)
             break;
 
         case 2:
-            m_player->GetInventory()->ShowPlayerEquip();
+            m_player->GetInventory()->ShowPlayerEquip(m_player);
             break;
 
         case 3:

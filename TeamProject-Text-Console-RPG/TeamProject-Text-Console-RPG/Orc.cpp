@@ -26,3 +26,13 @@ string Orc::Specialattack(Character* player)
 
 	return message;
 }
+
+vector<string> Orc::GetAsciiArt()
+{
+	return {
+"      /l--/l   ",
+"   __(¡Ü W ¡Ü )  ",
+"  @__      @_) ",
+"    |________| "
+	};
+}

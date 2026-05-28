@@ -26,3 +26,13 @@ string Troll::Specialattack(Character* player)
 
 	return message;
 }
+
+vector<string> Troll::GetAsciiArt()
+{
+	return {
+"\\@\\  ¦£¡â-_-¡â¦¤  /@/",
+" \\ \\_[¡Ý U ¡Ý]_/ / ",
+"  \\   \\_W_/   /  ",
+"  /___________\\  "
+	};
+}

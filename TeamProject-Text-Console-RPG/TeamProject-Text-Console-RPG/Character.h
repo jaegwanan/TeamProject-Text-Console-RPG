@@ -6,10 +6,11 @@
 #include<vector>
 
 #include "Header.h"
-#include "Inventory.h"
 
 #include "Monster.h"
 #include "Item.h"
+
+class Inventory;
 
 class Character
 {
@@ -22,6 +23,7 @@ protected:
     std::string job = "¹«Á÷";
     std::string skillname;
     
+    bool ispoisoned = false;
     int level = 1 ;
     int hp = 200 ; 
     int maxhp = 200 ; 
@@ -74,6 +76,7 @@ public:
     void Setexp(int exp);
     void Setgold(int gold);
     void setActiveTitle(std::string title) { activeTitle = title; }
+    void Setpoisoned(bool poisoned);
 
     // getter
     std::string getActiveTitle() { return activeTitle; }
@@ -87,6 +90,7 @@ public:
     int Getattack();
     int Getexp();
     int Getgold();
+    int Getpoisoned();
 
     Inventory* GetInventory() { return m_inventory; }
 };
