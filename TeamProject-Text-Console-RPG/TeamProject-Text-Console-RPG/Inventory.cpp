@@ -1,5 +1,4 @@
 #include "Inventory.h"
-#include "Character.h"
 
 // 생성자
 Inventory::Inventory()
@@ -208,58 +207,55 @@ void Inventory::ShowEquipText()
 // 장비 교체
 void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
 {
-    Item newItem = m_vBag[itemIdx];
     int existItem;
 
-    if (newItem.GetType() == ITEM::ITEM_WEAPON)
+    if (m_vBag[itemIdx].GetType() == ITEM::ITEM_WEAPON)
     {
-        player->Setattack(player->Getattack() - m_equipWeapon->GetAbility());
-
         existItem = IsItemExist(m_equipWeapon->GetName());
 
         if (existItem > -1)
+        {
             m_vBag[existItem].SetCount(m_vBag[existItem].GetCount() + 1);
+        }
         else
+        {
             m_vBag.push_back(*m_equipWeapon);
+        }
 
         delete m_equipWeapon;
-        m_equipWeapon = new Item(newItem);
-
-        player->Setattack(player->Getattack() + m_equipWeapon->GetAbility());
+        m_equipWeapon = new Item(m_vBag[itemIdx]);
     }
-    else if (newItem.GetType() == ITEM::ITEM_ARMOR)
+    else if (m_vBag[itemIdx].GetType() == ITEM::ITEM_ARMOR)
     {
-        player->Setmaxhp(player->Getmaxhp() - m_equipArmor->GetAbility());
-
         existItem = IsItemExist(m_equipArmor->GetName());
 
         if (existItem > -1)
+        {
             m_vBag[existItem].SetCount(m_vBag[existItem].GetCount() + 1);
+        }
         else
+        {
             m_vBag.push_back(*m_equipArmor);
+        }
 
         delete m_equipArmor;
-        m_equipArmor = new Item(newItem);
-
-        player->Setmaxhp(player->Getmaxhp() + m_equipArmor->GetAbility());
-        player->Sethp(player->Gethp() + m_equipArmor->GetAbility());
+        m_equipArmor = new Item(m_vBag[itemIdx]);
     }
-    else if (newItem.GetType() == ITEM::ITEM_ACCESSORY)
+    else if (m_vBag[itemIdx].GetType() == ITEM::ITEM_ACCESSORY)
     {
-        player->Setmaxmp(player->Getmaxmp() - m_equipAccessory->GetAbility());
-
         existItem = IsItemExist(m_equipAccessory->GetName());
 
         if (existItem > -1)
+        {
             m_vBag[existItem].SetCount(m_vBag[existItem].GetCount() + 1);
+        }
         else
+        {
             m_vBag.push_back(*m_equipAccessory);
+        }
 
         delete m_equipAccessory;
-        m_equipAccessory = new Item(newItem);
-
-        player->Setmaxmp(player->Getmaxmp() + m_equipAccessory->GetAbility());
-        player->Setmp(player->Getmp() + m_equipAccessory->GetAbility());
+        m_equipAccessory = new Item(m_vBag[itemIdx]);
     }
 
     m_vBag[itemIdx].SetCount(m_vBag[itemIdx].GetCount() - 1);
