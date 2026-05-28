@@ -13,6 +13,8 @@
 #include "Thief.h"
 #include "Archer.h"
 
+#include "UIManager.h"
+
 using namespace std;
 
 class Warrior;
@@ -91,7 +93,8 @@ Character* CreateCharacter()
     string name;
     int choice;
 
-    cout << " 캐릭터 이름을 입력하세요: ";
+    cout << " 길드에 등록하기 위해서는 모험가 명이 필요합니다." << endl;
+    cout << " 리암의 모험가 명을 입력하세요: ";
     cin >> name;
 
     while (true)
@@ -135,8 +138,15 @@ Character* CreateCharacter()
     }
 }
 
+UIManager ui;
+
 int main()
-{
+{    
+    ui.ShowTitleScreen();    
+    cin.get();
+    system("cls");
+   
+
     GameManager gameManager;
     Character* player = CreateCharacter();
     MainGame mainGame(player);

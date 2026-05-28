@@ -28,11 +28,10 @@ public:
 
     static void PrintWrongInput();
 
-    int ShowTitleScreen();
+    static void ShowTitleScreen();
 
     static void DrawBattleScreen(Character* player, Monster* monster, std::string message, bool showMenu = true);
     static void DrawPlayerAscii(Character* player);
     static void DrawMonsterAscii(Monster* monster);
     static void UpdateBattleMessage(string message);
-
 };
