@@ -4,21 +4,21 @@
 
 using namespace std;
 
-string Orc::Basicattack(Character* player)
+string Boss::Basicattack(Character* player)
 {
 	int hitcount = 1;
-	int damage = Getattack() * 1.5;
+	int damage = Getattack() * 2.2;
 	int totaldamage = hitcount * damage;
 
 	player->Takedamage(totaldamage);
-	string message = "오크가 주먹질을 한다! " + to_string(damage) + "대미지\n";
+	string message = "Calamity의 검이 당신을 관통한다. " + to_string(damage) + "대미지\n";
 
 	return message;
 }
 
-string Orc::Specialattack(Character* player)
+string Boss::Specialattack(Character* player)
 {
-	int damage = Getattack() * 1.5;
+	int damage = Getattack() * 2.2;
 
 	player->Takedamage(damage);
 

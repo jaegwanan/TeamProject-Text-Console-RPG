@@ -29,4 +29,5 @@ public:
     void BuyItem(int itemIdx, Character* player);
     void SellItem(int itemIdx, Character* player);
     int IsItemExist(const string& itemName);
+
 };

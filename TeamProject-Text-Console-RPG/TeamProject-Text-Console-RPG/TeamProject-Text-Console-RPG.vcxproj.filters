@@ -69,9 +69,6 @@
     <ClCompile Include="Monster.cpp">
       <Filter>소스 파일\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Goblin.cpp">
-      <Filter>소스 파일\Enemy\Enemylist</Filter>
-    </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>소스 파일\Item</Filter>
     </ClCompile>
@@ -102,11 +99,26 @@
     <ClCompile Include="Warrior.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="UIManager.cpp">
+    <ClCompile Include="AAT.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="AchievementManager.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Goblin.cpp">
+      <Filter>소스 파일\Enemy\Enemylist</Filter>
+    </ClCompile>
+    <ClCompile Include="Troll.cpp">
+      <Filter>소스 파일\Enemy\Enemylist</Filter>
+    </ClCompile>
+    <ClCompile Include="Slime.cpp">
+      <Filter>소스 파일\Enemy\Enemylist</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc.cpp">
+      <Filter>소스 파일\Enemy\Enemylist</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,8 +182,9 @@
     <ClInclude Include="UIManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="AchievementManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="AchievementManager.h" />
   </ItemGroup>
 </Project>
