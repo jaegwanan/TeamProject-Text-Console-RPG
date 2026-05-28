@@ -1,5 +1,5 @@
 #include "Shop.h"
-
+#include "Inventory.h"
 // 생성자
 Shop::Shop() : m_itemCount(0), m_shopSelectNum((int)SHOP::SHOP_TOWN)
 {    //전사 무기
@@ -102,7 +102,7 @@ void Shop::ShowShopItem()
         cout << "=================================================" << endl;
         cout << ++m_itemCount << "번째 아이템" << endl;
         m_viItem->ShowItemInfo();
-        Sleep(1000);
+        Sleep(245);
     }
 
     cout << "=================================================" << endl;

@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "Inventory.h"
 #include <iostream>
 #include <string>
 
@@ -12,9 +13,10 @@ Character::Character(std::string name)
 
 void Character::Displaystatus()
 {
-    cout << "---------------------------------" << endl;
-    cout << "이름: " << name << "  |  " << "직업: " << job << "  |  " << "Lv." << level << endl;
-    cout << "HP: " << hp << "  |  " << "공격력: " << attack << "  |  " << "경험치: " << exp << "/" <<Getrequiredexp() << endl;
+    cout << "------------------------------------------------------------------------------------------------------" << endl;
+    cout << "이름: " << name << "  |  " << "직업: " << job << "  |  " << "Lv." << level << "  |  경험치: " << exp << "/" << Getrequiredexp() << endl;
+    cout << "HP: " << maxhp << "  |  " << "MP: " << maxmp << "  |  " << "공격력: " << attack << "  |  " << "소유금액: " << gold << endl;
+    cout << "------------------------------------------------------------------------------------------------------" << endl;
 
 }
 
@@ -23,8 +25,6 @@ void Character::Basicattack(Monster* monster)
     int hitcount = 1;
     int damage = attack;
     int totaldamage = hitcount * damage;
-    
-    cout << "\n" << Attackmessage() << endl;
     monster->Takedamage(totaldamage);
 }
 
@@ -34,7 +34,7 @@ void Character::Takedamage(int monsterattack)
     //대미지 공식
     int damage = monsterattack;
     if (damage < 0) damage = 1;
-    cout << name << "에게 " << damage << " 대미지!" << endl;
+
 
     //실제 체력 소모
     int beforehp = hp;
@@ -57,9 +57,6 @@ void Character::Gainexp(int amount)
         level++;
 
         Applylevelupstats();
-
-        cout << " 레벨 업! 현재 레벨: " << level << endl;
-        Printexpbar();
 
     }
 }

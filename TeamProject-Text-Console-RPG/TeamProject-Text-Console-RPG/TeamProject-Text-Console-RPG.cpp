@@ -6,6 +6,7 @@
 #include "GameManager.h"
 #include "shop.h"
 #include "ShopManager.h"
+#include "Inventory.h"
 
 #include "Warrior.h"
 #include "Mage.h"
@@ -144,7 +145,6 @@ int main()
     cout << " 캐릭터 생성 완료! " << endl;
     player->Displaystatus();
 
-    cin.ignore();
     cin.get();
 
     while (true)
@@ -158,6 +158,8 @@ int main()
         cout << " 2. 전투 시작" << endl;
         cout << " 3. 인벤토리" << endl;
         cout << " 4. 상점" << endl;
+        cout << " 5. 휴식" << endl;
+        cout << " 72. 마왕성으로 향한다." << endl;
         cout << " 0. 게임 종료" << endl;
         cout << "============================" << endl;
         cout << " 선택: ";
@@ -175,18 +177,43 @@ int main()
             continue;
         }
 
+        cin.ignore(1000, '\n');
+
         switch (menu)
         {
         case 1:
             system("cls");
             player->Displaystatus();
-            cin.ignore();
             cin.get();
             break;
 
         case 2:
-            gameManager.Battle(player);
+        {
+            int battle = gameManager.Battle(player, 1);
+            cin.ignore(1000, '\n');
+
+            if (battle == 1)
+            {
+                cout << "승리\n";
+            }
+            else if (battle == 2)
+            {
+                cout << "공멸\n";
+            }
+            else if (battle == 3)
+            {
+                cout << "패배\n";
+            }
+            else if (battle == 4)
+            {
+                cout << "도망\n";
+            }
+            else
+            {
+                cout << "잘못된 입력\n";
+            }
             break;
+        }
         case 3:
             mainGame.ShowInventoryPage(player);
             break;
@@ -194,7 +221,45 @@ int main()
         case 4:
             mainGame.ShowShopPage();
             break;
+        case 5:
+        {
+            int hprecovery = static_cast<int>(player->Getmaxhp() * 0.4);
+            int mprecovery = static_cast<int>(player->Getmaxmp() * 0.4);
 
+            player->Sethp(player->Gethp() + hprecovery);
+            player->Setmp(player->Getmp() + mprecovery);
+            cout << "당신은 휴식을 취해 체력을 " << hprecovery << ", 마나를 " << mprecovery << " 회복했다.\n";
+            cin.get();
+            break;
+        }
+        case 72:
+        {
+            int ending = gameManager.Battle(player, 2);
+            cin.ignore(1000, '\n');
+
+            if (ending == 1)
+            {
+                cout << "진 엔딩\n";
+                cin.get();
+            }
+            else if (ending == 2)
+            {
+                cout << "배드 엔딩\n";
+                cin.get();
+            }
+            else if (ending == 3)
+            {
+                cout << "게임 오버\n";
+                cin.get();
+            }
+            else
+            {
+                cout << "이 너머 레벨 업 필요하다.\n";
+                cin.get();
+            }
+
+            break;
+        }
         case 0:
             delete player;
             cout << " 게임을 종료합니다." << endl;
@@ -240,7 +305,7 @@ void MainGame::ShowInventoryPage(Character* player)
             break;
 
         case 2:
-            m_player->GetInventory()->ShowPlayerEquip();
+            m_player->GetInventory()->ShowPlayerEquip(m_player);
             break;
 
         case 3:

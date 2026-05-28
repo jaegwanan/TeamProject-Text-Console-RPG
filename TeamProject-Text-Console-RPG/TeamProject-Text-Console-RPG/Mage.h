@@ -10,8 +10,9 @@ public:
     int Getrequiredexp() override;
     void Applylevelupstats() override;
 
-    bool Skill(Monster* monster) override;
+    std::vector<std::string> Skill(Monster* monster) override;
 
     std::string Getskillname() override;
+    vector<string> GetAsciiArt() override;
 };
 

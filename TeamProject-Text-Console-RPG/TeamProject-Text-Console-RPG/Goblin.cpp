@@ -4,32 +4,35 @@
 
 using namespace std;
 
-void Goblin::Basicattack(Character* player)
+string Goblin::Basicattack(Character* player)
 {
 	int hitcount = 1;
 	int damage = Getattack();
 	int totaldamage = hitcount * damage;
 
-	cout << "고블린이 주먹질을 한다!\n" << damage << " 대미지" << endl;
-
 	player->Takedamage(totaldamage);
-	cin.get();
+	string message = "고블린이 주먹질을 한다! " + to_string(damage) + "대미지\n";
+
+	return message;
 }
 
-void Goblin::Specialattack(Character* player)
+string Goblin::Specialattack(Character* player)
 {
-	int hitcount = 3;
 	int damage = Getattack();
-	int totaldamage = hitcount * damage;
 
-	cout << "고블린이 " << hitcount << "연속 공격을 한다!\n" << endl;
+	player->Takedamage(damage);
 
-	for (int i = 0; i < hitcount; i++)
-	{
-		cout << damage << "의 대미지!" << endl;
-		Sleep(150);
-	}
+	string message = "고블린의 연속 공격! " + player->Getname() + "에게 " + to_string(damage) + " 데미지!";
 
-	player->Takedamage(totaldamage);
-	cin.get();
+	return message;
+}
+
+vector<string> Goblin::GetAsciiArt()
+{
+	return {
+"    V /l__/l   ",
+"    |(○ W ○ )  ",
+"    E_)    E_) ",
+"    | l_/ l_)  "
+	};
 }

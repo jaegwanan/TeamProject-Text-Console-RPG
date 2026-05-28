@@ -4,32 +4,35 @@
 
 using namespace std;
 
-void Slime::Basicattack(Character* player)
+string Slime::Basicattack(Character* player)
 {
 	int hitcount = 1;
-	int damage = Getattack();
+	int damage = Getattack() * 0.8;
 	int totaldamage = hitcount * damage;
 
-	cout << "슬라임이 끈끈이를 날린다!\n" << damage << " 대미지" << endl;
-
 	player->Takedamage(totaldamage);
-	cin.get();
+	string message = "슬라임이 끈끈이를 날린다! " + to_string(damage) + "대미지\n";
+
+	return message;
 }
 
-void Slime::Specialattack(Character* player)
+string Slime::Specialattack(Character* player)
 {
-	int hitcount = 3;
-	int damage = Getattack();
-	int totaldamage = hitcount * damage;
+	int damage = Getattack() * 0.8;
 
-	cout << "슬라임이 " << hitcount << "연속 공격을 한다!\n" << endl;
+	player->Takedamage(damage);
 
-	for (int i = 0; i < hitcount; i++)
-	{
-		cout << damage << "의 대미지!" << endl;
-		Sleep(150);
-	}
+	string message = "슬라임의 연속 공격!" + player->Getname() + "에게 " + to_string(damage) + " 데미지!";
 
-	player->Takedamage(totaldamage);
-	cin.get();
+	return message;
+}
+
+vector<string> Slime::GetAsciiArt()
+{
+	return {
+"  .@@@@@@     ",
+" .@##`   @   ",
+" @##.   `@@    ",
+"  @@@@@@@@`    "
+	};
 }
