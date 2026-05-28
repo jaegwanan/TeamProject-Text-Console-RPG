@@ -187,8 +187,32 @@ int main()
             break;
 
         case 2:
-            gameManager.Battle(player);
+        {
+            int battel = gameManager.Battle(player, 1);
+            cin.ignore(1000, '\n');
+
+            if (battel == 1)
+            {
+                cout << "승리\n";
+            }
+            else if (battel == 2)
+            {
+                cout << "공멸\n";
+            }
+            else if (battel == 3)
+            {
+                cout << "패배\n";
+            }
+            else if (battel == 4)
+            {
+                cout << "도망\n";
+            }
+            else
+            {
+                cout << "잘못된 입력\n";
+            }
             break;
+        }
         case 3:
             mainGame.ShowInventoryPage(player);
             break;
@@ -208,19 +232,28 @@ int main()
         }
         case 72:
         {
-            int ending = gameManager.Bossbattle(player);
+            int ending = gameManager.Battle(player, 2);
+            cin.ignore(1000, '\n');
 
             if (ending == 1)
             {
                 cout << "진 엔딩\n";
+                cin.get();
             }
             else if (ending == 2)
             {
                 cout << "배드 엔딩\n";
+                cin.get();
+            }
+            else if (ending == 3)
+            {
+                cout << "게임 오버\n";
+                cin.get();
             }
             else
             {
-                cout << "게임 오버\n";
+                cout << "이 너머 레벨 업 필요하다.\n";
+                cin.get();
             }
 
             break;

@@ -59,9 +59,9 @@ string Warrior::Getskillname()
 vector<string> Warrior::GetAsciiArt()
 {
     return {
-  "   /^\\\\      /\\\\",
-  "  |###| <==|==|",
-  " /|###|\\\\    ||",
-  "   / \\\\"
+"  _.-\\\\-_           ",
+" |    |  |          ",
+" [_______]          ",
+" ( ' . ' ) -|======> "
     };
 }

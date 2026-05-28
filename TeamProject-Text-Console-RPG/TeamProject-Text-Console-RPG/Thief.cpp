@@ -65,9 +65,9 @@ string Thief::Getskillname()
 vector<string> Thief::GetAsciiArt()
 {
     return {
-"   .--.    /\\\\",
-"  |####|  /__\\\\",
-" /|####|\\\\  ||",
-"    /\\\\"
+"   .--._      ",
+"  /     \\    ",
+" [===##==]  A ",
+" ( ^ o ^ )  Y "
     };
 }

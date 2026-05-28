@@ -71,9 +71,9 @@ string Archer::Getskillname()
 vector<string> Archer::GetAsciiArt()
 {
     return {
-"   .--.      )",
-"  |####|=====>",
-" /|####|\\\\    )",
-"    /\\\\"
+" ,____        ",
+" |&   \\    |\\",
+" [======]  | |",
+" ( > _ ' ) |/"
     };
 }

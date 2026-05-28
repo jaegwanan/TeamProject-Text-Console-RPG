@@ -12,6 +12,6 @@
 class GameManager
 {
 public:
-    void Battle(Character* player);
+    int Battle(Character* player, int Num);
     int Bossbattle(Character* player);
 };
