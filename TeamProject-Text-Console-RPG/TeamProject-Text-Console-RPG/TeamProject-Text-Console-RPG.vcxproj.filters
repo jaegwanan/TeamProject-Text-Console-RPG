@@ -108,17 +108,20 @@
     <ClCompile Include="AchievementManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Orc.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Slime.cpp">
+    <ClCompile Include="UIManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Troll.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Enemy\Enemylist</Filter>
     </ClCompile>
-    <ClCompile Include="UIManager.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Orc.cpp">
+      <Filter>소스 파일\Enemy\Enemylist</Filter>
+    </ClCompile>
+    <ClCompile Include="Slime.cpp">
+      <Filter>소스 파일\Enemy\Enemylist</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>소스 파일\Enemy\Enemylist</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

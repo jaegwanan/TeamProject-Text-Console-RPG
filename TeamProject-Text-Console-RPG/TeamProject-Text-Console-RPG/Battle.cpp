@@ -71,7 +71,7 @@ Monster* Generatemonster(Character* player) // 몬스터 랜덤 생성 함수
     int level = Generatemonsterlevel(player); // 적 레벨 +-1 랜덤 함수
     if (randomvalue4 <= 35)
     {
-        return new Goblin(level); // 35프로
+        return new Slime(level); // 35프로
     }
 
     else if (randomvalue4 <= 65)
@@ -81,36 +81,18 @@ Monster* Generatemonster(Character* player) // 몬스터 랜덤 생성 함수
 
     else if (randomvalue4 <= 85)
     {
-        return new Goblin(level); // 20프로
+        return new Orc(level); // 20프로
     }
     else
     {
-        return new Goblin(level); // 15프로
+        return new Troll(level); // 15프로
     }
 }
 
 Monster* Generatebossmonster(Character* player) // 몬스터 랜덤 생성 함수
 {
-    int randomvalue4 = rand() % 100 + 1;
     int level = Generatemonsterlevel(player) + 3; // 최대 14 최소 12레벨의 보스
-    if (randomvalue4 <= 35)
-    {
-        return new Goblin(level); // 35프로
-    }
-
-    else if (randomvalue4 <= 65)
-    {
-        return new Goblin(level); // 30프로
-    }
-
-    else if (randomvalue4 <= 85)
-    {
-        return new Goblin(level); // 20프로
-    }
-    else
-    {
-        return new Goblin(level); // 15프로
-    }
+    return new Boss(level);
 }
 
 int Percent(Monster* monster)
@@ -245,13 +227,25 @@ void AddDropItem(Character* player, Item item)
 
 Item CreateDropItem(string itemName)
 {
-    if (itemName == "고블린의 고추기름")
+    if (itemName == "슬라임 젤")
     {
-        return Item(ITEM::ITEM_EMPTY, "고블린의 고추기름", 5, 0, "고블린에게서 얻은 전리품", 1);
+        return Item(ITEM::ITEM_EMPTY, "슬라임 젤", 10, 0, "슬라임에게서 얻은 끈적한 젤", 1);
     }
-    else if (itemName == "슬라임 젤")
+    else if (itemName == "고블린의 고추기름")
     {
-        return Item(ITEM::ITEM_EMPTY, "슬라임 젤", 3, 0, "슬라임에게서 얻은 끈적한 젤", 1);
+        return Item(ITEM::ITEM_EMPTY, "고블린의 고추기름", 20, 0, "고블린에게서 얻은 전리품", 1);
+    }
+    else if (itemName == "오크의 겨드랑이때")
+    {
+        return Item(ITEM::ITEM_EMPTY, "오크의 겨드랑이때", 50, 0, "오크에게서 얻은 겨드랑이때", 1);
+    }
+    else if (itemName == "트롤의 발톱")
+    {
+        return Item(ITEM::ITEM_EMPTY, "트롤의 발톱", 150, 0, "트롤에게서 얻은 발톱", 1);
+    }
+    else if (itemName == "Calamity의 투구")
+    {
+        return Item(ITEM::ITEM_EMPTY, "Calamity의 투구", 3000, 0, "마왕 Calamity의 투구", 1);
     }
 
     return Item(ITEM::ITEM_EMPTY, itemName, 1, 0, "정체불명의 전리품", 1);
@@ -503,6 +497,10 @@ void GameManager::Battle(Character* player)
         {
             break;
         }
+        else
+        {
+            Monsterattack(player, monster);
+        }
 
         // 턴 종료 회복
         int hprecovery = static_cast<int>(player->Gethp() * 0.05);
@@ -551,7 +549,7 @@ void GameManager::Battle(Character* player)
         int gold = monster->Getgold(); // //-------------------------------------------------------------------------------------------------------------------- 몬스터 경험치 게터 요구합니다.
         player->Gainexp(exp); //-------------------------------------------------------------------------------------------------------------- 경험치 세터/게터 요구합니다.
         ////-------------------------------------------------------------------------------------------------------------------------------------- 세터에 maxexp 때리면 레벨업 함수 불러와주세요.
-        player->Setgold(player->Getgold() + gold * randomvalue5); //골드는 인트형이기에 소수점 자동 변환----------------------------------------------------------------- 골드 세터/게터 요구합니다.
+        player->Setgold(player->Getgold() + static_cast<int>(gold * randomvalue5)); //골드는 인트형이기에 소수점 자동 변환----------------------------------------------------------------- 골드 세터/게터 요구합니다.
         cout << "당신은 " << exp << " 만큼의 경험치와 " << gold << " 골드를 획득했다.\n";
         if (randomvalue3 >= 30)
         {
@@ -573,7 +571,7 @@ void GameManager::Battle(Character* player)
 }
 
 
-bool GameManager::Bossbattle(Character* player)
+int GameManager::Bossbattle(Character* player)
 {
     if (10 <= player->Getlevel())
     {
@@ -588,28 +586,24 @@ bool GameManager::Bossbattle(Character* player)
         string monstername = monster->Getname(); //이제 변동없는 게터를 지역함수로 선언
         int monsterlevel = monster->Getlevel();
 
-        cout << "보스 몬스터 " << monstername << "이(가) 나타났다";
+        cout << "불길한 기운이 감돈다.";
+       
+        cin.get();
+
+        cout << "당시과 비슷한 체격의 인물이 서 있다.";
+        
+        cin.get();
+
+        string battleMessage = "마왕 " + monstername + " 이(가) 나타났다!";
+        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
         cin.clear();
         cin.ignore(1000, '\n');
         cin.get();
 
-        while (player->Gethp() > 0 && monster->Gethp() > 0) // //---------------------------------------------------------------------------------------------- 플레이어 체력게터 몬스터 체력 게터 요구합니다.
-            // 와일문으로 반복, 내부에서 continue 사용시 여기로 다시 복귀
+        while (player->Gethp() > 0 && monster->Gethp() > 0)
         {
-            system("cls"); // 한번 윗줄 비우고
-
-
-            // //---------------------------------------------------------------------------------------------- 적 UI + 아스키아트 함수요구합니다.
-
-
-            // //---------------------------------------------------------------------------------------------- 아군 UI + 아스키아트 함수 요구합니다.
-
-
-            cout << "1. 공격\n";
-            cout << "2. " << skillname << "\n";
-            cout << "3. 아이템을 사용\n";
-            cout << "4. 도주\n";
-            cout << "5. 자동사냥\n";
+            // 매 턴마다 현재 HP/MP가 반영된 배틀 화면 + 선택 메뉴 출력
+            UIManager::DrawBattleScreen(player, monster, battleMessage, true);
 
             if (autobattle == true)
             {
@@ -617,150 +611,273 @@ bool GameManager::Bossbattle(Character* player)
             }
             else
             {
-                if (!(cin >> choice)) // 여기서 입력 받고
+                if (!(cin >> choice))
                 {
-                    system("cls");
-                    cout << "잘못된 입력입니다.\n";
                     cin.clear();
                     cin.ignore(1000, '\n');
+
+                    battleMessage = "잘못된 입력입니다.";
+                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
                     cin.get();
 
                     continue;
                 }
+
                 cin.ignore(1000, '\n');
             }
 
             switch (choice)
             {
             case 1:
-                Basicattack(player, monster); // 일반 공격 함수
+            {
+                int beforeHp = monster->Gethp();
+
+                Basicattack(player, monster);
+
+                int damage = beforeHp - monster->Gethp();
+
+                battleMessage = player->Getname() + "의 공격! " + monster->Getname() + "에게 " + to_string(damage) + " 데미지!";
+                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
                 cin.get();
+
                 break;
+            }
 
             case 2:
             {
-                if (player->Skill(monster)) // 스킬 사용 성공시 break로 턴 넘어감
+                int beforeHp = monster->Gethp();
+
+                if (player->Skill(monster))
                 {
+                    int damage = beforeHp - monster->Gethp();
+
+                    battleMessage = player->Getskillname() + " 사용! " + monster->Getname() + "에게 " + to_string(damage) + " 데미지!";
+                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
                     cin.get();
+
                     break;
                 }
-                else // 스킬 사용 실패시 턴 소모 없이 continue으로 다시 선택
+                else
                 {
-                    system("cls");
-                    cout << "MP가 부족해 스킬을 사용 할 수 없다.\n";
+                    battleMessage = "MP가 부족해 스킬을 사용할 수 없다.";
+                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
                     cin.get();
+
                     continue;
                 }
             }
+
             case 3:
             {
                 system("cls");
-                //------------------------------------------------------------------------------------------아이템 사용 함수 bool UseItem(); 사용 성공시 리턴 true 요구합니다.
-                if (Useitem(player)) // 아이템 사용 성공시 break로 턴 넘어감
+
+                if (Useitem(player))
                 {
+                    battleMessage = "아이템을 사용했다!";
+                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                    cin.get();
+
                     break;
                 }
-                else // 아이템 사용 실패시 턴 소모 없이 continue으로 다시 선택
+                else
                 {
-                    system("cls");
-                    cout << "아이템을 사용하지 않았다.\n";
+                    battleMessage = "아이템을 사용하지 않았다.";
+                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
                     cin.get();
+
                     continue;
                 }
             }
 
             case 4:
             {
-                    system("cls");
-                    cout << "당신은 도망을 결심했다.\n";
-                    cin.get();
-                    cout << "도망은 용서되지 않는다.\n";
-                    cin.get();
-                    continue;
+                battleMessage = "당신은 도망치려 했다.";
+                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                cin.get();
+                battleMessage = "도망칠 수 있을 거라 생각했나?";
+
+                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                cin.get();
+
+                continue;
             }
-            case 5: // 선택지 자동
+
+            case 5:
             {
                 autobattle = true;
-                int playerhp = player->Gethp(); //----------------------------------------------------------------------------------------------Character의 현재 HP 게터 요구함니다.
-                int playermp = player->Getmp(); // //----------------------------------------------------------------------------------------------Character의 현재 HP 게터 요구함니다.
-                int monsterhp = monster->Gethp(); // //----------------------------------------------------------------------------------------------monster의 현재 HP 게터 요구함니다.
+
+                int playerhp = player->Gethp();
+                int playermp = player->Getmp();
+                int monsterhp = monster->Gethp();
                 int randomvalue = rand() % 100 + 1;
-                int mp = 100; // 이 친구만 바꾼다면
+                int mp = 100;
 
-        // 몬스터 턴
-        if (monster->Gethp() > 0)
-        {
-            Monsterattack(player, monster);
-        }
-    }
+                if (monsterhp < playerhp && playermp < mp)
+                {
+                    Basicattack(player, monster);
 
-    if (player->Gethp() <= 0 && monster->Gethp() <= 0)
-    {
-        battleMessage = "당신은 " + monstername + "과(와) 공멸했다.";
-        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-        cin.get();
+                    battleMessage = "자동 전투: " + player->Getname() + "이(가) 공격했다!";
+                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                    cin.get();
 
-        player->Sethp(1);
-    }
-    else if (player->Gethp() <= 0)
-    {
-        battleMessage = "당신은 " + monstername + "에게 패배했다.";
-        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-        cin.get();
+                    break;
+                }
+                else if (monsterhp < playerhp && playermp >= mp)
+                {
+                    if (player->Skill(monster))
+                    {
+                        battleMessage = "자동 전투: " + player->Getskillname() + "을(를) 사용했다!";
+                        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                        cin.get();
 
-        player->Sethp(1);
-    }
-    else if (monster->Gethp() <= 0)
-    {
-        int randomvalue3 = rand() % 100 + 1;
-        double randomvalue5 = (rand() % 41 + 80) / 100.0;
+                        break;
+                    }
+                    else
+                    {
+                        battleMessage = "MP가 부족해 스킬을 사용할 수 없다.";
+                        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                        cin.get();
 
-        battleMessage = "당신은 " + monstername + "에게 승리했다!";
-        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-        cin.get();
+                        continue;
+                    }
+                }
+                else if (monsterhp >= playerhp && playermp < mp)
+                {
+                    if (randomvalue > 70)
+                    {
+                        system("cls");
 
-        string item = monster->Getitemname();
-        int exp = monster->Getexp();
-        int gold = monster->Getgold();
+                        if (Useitem(player))
+                        {
+                            battleMessage = "자동 전투: 아이템을 사용했다!";
+                            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                            cin.get();
 
-        player->Gainexp(exp);
-        player->Setgold(player->Getgold() + gold * randomvalue5);
+                            break;
+                        }
+                        else
+                        {
+                            battleMessage = "아이템을 사용하지 않았다.";
+                            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                            cin.get();
 
-        battleMessage =
-            "경험치 " +
-            to_string(exp) +
-            ", 골드 " +
-            to_string(gold) +
-            " 획득!";
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        battleMessage = "당신은 도망치려 했다.";
+                        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                        cin.get();
+                        battleMessage = "도망칠 수 있을 거라 생각했나?";
 
-        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-        cin.get();
+                        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                        cin.get();
 
-        if (randomvalue3 >= 30)
-        {
-            Item dropItem = CreateDropItem(item);
-            AddDropItem(player, dropItem);
+                        continue;
+                    }
+                }
+                else if (monsterhp >= playerhp && playermp >= 100)
+                {
+                    if (player->Skill(monster))
+                    {
+                        battleMessage = "자동 전투: " + player->Getskillname() + "을(를) 사용했다!";
+                        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                        cin.get();
 
-            battleMessage =
-                monstername +
-                "에게서 " +
-                dropItem.GetName() +
-                "을(를) 얻었다!";
+                        break;
+                    }
+                    else
+                    {
+                        battleMessage = "MP가 부족해 스킬을 사용할 수 없다.";
+                        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                        cin.get();
 
+                        continue;
+                    }
+                }
+
+                break;
+            }
+
+            default:
+            {
+                battleMessage = "잘못된 입력입니다.";
+                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                cin.get();
+
+                continue;
+            }
+            }
+
+            // 플레이어 행동으로 몬스터가 죽었으면 바로 전투 종료 판정으로 이동
+            if (monster->Gethp() <= 0)
+            {
+                break;
+            }
+
+            // 턴 종료 회복
+            battleMessage = "당신은 " + monstername + " 의 기운에 압도되고 있다.";
             UIManager::DrawBattleScreen(player, monster, battleMessage, false);
             cin.get();
+            int hprecovery = static_cast<int>(player->Gethp() * 0.05);
+            int mprecovery = static_cast<int>(player->Getmp() * 0.05);
+
+            player->Sethp(player->Gethp() - hprecovery);
+            player->Setmp(player->Getmp() - mprecovery);
+
+            battleMessage = monstername + " 의 기운이 당신에게 피해를 준다.\n" + to_string(hprecovery) + " 의 체력과 " + to_string(mprecovery) + " 의 마나를 잃었다.";
+            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+
+        } // 와일문 끝
+
+
+        if (player->Gethp() <= 0 && monster->Gethp() <= 0) // 만약에 만약에 턴제 전투인데 동시에 체력이 0이 되고 나온다면...? 독 이나 체력을 자원으로 사용하는 스킬?
+        {
+            system("cls");
+            cout << "당신은 " << monstername << "과(와) 공멸했다.\n";
+            cin.get();
+            player->Sethp(1);
+            delete monster;
+            return 3;
         }
+        else if (player->Gethp() <= 0)
+        {
+            system("cls");
+            cout << "당신은 " << monstername << "에게 패배했다.\n";
+            cin.get();
+            player->Sethp(1);//-----------------------------------------------------------------------------------------------------------------------캐릭터 hp 세터
+            delete monster;
+            return 2;
+        }
+        else if (monster->Gethp() <= 0)
+        {
+            int randomvalue3 = rand() % 100 + 1;
+            double randomvalue5 = (rand() % 41 + 80) / 100.0;
+            system("cls");
+            //  --------------------------------------------------------------------------------------------------------------------------------------------------업적 시스템[몬스터] 카운팅 함수
+            cout << "당신은 " << monstername << "에게 승리했다.\n";
+
+            cin.get();
+        }
+        else
+        {
+            cout << "잘못된 접근 입니다.";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cin.get();
+            delete monster;
+            return 0;
+        }
+        delete monster;
+        return 1;
     }
     else
     {
-        battleMessage = "잘못된 접근입니다.";
-        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+        cout << "오... 그럴자격 없다.";
+        cin.clear();
+        cin.ignore(1000, '\n');
         cin.get();
-
-        delete monster;
-        return;
+        return 0;
     }
-
-    delete monster;
-    return;
 }
