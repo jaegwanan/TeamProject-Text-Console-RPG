@@ -40,6 +40,8 @@ public:
     void Setgold(int gold) { this->gold = gold; }
     void Setitemname(std::string itemname) { this->itemname = itemname; }
 
+    virtual std::vector<std::string> GetAsciiArt() = 0;
+
     //공격 함수 선언
     virtual std::string Basicattack(Character* player) = 0; //일반공격 가상
     virtual std::string Specialattack(Character* player) = 0; //특수공격 가상
@@ -73,6 +75,7 @@ public:
         this->gold = 10 + (level * 3);
         this->itemname = "고블린의 고추기름";
     }
+    std::vector<std::string> GetAsciiArt() override;
 
     // 구현 필요
     std::string Basicattack(Character* player) override;
@@ -103,6 +106,7 @@ public:
         this->gold = 10 + (level * 5);
         this->itemname = "오크의 겨드랑이때";
     }
+    std::vector<std::string> GetAsciiArt() override;
 
     std::string Basicattack(Character* player) override;
     std::string Specialattack(Character* player) override;
@@ -132,6 +136,7 @@ public:
         this->gold = 10 + (level * 10);
         this->itemname = "트롤의 발톱";
     }
+    std::vector<std::string> GetAsciiArt() override;
 
     std::string Basicattack(Character* player) override;
     std::string Specialattack(Character* player) override;
@@ -161,6 +166,7 @@ public:
         this->gold = 10 + (level * 2);
         this->itemname = "슬라임의 착즙액";
     }
+    std::vector<std::string> GetAsciiArt() override;
 
     std::string Basicattack(Character* player) override;
     std::string Specialattack(Character* player) override;
@@ -190,6 +196,7 @@ public:
         this->gold = 10 + (level * 100);
         this->itemname = "Calamity의 투구";
     }
+    std::vector<std::string> GetAsciiArt() override;
 
     // 구현 필요
     std::string Basicattack(Character* player) override;
