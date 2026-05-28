@@ -49,7 +49,6 @@ void Character::Gainexp(int amount)
 {   
     cout << amount << " EXP È¹µæ!" << endl;
     exp += amount;
-    Printexpbar();
 
     while (exp >= Getrequiredexp())
     {
