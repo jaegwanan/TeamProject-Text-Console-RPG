@@ -7,7 +7,7 @@ using namespace std;
 string Slime::Basicattack(Character* player)
 {
 	int hitcount = 1;
-	int damage = Getattack();
+	int damage = Getattack() * 0.8;
 	int totaldamage = hitcount * damage;
 
 	player->Takedamage(totaldamage);
@@ -18,7 +18,7 @@ string Slime::Basicattack(Character* player)
 
 string Slime::Specialattack(Character* player)
 {
-	int damage = Getattack();
+	int damage = Getattack() * 0.8;
 
 	player->Takedamage(damage);
 

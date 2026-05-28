@@ -7,7 +7,7 @@ using namespace std;
 string Troll::Basicattack(Character* player)
 {
 	int hitcount = 1;
-	int damage = Getattack();
+	int damage = Getattack() * 2;
 	int totaldamage = hitcount * damage;
 
 	player->Takedamage(totaldamage); 
@@ -18,7 +18,7 @@ string Troll::Basicattack(Character* player)
 
 string Troll::Specialattack(Character* player)
 {
-	int damage = Getattack();
+	int damage = Getattack() * 2;
 
 	player->Takedamage(damage);
 

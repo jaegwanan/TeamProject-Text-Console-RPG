@@ -60,9 +60,9 @@ string Mage::Getskillname()
 vector<string> Mage::GetAsciiArt()
 {
     return {
- "    /\\\\      *",
- "   /__\\\\    /|",
- "  |####|   /_|",
- "    /\\\\"
+"  <  \\        ",
+"  |¡¡ \\       &",
+"  <====>     /",
+" ( * _ * )  /"
     };
 }

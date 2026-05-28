@@ -50,7 +50,7 @@ void Shop::ShowShopItem()
         cout << "=================================================" << endl;
         cout << ++m_itemCount << "번째 아이템" << endl;
         m_viItem->ShowItemInfo();
-        Sleep(1000);
+        Sleep(245);
     }
 
     cout << "=================================================" << endl;
