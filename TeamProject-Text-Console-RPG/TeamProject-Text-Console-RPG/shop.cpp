@@ -1,5 +1,5 @@
 #include "Shop.h"
-
+#include "Inventory.h"
 // »ý¼ºÀÚ
 Shop::Shop() : m_itemCount(0), m_shopSelectNum((int)SHOP::SHOP_TOWN)
 {
