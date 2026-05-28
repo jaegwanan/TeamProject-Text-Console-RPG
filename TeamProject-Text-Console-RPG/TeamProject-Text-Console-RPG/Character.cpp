@@ -34,7 +34,7 @@ void Character::Takedamage(int monsterattack)
     //대미지 공식
     int damage = monsterattack;
     if (damage < 0) damage = 1;
-    cout << name << "에게 " << damage << " 대미지!" << endl;
+
 
     //실제 체력 소모
     int beforehp = hp;

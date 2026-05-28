@@ -105,19 +105,33 @@ void Monsterattack(Character* player, Monster* monster) // 이 함수 하나로 몬스터
     int randomvalue6 = rand() % 100 + 1;
     if (randomvalue6 <= 60) // 60 퍼센트 확률로 일반공격
     {
-        monster->Basicattack(player); // -----------------------------------------------------------------------------------------[몬스터]의 void Basicattack(Character* player) 요구
+        string message = monster->Basicattack(player);
+        UIManager::DrawBattleScreen(player, monster, message, false);
+        cin.get(); // -----------------------------------------------------------------------------------------[몬스터]의 void Basicattack(Character* player) 요구
         //------------------------------------------------------------------------------------------------------플레이어에게 주는 데미지 판정과 공격이름 텍스트 등 전부 안에서 해결 할 것
     }
     else
     {
         if (Percent(monster) < 50) // 40 퍼센트 확률로 자신의 체력을 보고 5할 이하일 경우 특수 공격 사용
         {
-            monster->Specialattack(player); // -----------------------------------------------------------------------------------------[몬스터]의 void Specialattack(Character* player) 요구
+            for (int i = 0; i < 3; i++)
+            {
+                string message = to_string(i + 1) + "타! " + monster->Specialattack(player);
+                UIManager::DrawBattleScreen(player, monster, message, false);
+                cin.get();
+
+                if (player->Gethp() <= 0)
+                {
+                    break;
+                }
+            } // -----------------------------------------------------------------------------------------[몬스터]의 void Specialattack(Character* player) 요구
             //------------------------------------------------------------------------------------------------------플레이어에게 주는 데미지 판정과 공격이름 텍스트 등 전부 안에서 해결 할 것
         }
         else
         {
-            monster->Basicattack(player); // 일반공격
+            string message = monster->Basicattack(player);
+            UIManager::DrawBattleScreen(player, monster, message, false);
+            cin.get();; 
         }
     }
 
@@ -229,6 +243,10 @@ void GameManager::Battle(Character* player)
     string monstername = monster->Getname();
     int monsterlevel = monster->Getlevel();
     string battleMessage = monstername + "이(가) 나타났다!";
+    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+    cin.clear();
+    cin.ignore(1000, '\n');
+    cin.get();
 
     while (player->Gethp() > 0 && monster->Gethp() > 0)
     {
@@ -260,9 +278,13 @@ void GameManager::Battle(Character* player)
         {
         case 1:
         {
+            int beforeHp = monster->Gethp();
+
             Basicattack(player, monster);
 
-            battleMessage = player->Getname() + "의 공격!";
+            int damage = beforeHp - monster->Gethp();
+
+            battleMessage = player->Getname() + "의 공격! " + monster->Getname() + "에게 " + to_string(damage) + " 데미지!";
             UIManager::DrawBattleScreen(player, monster, battleMessage, false);
             cin.get();
 
@@ -271,9 +293,13 @@ void GameManager::Battle(Character* player)
 
         case 2:
         {
+            int beforeHp = monster->Gethp();
+
             if (player->Skill(monster))
             {
-                battleMessage = player->Getskillname() + "을(를) 사용했다!";
+                int damage = beforeHp - monster->Gethp();
+
+                battleMessage = player->Getskillname() + " 사용! " + monster->Getname() + "에게 " + to_string(damage) + " 데미지!";
                 UIManager::DrawBattleScreen(player, monster, battleMessage, false);
                 cin.get();
 
@@ -475,10 +501,6 @@ void GameManager::Battle(Character* player)
         if (monster->Gethp() > 0)
         {
             Monsterattack(player, monster);
-
-            battleMessage = monster->Getname() + "의 공격!";
-            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-            cin.get();
         }
     }
 
