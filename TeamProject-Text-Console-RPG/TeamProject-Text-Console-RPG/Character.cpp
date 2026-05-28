@@ -146,6 +146,11 @@ void Character::Setgold(int gold)
     this->gold = gold;
 }
 
+void Character::Setpoisoned(bool poisoned)
+{
+    this->ispoisoned = poisoned;
+}
+
 // getter
 std::string Character::Getjob()
 {
@@ -190,4 +195,9 @@ int Character::Getexp()
 int Character::Getgold()
 {
     return gold;
+}
+
+int Character::Getpoisoned()
+{
+    return ispoisoned;
 }

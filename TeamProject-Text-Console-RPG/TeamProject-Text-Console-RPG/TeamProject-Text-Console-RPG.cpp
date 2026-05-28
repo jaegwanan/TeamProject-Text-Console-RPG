@@ -144,7 +144,7 @@ int main()
     cout << endl;
     cout << " 캐릭터 생성 완료! " << endl;
     player->Displaystatus();
-
+    cin.ignore(1000, '\n');
     cin.get();
 
     while (true)
@@ -190,6 +190,7 @@ int main()
         case 2:
         {
             int battle = gameManager.Battle(player, 1);
+            player->Setpoisoned(false);
             cin.ignore(1000, '\n');
 
             if (battle == 1)

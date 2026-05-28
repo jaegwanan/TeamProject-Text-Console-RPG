@@ -69,23 +69,33 @@ Monster* Generatemonster(Character* player) // 몬스터 랜덤 생성 함수
 {
     int randomvalue4 = rand() % 100 + 1;
     int level = Generatemonsterlevel(player); // 적 레벨 +-1 랜덤 함수
-    if (randomvalue4 <= 35)
+    if (randomvalue4 <= 15)
     {
-        return new Slime(level); // 35프로
+        return new Slime(level); // 15프로
     }
 
-    else if (randomvalue4 <= 65)
+    else if (randomvalue4 <= 35)
     {
-        return new Goblin(level); // 30프로
+        return new Goblin(level); // 20프로
     }
 
-    else if (randomvalue4 <= 85)
+    else if (randomvalue4 <= 55)
     {
         return new Orc(level); // 20프로
     }
-    else
+
+    else if (randomvalue4 <= 70)
     {
         return new Troll(level); // 15프로
+    }
+
+    else if (randomvalue4 <= 90)
+    {
+        return new Zombie(level); // 20프로
+    }
+    else
+    {
+        return new Goldengoblin(level); // 10프로
     }
 }
 
@@ -106,7 +116,7 @@ int Percent(Monster* monster)
     return (monsterhp * 100) / monstermaxhp;
 }
 
-void Monsterattack(Character* player, Monster* monster) // 이 함수 하나로 몬스터 AI를 완성
+bool Monsterattack(Character* player, Monster* monster) // 이 함수 하나로 몬스터 AI를 완성
 {
     int randomvalue6 = rand() % 100 + 1;
     if (randomvalue6 <= 60) // 60 퍼센트 확률로 일반공격
@@ -122,13 +132,21 @@ void Monsterattack(Character* player, Monster* monster) // 이 함수 하나로 몬스터
         {
             for (int i = 0; i < 3; i++)
             {
-                string message = to_string(i + 1) + "타! " + monster->Specialattack(player);
+                string specialMessage = monster->Specialattack(player);
+
+                string message = to_string(i + 1) + "타! " + specialMessage;
+
                 UIManager::DrawBattleScreen(player, monster, message, false);
                 cin.get();
 
+                if (specialMessage == "황금 고블린이 도망쳤다! ")
+                {
+                    return true;
+                }
+
                 if (player->Gethp() <= 0)
                 {
-                    break;
+                    continue;
                 }
             } // -----------------------------------------------------------------------------------------[몬스터]의 void Specialattack(Character* player) 요구
             //------------------------------------------------------------------------------------------------------플레이어에게 주는 데미지 판정과 공격이름 텍스트 등 전부 안에서 해결 할 것
@@ -140,7 +158,7 @@ void Monsterattack(Character* player, Monster* monster) // 이 함수 하나로 몬스터
             cin.get();; 
         }
     }
-
+    return 0;
 }
 
 bool Useitem(Character* player)
@@ -247,6 +265,14 @@ Item CreateDropItem(string itemName)
     {
         return Item(ITEM::ITEM_EMPTY, "Calamity의 투구", 3000, 0, "마왕 Calamity의 투구", 1);
     }
+    else if (itemName == "황금 고블린의 보물상자")
+    {
+        return Item(ITEM::ITEM_EMPTY, "황금 고블린의 보물상자", 500, 0, "황금에게서 얻은 보물상자", 1);
+    }
+    else if (itemName == "좀비 고기")
+    {
+        return Item(ITEM::ITEM_EMPTY, "좀비 고기", 70, 0, "좀비에게서 얻은 고기", 1);
+    }
 
     return Item(ITEM::ITEM_EMPTY, itemName, 1, 0, "정체불명의 전리품", 1);
 }
@@ -281,7 +307,8 @@ int GameManager::Battle(Character* player, int Num)
             cout << "불길한 기운이 감돈다.";
             cin.get();
 
-            cout << "당신과 비슷한 체격의 인물이 서 있다.";
+            battleMessage = "당신과 비슷한 체격의 인물이 서 있다.";
+            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
             cin.get();
 
             battleMessage = "마왕 " + monstername + " 이(가) 나타났다!";
@@ -583,41 +610,58 @@ int GameManager::Battle(Character* player, int Num)
         }
         else
         {
-            Monsterattack(player, monster);
+            bool run = Monsterattack(player, monster);
+            if (run)
+            {
+                delete monster;
+                return 4;
+            }
         }
 
         // 턴 종료 회복
-        if (Num == 1)
+        if (player->Getpoisoned() == false)
         {
-            int hprecovery = static_cast<int>(player->Gethp() * 0.05);
-            int mprecovery = static_cast<int>(player->Getmp() * 0.05);
+            if (Num == 1)
+            {
+                int hprecovery = static_cast<int>(player->Gethp() * 0.05);
+                int mprecovery = static_cast<int>(player->Getmp() * 0.05);
 
-            player->Sethp(player->Gethp() + hprecovery);
-            player->Setmp(player->Getmp() + mprecovery);
+                player->Sethp(player->Gethp() + hprecovery);
+                player->Setmp(player->Getmp() + mprecovery);
 
-            battleMessage =
-                "시간 경과에 따라 체력 " +
-                to_string(hprecovery) +
-                ", 마나 " +
-                to_string(mprecovery) +
-                " 회복!";
+                battleMessage =
+                    "시간이 지나며 체력이 " +
+                    to_string(hprecovery) +
+                    ", 마나가 " +
+                    to_string(mprecovery) +
+                    " 회복했다.";
 
-            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-            cin.get();
+                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                cin.get();
+            }
+            else if (Num == 2)
+            {
+                battleMessage = "당신은 " + monstername + " 의 기운에 압도되고 있다.";
+                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                cin.get();
+                int hprecovery = static_cast<int>(player->Gethp() * 0.05);
+                int mprecovery = static_cast<int>(player->Getmp() * 0.05);
+
+                player->Sethp(player->Gethp() - hprecovery);
+                player->Setmp(player->Getmp() - mprecovery);
+
+                battleMessage = monstername + " 의 기운이 당신에게 피해를 준다.\n" + to_string(hprecovery) + " 의 체력과 " + to_string(mprecovery) + " 의 마나를 잃었다.";
+                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                cin.get();
+            }
         }
-        else if (Num == 2)
+        else
         {
-            battleMessage = "당신은 " + monstername + " 의 기운에 압도되고 있다.";
+            battleMessage = "당신은 독에 중독되어 자연회복이 되지 않는다.";
+
             UIManager::DrawBattleScreen(player, monster, battleMessage, false);
             cin.get();
-            int hprecovery = static_cast<int>(player->Gethp() * 0.05);
-            int mprecovery = static_cast<int>(player->Getmp() * 0.05);
 
-            player->Sethp(player->Gethp() - hprecovery);
-            player->Setmp(player->Getmp() - mprecovery);
-
-            battleMessage = monstername + " 의 기운이 당신에게 피해를 준다.\n" + to_string(hprecovery) + " 의 체력과 " + to_string(mprecovery) + " 의 마나를 잃었다.";
-            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
         }
 
     } // 와일문 끝
@@ -670,6 +714,7 @@ int GameManager::Battle(Character* player, int Num)
       
         int beforeLevel = player->Getlevel();
         player->Gainexp(exp);
+        cin.get();
         int afterLevel = player->Getlevel();
         
 
@@ -689,7 +734,15 @@ int GameManager::Battle(Character* player, int Num)
             UIManager::DrawBattleScreen(player, monster, battleMessage, false);
         }
 
-        if (randomvalue3 >= 30)
+        if (randomvalue3 >= 30 && monstername != "황금 고블린")
+        {
+            Item dropItem = CreateDropItem(item);
+            AddDropItem(player, dropItem);
+
+            battleMessage = "잘 찾아보니 " + monstername + "에게서 " + dropItem.GetName() + "을(를) 얻을 수 있었다.";
+            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+        }
+        else if (monstername == "황금 고블린")
         {
             Item dropItem = CreateDropItem(item);
             AddDropItem(player, dropItem);
