@@ -208,7 +208,7 @@ class Zombie : public Monster
 {
 private:
     bool isrevived = false; 
-
+    bool reviveReady = false;
 public:
     Zombie(int level)
         : Monster("좀비", 0, 0) // 임시값
@@ -236,6 +236,8 @@ public:
     std::string Specialattack(Character* player) override;
 
     void Takedamage(int damage) override; // 부활로직 추가할라고
+    std::string Getrevivemessage();
+    void Revive();
 };
 
 // Boss

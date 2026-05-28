@@ -21,7 +21,7 @@ string Zombie::Specialattack(Character* player)
 	int damage = Getattack() * 2;
 
 	player->Takedamage(damage);
-	player->Setpoisoned(true); // 구현 요청 (private bool ispoisoned, get, set)
+	//player->Setpoisoned(true); // 구현 요청 (private bool ispoisoned, get, set)
 
 	string message = "좀비가 깨물었다! " + player->Getname() + "에게 " + to_string(damage) + " 데미지!";
 
@@ -44,9 +44,24 @@ void Zombie::Takedamage(int playerattack)
 
 	if (this->hp <= 0 && !this->isrevived)
 	{
-		this->hp = this->maxhp / 2;
-		this->isrevived = true;
-
-		cout << "좀비가 절반의 체력을 부활했다..." << endl;
+		hp = 0;
+		isrevived = true;
+		reviveReady = true;
 	}
+}
+
+string Zombie::Getrevivemessage()
+{
+	if (reviveReady)
+	{
+		return "좀비가 쓰러졌다... 그러나 무언가 이상하다..";
+	}
+
+	return "";
+}
+
+void Zombie::Revive()
+{
+	hp = maxhp / 2;
+	reviveReady = false;
 }
