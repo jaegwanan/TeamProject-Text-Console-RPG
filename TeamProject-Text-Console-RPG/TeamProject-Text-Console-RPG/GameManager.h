@@ -1,17 +1,13 @@
-// GameManager.h
-
 #pragma once
 
-// 인클루드 기본
-#include<string>
-
-//인클루드 커스텀 헤더
+#include <string>
 #include "Monster.h"
 #include "Character.h"
+
+class AchievementManager;
 
 class GameManager
 {
 public:
-    int Battle(Character* player, int Num);
-    int Bossbattle(Character* player);
+    int Battle(Character* player, int Num, AchievementManager* achManager);
 };

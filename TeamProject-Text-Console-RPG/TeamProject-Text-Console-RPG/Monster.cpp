@@ -1,18 +1,23 @@
-#include "Monster.h"
+ï»¿#include "Monster.h"
 #include "Character.h"
 
 using namespace std;
 
 void Monster::Takedamage(int playerattack)
 {
-	//´ë¹ÌÁö °ø½Ä
+	//ëŒ€ë¯¸ì§€ ê³µì‹
 	int damage = playerattack;
 	if (damage < 0) damage = 1;
 
-	//½ÇÁ¦ Ã¼·Â ¼Ò¸ğ
+	//ì‹¤ì œ ì²´ë ¥ ì†Œëª¨
 	int beforehp = hp;
 	hp -= damage;
 	if (hp <= 0) {
 		cout << endl;
 	}
 }
+
+vector<string> Orc::GetAsciiArt() { return { "   ,____.     ", "   | Ã’_Ã“|     ", "   /( | )\\    ", "  ========    " }; }
+vector<string> Troll::GetAsciiArt() { return { "   .----.     ", "   | >_<|     ", "   \\( | )/    ", "  ========    " }; }
+vector<string> Slime::GetAsciiArt() { return { "    ____      ", "   /O__O\\     ", "  |______|    ", "  ========    " }; }
+vector<string> Boss::GetAsciiArt() { return { "  [CALAMITY]  ", "  (((o_o)))   ", "   \\/ | \\/    ", "  ========    " }; }
