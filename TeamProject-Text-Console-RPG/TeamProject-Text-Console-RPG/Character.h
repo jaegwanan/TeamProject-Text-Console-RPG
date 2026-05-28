@@ -6,9 +6,9 @@
 #include<vector>
 
 #include "Header.h"
-
+#include "Inventory.h"
 #include "Monster.h"
-#include "Item.h"
+#include "Item.h"   
 
 class Inventory;
 

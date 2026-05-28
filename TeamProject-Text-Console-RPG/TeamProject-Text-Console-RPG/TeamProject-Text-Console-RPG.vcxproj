@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ks_c_5601-1987"?>
+<?xml version="1.0" encoding="us-ascii"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -163,6 +163,13 @@
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="AchievementManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="save.txt" />
+    <Text Include="save1.txt" />
+    <Text Include="save2.txt" />
+    <Text Include="save3.txt" />
+    <Text Include="save4.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
