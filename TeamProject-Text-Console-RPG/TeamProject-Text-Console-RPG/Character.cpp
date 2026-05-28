@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "Inventory.h"
 #include <iostream>
 #include <string>
 
@@ -12,9 +13,10 @@ Character::Character(std::string name)
 
 void Character::Displaystatus()
 {
-    cout << "---------------------------------" << endl;
-    cout << "이름: " << name << "  |  " << "직업: " << job << "  |  " << "Lv." << level << endl;
-    cout << "HP: " << hp << "  |  " << "공격력: " << attack << "  |  " << "경험치: " << exp << "/" <<Getrequiredexp() << endl;
+    cout << "------------------------------------------------------------------------------------------------------" << endl;
+    cout << "이름: " << name << "  |  " << "직업: " << job << "  |  " << "Lv." << level << "  |  경험치: " << exp << "/" << Getrequiredexp() << endl;
+    cout << "HP: " << maxhp << "  |  " << "MP: " << maxmp << "  |  " << "공격력: " << attack << "  |  " << "소유금액: " << gold << endl;
+    cout << "------------------------------------------------------------------------------------------------------" << endl;
 
 }
 
