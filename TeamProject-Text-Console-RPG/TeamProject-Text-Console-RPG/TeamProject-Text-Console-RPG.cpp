@@ -144,7 +144,6 @@ int main()
     cout << " 캐릭터 생성 완료! " << endl;
     player->Displaystatus();
 
-    cin.ignore();
     cin.get();
 
     while (true)
@@ -177,33 +176,34 @@ int main()
             continue;
         }
 
+        cin.ignore(1000, '\n');
+
         switch (menu)
         {
         case 1:
             system("cls");
             player->Displaystatus();
-            cin.ignore();
             cin.get();
             break;
 
         case 2:
         {
-            int battel = gameManager.Battle(player, 1);
+            int battle = gameManager.Battle(player, 1);
             cin.ignore(1000, '\n');
 
-            if (battel == 1)
+            if (battle == 1)
             {
                 cout << "승리\n";
             }
-            else if (battel == 2)
+            else if (battle == 2)
             {
                 cout << "공멸\n";
             }
-            else if (battel == 3)
+            else if (battle == 3)
             {
                 cout << "패배\n";
             }
-            else if (battel == 4)
+            else if (battle == 4)
             {
                 cout << "도망\n";
             }
@@ -222,12 +222,13 @@ int main()
             break;
         case 5:
         {
-            int hprecovery = static_cast<int>(player->Gethp() * 0.05);
-            int mprecovery = static_cast<int>(player->Getmp() * 0.05);
+            int hprecovery = static_cast<int>(player->Getmaxhp() * 0.4);
+            int mprecovery = static_cast<int>(player->Getmaxmp() * 0.4);
 
             player->Sethp(player->Gethp() + hprecovery);
             player->Setmp(player->Getmp() + mprecovery);
             cout << "당신은 휴식을 취해 체력을 " << hprecovery << ", 마나를 " << mprecovery << " 회복했다.\n";
+            cin.get();
             break;
         }
         case 72:

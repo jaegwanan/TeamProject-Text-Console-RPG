@@ -30,9 +30,9 @@ string Goblin::Specialattack(Character* player)
 vector<string> Goblin::GetAsciiArt()
 {
 	return {
-"   .--._      ",
-"  /     \\    ",
-" [===##==]  A ",
-" ( ^ o ^ )  Y "
+"    V /l__/l   ",
+"    |(¡Û W ¡Û )  ",
+"    E_)    E_) ",
+"    | l_/ l_)  "
 	};
 }

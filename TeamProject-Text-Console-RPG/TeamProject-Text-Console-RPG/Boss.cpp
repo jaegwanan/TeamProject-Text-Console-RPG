@@ -26,3 +26,12 @@ string Boss::Specialattack(Character* player)
 
 	return message;
 }
+vector<string> Boss::GetAsciiArt()
+{
+	return {
+"       _--_      ",
+"     _|¡Ü  ¡Ü|_    ",
+"    /  \\__/  \\ ",
+"   |          |  "
+	};
+}
