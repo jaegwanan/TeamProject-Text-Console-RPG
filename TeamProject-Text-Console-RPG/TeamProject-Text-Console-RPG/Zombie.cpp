@@ -31,10 +31,10 @@ string Zombie::Specialattack(Character* player)
 vector<string> Zombie::GetAsciiArt()
 {
 	return {
-"   .--._      ",
-"  /     \\    ",
-" [===##==]  A ",
-" ( ^ o ^ )  Y "
+"  \\\\  ___  // ",
+"   \\\\[¡ÜW¡Ü]//  ",
+"    |     |   ",
+"    |_____|   "
 	};
 }
 
