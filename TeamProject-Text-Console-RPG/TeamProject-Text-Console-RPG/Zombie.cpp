@@ -21,7 +21,7 @@ string Zombie::Specialattack(Character* player)
 	int damage = Getattack() * 2;
 
 	player->Takedamage(damage);
-	//player->Setpoisoned(true); // 구현 요청 (private bool ispoisoned, get, set)
+	player->Setpoisoned(true);
 
 	string message = "좀비가 깨물었다! " + player->Getname() + "에게 " + to_string(damage) + " 데미지!";
 
