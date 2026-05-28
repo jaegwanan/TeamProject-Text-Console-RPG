@@ -815,6 +815,10 @@ int GameManager::Bossbattle(Character* player)
             {
                 break;
             }
+            else
+            {
+                Monsterattack(player, monster);
+            }
 
             // 턴 종료 회복
             battleMessage = "당신은 " + monstername + " 의 기운에 압도되고 있다.";

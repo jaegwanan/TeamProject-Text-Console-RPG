@@ -197,13 +197,15 @@ int main()
             mainGame.ShowShopPage();
             break;
         case 5:
+        {
             int hprecovery = static_cast<int>(player->Gethp() * 0.05);
             int mprecovery = static_cast<int>(player->Getmp() * 0.05);
 
             player->Sethp(player->Gethp() + hprecovery);
             player->Setmp(player->Getmp() + mprecovery);
             cout << "당신은 휴식을 취해 체력을 " << hprecovery << ", 마나를 " << mprecovery << " 회복했다.\n";
-
+            break;
+        }
         case 72:
         {
             int ending = gameManager.Bossbattle(player);
