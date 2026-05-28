@@ -130,6 +130,7 @@
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Goblin.cpp" />
+    <ClCompile Include="Goldengoblin.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Mage.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="Troll.cpp" />
     <ClCompile Include="UIManager.cpp" />
     <ClCompile Include="Warrior.cpp" />
+    <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Archer.h" />
