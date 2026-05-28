@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <fstream>
+#include <cstdlib>
 
 #include "Character.h"
 #include "GameManager.h"
@@ -22,6 +24,149 @@ class Mage;
 class Thief;
 class Archer;
 
+void ShowSaveSlots()
+{
+    cout << "=================================================" << endl;
+    cout << "              [ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ ]               " << endl;
+    cout << "=================================================" << endl;
+    for (int i = 1; i <= 4; i++)
+    {
+        string filename = "save" + to_string(i) + ".txt";
+        ifstream fin(filename);
+        if (fin) {
+            string name, job;
+            int level;
+            fin >> name >> job >> level;
+            cout << "  [" << i << "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½] " << name << " (Lv." << level << " " << job << ")" << endl;
+            fin.close();
+        }
+        else {
+            cout << "  [" << i << "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½] --- ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ---" << endl;
+        }
+    }
+    cout << "=================================================" << endl;
+}
+
+void SaveGame(Character* player, AchievementManager* achManager, int slot)
+{
+    string filename = "save" + to_string(slot) + ".txt";
+    ofstream fout(filename);
+    if (!fout) return;
+
+    fout << player->Getname() << endl;
+    fout << player->Getjob() << endl;
+    fout << player->Getlevel() << endl;
+    fout << player->Gethp() << endl;
+    fout << player->Getmaxhp() << endl;
+    fout << player->Getmp() << endl;
+    fout << player->Getmaxmp() << endl;
+    fout << player->Getattack() << endl;
+    fout << player->Getexp() << endl;
+    fout << player->Getgold() << endl;
+
+    string title = player->getActiveTitle();
+    if (title.empty()) title = "None";
+    for (char& c : title) { if (c == ' ') c = '_'; }
+    fout << title << endl;
+
+    fout << achManager->GetRunAwayCount() << endl;
+
+    auto& killStats = achManager->GetKillStats();
+    fout << killStats.size() << endl;
+    for (auto& pair : killStats) {
+        string safeName = pair.first;
+        for (char& c : safeName) { if (c == ' ') c = '_'; }
+        fout << safeName << " " << pair.second << endl;
+    }
+
+    auto& itemStats = achManager->GetItemStats();
+    fout << itemStats.size() << endl;
+    for (auto& pair : itemStats) {
+        string safeName = pair.first;
+        for (char& c : safeName) { if (c == ' ') c = '_'; }
+        fout << safeName << " " << pair.second << endl;
+    }
+
+    auto& achList = achManager->GetAchievementList();
+    fout << achList.size() << endl;
+    for (auto& ach : achList) {
+        fout << ach.isUnlocked << " ";
+    }
+    fout << endl;
+
+    fout.close();
+    UIManager::PrintMessage(to_string(slot) + "ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½!");
+}
+
+Character* LoadGame(int slot, AchievementManager* achManager)
+{
+    string filename = "save" + to_string(slot) + ".txt";
+    ifstream fin(filename);
+    if (!fin) {
+        UIManager::PrintMessage("ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½!");
+        return nullptr;
+    }
+
+    string name, job, title;
+    int level, hp, maxhp, mp, maxmp, attack, exp, gold;
+
+    fin >> name >> job >> level >> hp >> maxhp >> mp >> maxmp >> attack >> exp >> gold >> title;
+
+    Character* player = nullptr;
+    if (job == "ï¿½ï¿½ï¿½ï¿½") player = new Warrior(name);
+    else if (job == "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½") player = new Mage(name);
+    else if (job == "ï¿½ï¿½ï¿½ï¿½") player = new Thief(name);
+    else if (job == "ï¿½Ã¼ï¿½") player = new Archer(name);
+    else player = new Warrior(name);
+
+    player->Setlevel(level);
+    player->Setmaxhp(maxhp);
+    player->Sethp(hp);
+    player->Setmaxmp(maxmp);
+    player->Setmp(mp);
+    player->Setattack(attack);
+    player->Setexp(exp);
+    player->Setgold(gold);
+
+    if (title != "None") {
+        for (char& c : title) { if (c == '_') c = ' '; }
+        player->setActiveTitle(title);
+    }
+
+    int runAway, killSize, itemSize, achSize;
+    if (fin >> runAway) {
+        achManager->GetRunAwayCount() = runAway;
+
+        fin >> killSize;
+        for (int i = 0; i < killSize; i++) {
+            string safeName; int count;
+            fin >> safeName >> count;
+            for (char& c : safeName) { if (c == '_') c = ' '; }
+            achManager->GetKillStats()[safeName] = count;
+        }
+
+        fin >> itemSize;
+        for (int i = 0; i < itemSize; i++) {
+            string safeName; int count;
+            fin >> safeName >> count;
+            for (char& c : safeName) { if (c == '_') c = ' '; }
+            achManager->GetItemStats()[safeName] = count;
+        }
+
+        fin >> achSize;
+        auto& achList = achManager->GetAchievementList();
+        for (int i = 0; i < achSize; i++) {
+            bool unlocked;
+            fin >> unlocked;
+            if (i < achList.size()) achList[i].isUnlocked = unlocked;
+        }
+    }
+
+    fin.close();
+    UIManager::PrintMessage(to_string(slot) + "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½Ô½ï¿½ï¿½Ï´ï¿½!");
+    return player;
+}
+
 MainGame::MainGame(Character* player) : m_player(player), m_shop(new Shop()), m_mainSelectNum((int)LOCATION::LOCATION_TOWN)
 {
 }
@@ -40,19 +185,19 @@ void MainGame::ShowShopPage()
         system("cls");
 
         std::cout << "=================================================" << std::endl;
-        std::cout << "»óÁ¡¿¡ µé¾î¿Ô½À´Ï´Ù." << std::endl;
-        std::cout << "»óÁ¡¿¡¼­ ÇÒ Çàµ¿À» ¼±ÅÃÇÏ¼¼¿ä." << std::endl;
+        std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô½ï¿½ï¿½Ï´ï¿½." << std::endl;
+        std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½àµ¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½." << std::endl;
         std::cout << "=================================================" << std::endl;
-        std::cout << "1. ¹°°Ç »ç±â" << std::endl;
-        std::cout << "2. ¹°°Ç ÆÈ±â" << std::endl;
-        std::cout << "0. ¸¶À»·Î µ¹¾Æ°¡±â" << std::endl;
+        std::cout << "1. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½" << std::endl;
+        std::cout << "2. ï¿½ï¿½ï¿½ï¿½ ï¿½È±ï¿½" << std::endl;
+        std::cout << "0. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½" << std::endl;
         std::cout << "=================================================" << std::endl;
-        std::cout << "ÀÔ·Â : ";
+        std::cout << "ï¿½Ô·ï¿½ : ";
 
-        if (!(cin >> Num)) // ¿©±â¼­ ÀÔ·Â ¹Þ°í
+        if (!(cin >> Num)) // ï¿½ï¿½ï¿½â¼­ ï¿½Ô·ï¿½ ï¿½Þ°ï¿½
         {
             system("cls");
-            cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.\n";
+            cout << "ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ô´Ï´ï¿½.\n";
             cin.clear();
             cin.ignore(1000, '\n');
             cin.get();
@@ -72,14 +217,14 @@ void MainGame::ShowShopPage()
 
         case 0:
             std::cout << "=================================================" << std::endl;
-            std::cout << "¸¶À»·Î µ¹¾Æ°©´Ï´Ù." << std::endl;
+            std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½Ï´ï¿½." << std::endl;
             std::cout << "=================================================" << std::endl;
             Sleep(500);
             return;
 
         default:
             std::cout << "=================================================" << std::endl;
-            std::cout << "Àß¸ø ÀÔ·ÂÇß½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä." << std::endl;
+            std::cout << "ï¿½ß¸ï¿½ ï¿½Ô·ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½." << std::endl;
             std::cout << "=================================================" << std::endl;
             Sleep(1000);
             break;
@@ -93,23 +238,23 @@ Character* CreateCharacter()
     string name;
     int choice;
 
-    cout << " ±æµå¿¡ µî·ÏÇÏ±â À§ÇØ¼­´Â ¸ðÇè°¡ ¸íÀÌ ÇÊ¿äÇÕ´Ï´Ù." << endl;
-    cout << " ¸®¾ÏÀÇ ¸ðÇè°¡ ¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä: ";
+    cout << " ï¿½ï¿½å¿¡ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½è°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½Õ´Ï´ï¿½." << endl;
+    cout << " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½è°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½: ";
     cin >> name;
 
     while (true)
     {
-        cout << " Á÷¾÷À» ¼±ÅÃÇÏ¼¼¿ä." << endl;
-        cout << " 1. Àü»ç" << endl;
-        cout << " 2. ¸¶¹ý»ç" << endl;
-        cout << " 3. µµÀû" << endl;
-        cout << " 4. ±Ã¼ö" << endl;
-        cout << " ¼±ÅÃ: ";
+        cout << " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½." << endl;
+        cout << " 1. ï¿½ï¿½ï¿½ï¿½" << endl;
+        cout << " 2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" << endl;
+        cout << " 3. ï¿½ï¿½ï¿½ï¿½" << endl;
+        cout << " 4. ï¿½Ã¼ï¿½" << endl;
+        cout << " ï¿½ï¿½ï¿½ï¿½: ";
 
-        if (!(cin >> choice)) // ¿©±â¼­ ÀÔ·Â ¹Þ°í
+        if (!(cin >> choice)) // ï¿½ï¿½ï¿½â¼­ ï¿½Ô·ï¿½ ï¿½Þ°ï¿½
         {
             system("cls");
-            cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.\n";
+            cout << "ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ô´Ï´ï¿½.\n";
             cin.clear();
             cin.ignore(1000, '\n');
             cin.get();
@@ -129,7 +274,7 @@ Character* CreateCharacter()
             return new Archer(name);
         default:
             system("cls");
-            cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù\n";
+            cout << "ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ô´Ï´ï¿½\n";
             cin.clear();
             cin.ignore(1000, '\n');
             cin.get();
@@ -148,11 +293,71 @@ int main()
    
 
     GameManager gameManager;
-    Character* player = CreateCharacter();
+    Character* player = nullptr;
+
+    int currentSaveSlot = 1;
+
+    while (true)
+    {
+        int startMenuChoice = UIManager::ShowTitleScreen();
+
+        if (startMenuChoice == 1) {
+            system("cls");
+            ShowSaveSlots();
+
+            cout << " ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ (1~4, 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·Î°ï¿½ï¿½ï¿½) : ";
+            int slotChoice;
+            if (!(cin >> slotChoice) || slotChoice < 0 || slotChoice > 4) {
+                cin.clear(); cin.ignore(1000, '\n');
+                UIManager::PrintMessage("ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½Ô´Ï´ï¿½.");
+                continue;
+            }
+            if (slotChoice == 0) continue;
+
+            currentSaveSlot = slotChoice;
+            system("cls");
+
+            player = CreateCharacter();
+
+            cout << endl << " Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½! " << endl;
+            player->Displaystatus();
+
+            SaveGame(player, &achManager, currentSaveSlot);
+            break;
+        }
+        else if (startMenuChoice == 2) {
+            system("cls");
+            ShowSaveSlots();
+
+            cout << " ï¿½Ò·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ (1~4, 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·Î°ï¿½ï¿½ï¿½) : ";
+            int slotChoice;
+            if (!(cin >> slotChoice) || slotChoice < 0 || slotChoice > 4) {
+                cin.clear(); cin.ignore(1000, '\n');
+                UIManager::PrintMessage("ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½Ô´Ï´ï¿½.");
+                continue;
+            }
+            if (slotChoice == 0) continue;
+
+            currentSaveSlot = slotChoice;
+            player = LoadGame(currentSaveSlot, &achManager);
+
+            if (player != nullptr) break;
+        }
+        else if (startMenuChoice == 3) {
+            achManager.DisplayStatsAndTitles();
+        }
+        else if (startMenuChoice == 4) {
+            return 0;
+        }
+        else {
+            UIManager::PrintWrongInput();
+        }
+    }
+
     MainGame mainGame(player);
     
     cout << endl;
-    cout << " Ä³¸¯ÅÍ »ý¼º ¿Ï·á! " << endl;
+    cout << " Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½! " << endl;
     player->Displaystatus();
     cin.ignore(1000, '\n');
     cin.get();
@@ -164,22 +369,22 @@ int main()
         cout << "============================" << endl;
         cout << "        TEXT RPG" << endl;
         cout << "============================" << endl;
-        cout << " 1. »óÅÂ º¸±â" <<endl;
-        cout << " 2. ÀüÅõ ½ÃÀÛ" << endl;
-        cout << " 3. ÀÎº¥Åä¸®" << endl;
-        cout << " 4. »óÁ¡" << endl;
-        cout << " 5. ÈÞ½Ä" << endl;
-        cout << " 72. ¸¶¿Õ¼ºÀ¸·Î ÇâÇÑ´Ù." << endl;
-        cout << " 0. °ÔÀÓ Á¾·á" << endl;
+        cout << " 1. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" <<endl;
+        cout << " 2. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" << endl;
+        cout << " 3. ï¿½Îºï¿½ï¿½ä¸®" << endl;
+        cout << " 4. ï¿½ï¿½ï¿½ï¿½" << endl;
+        cout << " 5. ï¿½Þ½ï¿½" << endl;
+        cout << " 72. ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½." << endl;
+        cout << " 0. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" << endl;
         cout << "============================" << endl;
-        cout << " ¼±ÅÃ: ";
+        cout << " ï¿½ï¿½ï¿½ï¿½: ";
 
         int menu;
 
-        if (!(cin >> menu)) // ¿©±â¼­ ÀÔ·Â ¹Þ°í
+        if (!(cin >> menu)) // ï¿½ï¿½ï¿½â¼­ ï¿½Ô·ï¿½ ï¿½Þ°ï¿½
         {
             system("cls");
-            cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.\n";
+            cout << "ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ô´Ï´ï¿½.\n";
             cin.clear();
             cin.ignore(1000, '\n');
             cin.get();
@@ -199,29 +404,30 @@ int main()
 
         case 2:
         {
-            int battle = gameManager.Battle(player, 1);
-            player->Setpoisoned(false);
+            int battel = gameManager.Battle(player, 1, &achManager);
+            cin.clear();
             cin.ignore(1000, '\n');
 
-            if (battle == 1)
+
+            if (battel == 1)
             {
-                cout << "½Â¸®\n";
+                cout << "ï¿½Â¸ï¿½\n";
             }
             else if (battle == 2)
             {
-                cout << "°ø¸ê\n";
+                cout << "ï¿½ï¿½ï¿½ï¿½\n";
             }
             else if (battle == 3)
             {
-                cout << "ÆÐ¹è\n";
+                cout << "ï¿½Ð¹ï¿½\n";
             }
             else if (battle == 4)
             {
-                cout << "µµ¸Á\n";
+                cout << "ï¿½ï¿½ï¿½ï¿½\n";
             }
             else
             {
-                cout << "Àß¸øµÈ ÀÔ·Â\n";
+                cout << "ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½\n";
             }
             break;
         }
@@ -239,33 +445,51 @@ int main()
 
             player->Sethp(player->Gethp() + hprecovery);
             player->Setmp(player->Getmp() + mprecovery);
-            cout << "´ç½ÅÀº ÈÞ½ÄÀ» ÃëÇØ Ã¼·ÂÀ» " << hprecovery << ", ¸¶³ª¸¦ " << mprecovery << " È¸º¹Çß´Ù.\n";
+            cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ï¿½ï¿½ " << hprecovery << ", ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ " << mprecovery << " È¸ï¿½ï¿½ï¿½ß´ï¿½.\n";
             cin.get();
             break;
         }
+        case 6:
+            achManager.EquipTitleMenu(player);
+            break;
+        case 7:
+            system("cls");
+            ShowSaveSlots();
+            cout << " ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½î¾ºï¿½ï¿½Ã°Ú½ï¿½ï¿½Ï±ï¿½? (1~4, 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½) : ";
+            int saveChoice;
+            if (!(cin >> saveChoice) || saveChoice < 0 || saveChoice > 4) {
+                cin.clear(); cin.ignore(1000, '\n');
+                UIManager::PrintMessage("ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ô´Ï´ï¿½.");
+                break;
+            }
+            if (saveChoice == 0) break;
+
+            currentSaveSlot = saveChoice;
+            SaveGame(player, &achManager, currentSaveSlot);
+            break;
         case 72:
         {
-            int ending = gameManager.Battle(player, 2);
+            int ending = gameManager.Battle(player, 2, &achManager);
             cin.ignore(1000, '\n');
 
             if (ending == 1)
             {
-                cout << "Áø ¿£µù\n";
+                cout << "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½\n";
                 cin.get();
             }
             else if (ending == 2)
             {
-                cout << "¹èµå ¿£µù\n";
+                cout << "ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½\n";
                 cin.get();
             }
             else if (ending == 3)
             {
-                cout << "°ÔÀÓ ¿À¹ö\n";
+                cout << "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½\n";
                 cin.get();
             }
             else
             {
-                cout << "ÀÌ ³Ê¸Ó ·¹º§ ¾÷ ÇÊ¿äÇÏ´Ù.\n";
+                cout << "ï¿½ï¿½ ï¿½Ê¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½Ï´ï¿½.\n";
                 cin.get();
             }
 
@@ -273,12 +497,12 @@ int main()
         }
         case 0:
             delete player;
-            cout << " °ÔÀÓÀ» Á¾·áÇÕ´Ï´Ù." << endl;
+            cout << " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½." << endl;
             return 0;
 
         default: 
             system("cls");
-            cout << " Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù." << endl;
+            cout << " ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ô´Ï´ï¿½." << endl;
             cin.ignore();
             cin.get();
             continue;
@@ -294,15 +518,15 @@ void MainGame::ShowInventoryPage(Character* player)
         system("cls");
 
         std::cout << "=================================================" << std::endl;
-        std::cout << "ÀÎº¥Åä¸®¸¦ ¿­¾ú½À´Ï´Ù." << std::endl;
-        std::cout << "¿øÇÏ´Â Çàµ¿À» ¼±ÅÃÇÏ¼¼¿ä." << std::endl;
+        std::cout << "ï¿½Îºï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½." << std::endl;
+        std::cout << "ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½àµ¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½." << std::endl;
         std::cout << "=================================================" << std::endl;
-        std::cout << "1. °¡¹æ º¸±â" << std::endl;
-        std::cout << "2. Àåºñ È®ÀÎ / ±³Ã¼" << std::endl;
-        std::cout << "3. ½ºÅÈ È®ÀÎ" << std::endl;
-        std::cout << "0. ¸¶À»·Î µ¹¾Æ°¡±â" << std::endl;
+        std::cout << "1. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" << std::endl;
+        std::cout << "2. ï¿½ï¿½ï¿½ È®ï¿½ï¿½ / ï¿½ï¿½Ã¼" << std::endl;
+        std::cout << "3. ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½" << std::endl;
+        std::cout << "0. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½" << std::endl;
         std::cout << "=================================================" << std::endl;
-        std::cout << "ÀÔ·Â : ";
+        std::cout << "ï¿½Ô·ï¿½ : ";
 
         std::cin >> m_mainSelectNum;
 
@@ -311,7 +535,7 @@ void MainGame::ShowInventoryPage(Character* player)
         case 1:
             system("cls");
             m_player->GetInventory()->ShowPlayerBag();
-            std::cout << "¾Æ¹« Å°³ª ÀÔ·ÂÇÏ¸é ÀÎº¥Åä¸®·Î µ¹¾Æ°©´Ï´Ù." << std::endl;
+            std::cout << "ï¿½Æ¹ï¿½ Å°ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¸ï¿½ ï¿½Îºï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½Ï´ï¿½." << std::endl;
             system("pause");
             break;
 
@@ -328,14 +552,14 @@ void MainGame::ShowInventoryPage(Character* player)
 
         case 0:
             std::cout << "=================================================" << std::endl;
-            std::cout << "¸¶À»·Î µ¹¾Æ°©´Ï´Ù." << std::endl;
+            std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½Ï´ï¿½." << std::endl;
             std::cout << "=================================================" << std::endl;
             Sleep(500);
             return;
 
         default:
             std::cout << "=================================================" << std::endl;
-            std::cout << "Àß¸ø ÀÔ·ÂÇß½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä." << std::endl;
+            std::cout << "ï¿½ß¸ï¿½ ï¿½Ô·ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½." << std::endl;
             std::cout << "=================================================" << std::endl;
             Sleep(1000);
             break;
@@ -350,7 +574,7 @@ void MainGame::RandomUseItem()
     if (bag->empty())
     {
         std::cout << "=================================================" << std::endl;
-        std::cout << "»ç¿ëÇÒ ¾ÆÀÌÅÛÀÌ ¾ø½À´Ï´Ù." << std::endl;
+        std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½." << std::endl;
         std::cout << "=================================================" << std::endl;
         return;
     }
@@ -360,26 +584,26 @@ void MainGame::RandomUseItem()
     string itemName = bag->at(randomIndex).GetName();
 
     std::cout << "=================================================" << std::endl;
-    std::cout << itemName << "À»(¸¦) ·£´ýÀ¸·Î »ç¿ëÇß½À´Ï´Ù!" << std::endl;
+    std::cout << itemName << "ï¿½ï¿½(ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½!" << std::endl;
 
-    if (itemName == "HP Æ÷¼Ç")
+    if (itemName == "HP ï¿½ï¿½ï¿½ï¿½")
     {
         m_player->Sethp(m_player->Gethp() + 50);
-        std::cout << "Ã¼·ÂÀÌ 50 È¸º¹µÇ¾ú½À´Ï´Ù." << std::endl;
+        std::cout << "Ã¼ï¿½ï¿½ï¿½ï¿½ 50 È¸ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½." << std::endl;
     }
-    else if (itemName == "MP Æ÷¼Ç")
+    else if (itemName == "MP ï¿½ï¿½ï¿½ï¿½")
     {
         m_player->Setmp(m_player->Getmp() + 30);
-        std::cout << "MP°¡ 30 È¸º¹µÇ¾ú½À´Ï´Ù." << std::endl;
+        std::cout << "MPï¿½ï¿½ 30 È¸ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½." << std::endl;
     }
-    else if (itemName == "°ø°Ý·Â Áõ°¡ Æ÷¼Ç")
+    else if (itemName == "ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")
     {
         m_player->Setattack(m_player->Getattack() + 10);
-        std::cout << "°ø°Ý·ÂÀÌ 10 Áõ°¡Çß½À´Ï´Ù." << std::endl;
+        std::cout << "ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ 10 ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½." << std::endl;
     }
     else
     {
-        std::cout << "ÀÌ ¾ÆÀÌÅÛÀº ÀüÅõ Áß »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù." << std::endl;
+        std::cout << "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½." << std::endl;
         std::cout << "=================================================" << std::endl;
         return;
     }
@@ -399,14 +623,14 @@ void MainGame::ShowMainPage()
     system("cls");
 
     std::cout << "=================================================" << std::endl;
-    std::cout << "´ç½ÅÀº ¸¶À»¿¡ ÀÖ½À´Ï´Ù." << std::endl;
-    std::cout << "´ç½ÅÀÇ Çàµ¿À» ¼±ÅÃÇÏ¼¼¿ä." << std::endl;
-    std::cout << "°ÔÀÓÀ» Á¾·áÇÏ·Á¸é 0À» ÀÔ·ÂÇÏ¼¼¿ä." << std::endl;
+    std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½." << std::endl;
+    std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½àµ¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½." << std::endl;
+    std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ 0ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½." << std::endl;
     std::cout << "=================================================" << std::endl;
-    std::cout << "1. »óÁ¡¿¡ °¡±â" << std::endl;
-    std::cout << "2. ÀÎº¥Åä¸® ¿­±â" << std::endl;
-    std::cout << "3. ÀüÅõ ½ÃÀÛ" << std::endl;
-    std::cout << "4. ½ºÅÈ È®ÀÎ" << std::endl;
+    std::cout << "1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" << std::endl;
+    std::cout << "2. ï¿½Îºï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½" << std::endl;
+    std::cout << "3. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" << std::endl;
+    std::cout << "4. ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½" << std::endl;
     std::cout << "=================================================" << std::endl;
-    std::cout << "ÀÔ·Â : ";
+    std::cout << "ï¿½Ô·ï¿½ : ";
 }
