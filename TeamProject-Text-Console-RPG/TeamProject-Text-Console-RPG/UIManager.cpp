@@ -153,3 +153,84 @@ int UIManager::ShowTitleScreen()
 
     return choice;
 }
+
+void UIManager::DrawPlayerAscii(Character* player)
+{
+    vector<string> art = player->GetAsciiArt();
+
+    for (int i = 0; i < art.size(); i++)
+    {
+        gotoxy(5, 11 + i);
+        cout << art[i];
+    }
+}
+
+void UIManager::DrawMonsterAscii(Monster* monster)
+{
+    gotoxy(55, 4);
+    cout << "  /\\_/\\";
+    gotoxy(55, 5);
+    cout << " ( o.o )";
+    gotoxy(55, 6);
+    cout << "  > ^ <";
+}
+
+void UIManager::DrawBattleScreen(Character* player, Monster* monster, string message, bool showMenu)
+{
+    system("cls");
+
+    DrawMonsterStatus(monster);
+    DrawMonsterAscii(monster);
+
+    DrawPlayerAscii(player);
+    DrawPlayerStatus(player);
+
+    gotoxy(0, 15);
+    cout << "--------------------------------------------------------------------------------";
+    gotoxy(2, 16);
+
+    if (showMenu)
+    {
+        cout << "1. 공격   2. " << player->Getskillname()
+            << "   3. 아이템   4. 도주   5. 자동사냥";
+    }
+    else
+    {
+        cout << message;
+    }
+
+    gotoxy(0, 17);
+    cout << "--------------------------------------------------------------------------------";
+
+    if (showMenu)
+    {
+        gotoxy(2, 18);
+        cout << "선택: ";
+    }
+    else
+    {
+        gotoxy(2, 18);
+        cout << "계속하려면 엔터...";
+    }
+}
+
+void UIManager::UpdateBattleMessage(string message)
+{
+    gotoxy(0, 15);
+
+    cout << "                                                                                ";
+    gotoxy(0, 15);
+
+    cout << "--------------------------------------------------------------------------------";
+
+    gotoxy(2, 16);
+
+    cout << "                                                                                ";
+    gotoxy(2, 16);
+
+    cout << message;
+
+    gotoxy(0, 17);
+
+    cout << "--------------------------------------------------------------------------------";
+}
