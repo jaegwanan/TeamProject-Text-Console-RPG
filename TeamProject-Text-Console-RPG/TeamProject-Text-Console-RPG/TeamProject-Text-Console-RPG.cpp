@@ -438,12 +438,31 @@ int main()
             break;
         case 5:
         {
+            int beforeHp = player->Gethp();
+            int beforeMp = player->Getmp();
+
             int hprecovery = static_cast<int>(player->Getmaxhp() * 0.4);
             int mprecovery = static_cast<int>(player->Getmaxmp() * 0.4);
 
             player->Sethp(player->Gethp() + hprecovery);
             player->Setmp(player->Getmp() + mprecovery);
-            cout << "당신은 휴식을 취해 체력을 " << hprecovery << ", 마나를 " << mprecovery << " 회복했다.\n";
+            
+            int hpRecovery = player->Gethp() - beforeHp;
+            int mpRecovery = player->Getmp() - beforeMp;
+
+            if (hpRecovery == 0 && mpRecovery == 0)
+            {
+                cout << "이미 체력과 마나가 가득 차 있다.\n";
+            }
+            else {
+                cout << "당신은 휴식을 취했다.\n";
+                cout << "체력 " << hpRecovery << ", 마나 " << mpRecovery << " 회복했다.\n";
+            }
+
+            if (player->Getpoisoned()) {
+                cout << "몸에 퍼진 독이 사라졌다.\n";
+                player->Setpoisoned(false);
+            }
             system("pause"); // 안내 문구를 볼 수 있도록 멈춤
             break;
         }

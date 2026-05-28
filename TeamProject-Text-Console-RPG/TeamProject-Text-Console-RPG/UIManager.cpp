@@ -70,6 +70,11 @@ void UIManager::DrawPlayerStatus(Character* player)
     // 주의: Character.h에 getName()과 getLevel() 게터가 선언되어 있어야 합니다.
     cout << player->Getname() << " (Lv." << player->Getlevel() << ")";
 
+    if (player->Getpoisoned())
+    {
+        cout << " [독]";
+    }
+
     gotoxy(5, 9);
 
     // 3. 체력 바와 수치 출력
