@@ -284,7 +284,7 @@ void GameManager::Battle(Character* player)
 
             int damage = beforeHp - monster->Gethp();
 
-            battleMessage = player->Getname() + "의 공격! " + monster->Getname() + "에게 " + to_string(damage) + " 데미지!";
+            battleMessage = player->Getname() + "의 공격! " + player->Attackmessage() + " " + monster->Getname() + "에게 " + to_string(damage) + " 데미지!";
             UIManager::DrawBattleScreen(player, monster, battleMessage, false);
             cin.get();
 
@@ -293,26 +293,31 @@ void GameManager::Battle(Character* player)
 
         case 2:
         {
-            int beforeHp = monster->Gethp();
+            vector<string> skillMessages = player->Skill(monster);
 
-            if (player->Skill(monster))
+            if (skillMessages[0] == "MP가 부족해 스킬을 사용할 수 없다.")
             {
-                int damage = beforeHp - monster->Gethp();
-
-                battleMessage = player->Getskillname() + " 사용! " + monster->Getname() + "에게 " + to_string(damage) + " 데미지!";
-                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                UIManager::DrawBattleScreen(player, monster, skillMessages[0], false);
                 cin.get();
-
-                break;
-            }
-            else
-            {
-                battleMessage = "MP가 부족해 스킬을 사용할 수 없다.";
-                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                cin.get();
-
                 continue;
             }
+
+            for (int i = 0; i < skillMessages.size(); i++)
+            {
+                if (player->Getjob() == "도적" && i > 0)
+                {
+                    int damage = player->Getattack() * 0.7;
+                    monster->Takedamage(damage);
+                }
+
+                UIManager::DrawBattleScreen(player, monster, skillMessages[i], false);
+                cin.get();
+
+                if (monster->Gethp() <= 0)
+                    break;
+            }
+
+            break;
         }
 
         case 3:
@@ -372,7 +377,7 @@ void GameManager::Battle(Character* player)
             {
                 Basicattack(player, monster);
 
-                battleMessage = "자동 전투: " + player->Getname() + "이(가) 공격했다!";
+                battleMessage = "자동 전투: " + player->Getname() + "이(가) 공격했다!" + player->Attackmessage() + " \n";
                 UIManager::DrawBattleScreen(player, monster, battleMessage, false);
                 cin.get();
 
@@ -380,22 +385,31 @@ void GameManager::Battle(Character* player)
             }
             else if (monsterhp < playerhp && playermp >= mp)
             {
-                if (player->Skill(monster))
-                {
-                    battleMessage = "자동 전투: " + player->Getskillname() + "을(를) 사용했다!";
-                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                    cin.get();
+                vector<string> skillMessages = player->Skill(monster);
 
-                    break;
-                }
-                else
+                if (skillMessages[0] == "MP가 부족해 스킬을 사용할 수 없다.")
                 {
-                    battleMessage = "MP가 부족해 스킬을 사용할 수 없다.";
-                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                    UIManager::DrawBattleScreen(player, monster, skillMessages[0], false);
                     cin.get();
-
                     continue;
                 }
+
+                for (int i = 0; i < skillMessages.size(); i++)
+                {
+                    if (player->Getjob() == "도적" && i > 0)
+                    {
+                        int damage = player->Getattack() * 0.7;
+                        monster->Takedamage(damage);
+                    }
+
+                    UIManager::DrawBattleScreen(player, monster, "자동전투: " + skillMessages[i], false);
+                    cin.get();
+
+                    if (monster->Gethp() <= 0)
+                        break;
+                }
+
+                break;
             }
             else if (monsterhp >= playerhp && playermp < mp)
             {
@@ -443,25 +457,32 @@ void GameManager::Battle(Character* player)
             }
             else if (monsterhp >= playerhp && playermp >= 100)
             {
-                if (player->Skill(monster))
-                {
-                    battleMessage = "자동 전투: " + player->Getskillname() + "을(를) 사용했다!";
-                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                    cin.get();
+                vector<string> skillMessages = player->Skill(monster);
 
-                    break;
-                }
-                else
+                if (skillMessages[0] == "MP가 부족해 스킬을 사용할 수 없다.")
                 {
-                    battleMessage = "MP가 부족해 스킬을 사용할 수 없다.";
-                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                    UIManager::DrawBattleScreen(player, monster, skillMessages[0], false);
                     cin.get();
-
                     continue;
                 }
-            }
 
-            break;
+                for (int i = 0; i < skillMessages.size(); i++)
+                {
+                    if (player->Getjob() == "도적" && i > 0)
+                    {
+                        int damage = player->Getattack() * 0.7;
+                        monster->Takedamage(damage);
+                    }
+
+                    UIManager::DrawBattleScreen(player, monster, "자동전투: " + skillMessages[i], false);
+                    cin.get();
+
+                    if (monster->Gethp() <= 0)
+                        break;
+                }
+
+                break;
+            }
         }
 
         default:
@@ -533,8 +554,12 @@ void GameManager::Battle(Character* player)
         int exp = monster->Getexp();
         int gold = monster->Getgold();
 
-        player->Gainexp(exp);
         player->Setgold(player->Getgold() + gold * randomvalue5);
+      
+        int beforeLevel = player->Getlevel();
+        player->Gainexp(exp);
+        int afterLevel = player->Getlevel();
+        
 
         battleMessage =
             "경험치 " +
@@ -545,6 +570,13 @@ void GameManager::Battle(Character* player)
 
         UIManager::DrawBattleScreen(player, monster, battleMessage, false);
         cin.get();
+
+        if (afterLevel > beforeLevel)
+        {
+            battleMessage = "레벨 업! Lv." + to_string(beforeLevel) + " -> Lv." + to_string(afterLevel) + "!";
+            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+            cin.get();
+        }
 
         if (randomvalue3 >= 30)
         {
