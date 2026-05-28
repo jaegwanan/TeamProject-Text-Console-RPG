@@ -9,5 +9,5 @@ class AchievementManager;
 class GameManager
 {
 public:
-    void Battle(Character* player, AchievementManager* achManager);
+    int Battle(Character* player, int Num, AchievementManager* achManager);
 };

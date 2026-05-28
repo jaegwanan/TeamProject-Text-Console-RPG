@@ -1,14 +1,12 @@
 #include "UIManager.h"
 #include <iostream>
-#include <windows.h>
 #include <conio.h>
 
 using namespace std;
 
 void UIManager::gotoxy(int x, int y)
 {
-    COORD pos = { (SHORT)x, (SHORT)y };
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+    cout << "\033[" << y + 1 << ";" << x + 1 << "H";
 }
 
 string UIManager::GetGaugeBar(int current, int max, int width)
@@ -41,14 +39,13 @@ void UIManager::PrintMessage(string message)
 
 void UIManager::PrintMonsterAppear(string monsterName)
 {
-    system("cls");
+    cout << "\033[2J\033[1;1H"; // system("cls") 대체용 화면 지우기
     PrintMessage("앗! 야생의 " + monsterName + "이(가) 나타났다!");
 }
 
 void UIManager::DrawMonsterStatus(Monster* monster)
 {
     gotoxy(45, 2);
-    // 팀원 코드 호환 적용 완료
     cout << monster->Getname() << " (Lv." << monster->Getlevel() << ")";
 
     gotoxy(45, 3);
@@ -64,7 +61,6 @@ void UIManager::DrawPlayerStatus(Character* player)
         cout << player->getActiveTitle() << " ";
     }
 
-    // 팀원 코드 호환 적용 완료
     cout << player->Getname() << " (Lv." << player->Getlevel() << ")";
 
     gotoxy(5, 9);
@@ -101,10 +97,9 @@ void UIManager::PrintWrongInput()
     PrintMessage("잘못된 입력입니다. 다시 선택해주세요.");
 }
 
-// 인코딩 에러를 유발하는 특수문자를 모두 제거한 안전한 시작 화면
 int UIManager::ShowTitleScreen()
 {
-    system("cls");
+    cout << "\033[2J\033[1;1H";
 
     cout << "================================================================================" << endl;
     cout << "                           [ 어둠의 숲과 잊혀진 용사 ]                          " << endl;
@@ -138,7 +133,6 @@ void UIManager::DrawPlayerAscii(Character* player)
 void UIManager::DrawMonsterAscii(Monster* monster)
 {
     vector<string> art = monster->GetAsciiArt();
-
     for (int i = 0; i < art.size(); i++)
     {
         gotoxy(55, 4 + i);
@@ -148,7 +142,7 @@ void UIManager::DrawMonsterAscii(Monster* monster)
 
 void UIManager::DrawBattleScreen(Character* player, Monster* monster, string message, bool showMenu)
 {
-    system("cls");
+    cout << "\033[2J\033[1;1H";
 
     DrawMonsterStatus(monster);
     DrawMonsterAscii(monster);

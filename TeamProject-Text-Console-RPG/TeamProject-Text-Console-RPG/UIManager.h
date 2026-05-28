@@ -17,6 +17,10 @@ public:
     static void PrintRunSuccess();
     static void PrintRunFail();
     static void PrintWrongInput();
-
     static int ShowTitleScreen();
+
+    static void DrawPlayerAscii(Character* player);
+    static void DrawMonsterAscii(Monster* monster);
+    static void DrawBattleScreen(Character* player, Monster* monster, std::string message, bool showMenu);
+    static void UpdateBattleMessage(std::string message);
 };
