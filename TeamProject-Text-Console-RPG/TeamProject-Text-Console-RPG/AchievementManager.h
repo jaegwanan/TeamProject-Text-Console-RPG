@@ -1,16 +1,13 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include <vector>
-#include <map>  
+#include <map>
 
-enum class AchType {
-    KILL,
-    LEVEL,
-    ITEM_USE,
-    RUN_AWAY
-};
+class Character;
 
-// 2. ¡¾¢¬?¢Ò?¨ù¢¬? ?¢ç????¢¥?¢¥?.
+enum class AchType { KILL, LEVEL, ITEM_USE, RUN_AWAY };
+
 struct Achievement {
     std::string titleName;
     AchType type;
@@ -21,20 +18,23 @@ struct Achievement {
 
 class AchievementManager {
 private:
+    std::vector<Achievement> achievementList;
     std::map<std::string, int> killStats;
     std::map<std::string, int> itemStats;
     int runAwayCount = 0;
 
 public:
     AchievementManager();
-
     void UpdateKill(std::string monsterName);
     void UpdateLevel(int currentLevel);
     void UpdateItem(std::string itemName);
     void UpdateRunAway();
-
     void CheckAchievements();
     void DisplayStatsAndTitles();
-
     void EquipTitleMenu(Character* player);
+
+    std::map<std::string, int>& GetKillStats() { return killStats; }
+    std::map<std::string, int>& GetItemStats() { return itemStats; }
+    int& GetRunAwayCount() { return runAwayCount; }
+    std::vector<Achievement>& GetAchievementList() { return achievementList; }
 };

@@ -10,6 +10,7 @@
 #include "Item.h"
 #include "Inventory.h"
 #include "UIManager.h"
+#include "AchievementManager.h"
 
 
 using namespace std;
@@ -162,7 +163,7 @@ bool Monsterattack(Character* player, Monster* monster) // 이 함수 하나로 몬스터
     return 0;
 }
 
-bool Useitem(Character* player)
+bool Useitem(Character* player, AchievementManager* achManager)
 {
     vector<Item>* bag = player->GetInventory()->GetBag();
 
@@ -193,6 +194,8 @@ bool Useitem(Character* player)
 
     Item& item = bag->at(select - 1);
 
+    string usedItemName = item.GetName();
+
     switch (item.GetType())
     {
     case ITEM::ITEM_HP_POTION:
@@ -221,6 +224,7 @@ bool Useitem(Character* player)
     {
         bag->erase(bag->begin() + (select - 1));
     }
+    achManager->UpdateItem(usedItemName);
     cin.get();
 
     return true;
@@ -278,7 +282,7 @@ Item CreateDropItem(string itemName)
     return Item(ITEM::ITEM_EMPTY, itemName, 1, 0, "정체불명의 전리품", 1);
 }
 
-int GameManager::Battle(Character* player, int Num)
+int GameManager::Battle(Character* player, int Num, AchievementManager* achManager)
 {
     Monster* monster = nullptr;
     string monstername = "더미 몬스터";
@@ -440,7 +444,7 @@ int GameManager::Battle(Character* player, int Num)
         {
             system("cls");
 
-            if (Useitem(player))
+            if (Useitem(player, achManager))
             {
                 battleMessage = "아이템을 사용했다!";
                 UIManager::DrawBattleScreen(player, monster, battleMessage, false);
@@ -466,7 +470,7 @@ int GameManager::Battle(Character* player, int Num)
                 {
                     battleMessage = "무사히 도망쳤다!";
                     UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-
+                    achManager->UpdateRunAway();
                     delete monster;
                     return 4;
                 }
@@ -579,7 +583,7 @@ int GameManager::Battle(Character* player, int Num)
                 {
                     system("cls");
 
-                    if (Useitem(player))
+                    if (Useitem(player, achManager))    
                     {
                         battleMessage = "자동 전투: 아이템을 사용했다!";
                         UIManager::DrawBattleScreen(player, monster, battleMessage, false);
@@ -605,7 +609,7 @@ int GameManager::Battle(Character* player, int Num)
                             battleMessage = "자동 전투: 무사히 도망쳤다!";
                             UIManager::DrawBattleScreen(player, monster, battleMessage, false);
                             cin.get();
-
+                            achManager->UpdateRunAway();
                             delete monster;
                             return 4;
                         }
@@ -770,6 +774,7 @@ int GameManager::Battle(Character* player, int Num)
         int randomvalue3 = rand() % 100 + 1;
         double randomvalue5 = (rand() % 41 + 80) / 100.0;
 
+        achManager->UpdateKill(monstername);
         // 업적 시스템[몬스터] 카운팅 함수
         battleMessage = "당신은 " + monstername + "에게 승리했다.";
         UIManager::DrawBattleScreen(player, monster, battleMessage, false);
@@ -800,6 +805,7 @@ int GameManager::Battle(Character* player, int Num)
 
         if (afterLevel > beforeLevel)
         {
+            achManager->UpdateLevel(afterLevel);
             battleMessage = "레벨 업! Lv." + to_string(beforeLevel) + " -> Lv." + to_string(afterLevel) + "!";
             UIManager::DrawBattleScreen(player, monster, battleMessage, false);
         }
