@@ -11,7 +11,7 @@ string Troll::Basicattack(Character* player)
 	int totaldamage = hitcount * damage;
 
 	player->Takedamage(totaldamage); 
-	string message = "íŠ¸ë¡¤ì´ ëª½ë‘¥ì´ë¥¼ íœ˜ë‘ë¥¸ë‹¤! " + to_string(damage) + "ëŒ€ë¯¸ì§€\n";
+	string message = "Æ®·ÑÀÌ ¸ùµÕÀÌ¸¦ ÈÖµÎ¸¥´Ù! " + to_string(damage) + "´ë¹ÌÁö\n";
 
 	return message;
 }
@@ -22,7 +22,7 @@ string Troll::Specialattack(Character* player)
 
 	player->Takedamage(damage);
 
-	string message = "íŠ¸ë¡¤ì˜ ì—°ì† ê³µê²©! " + player->Getname() + "ì—ê²Œ " + to_string(damage) + " ë°ë¯¸ì§€!";
+	string message = "Æ®·ÑÀÇ ¿¬¼Ó °ø°İ! " + player->Getname() + "¿¡°Ô " + to_string(damage) + " µ¥¹ÌÁö!";
 
 	return message;
 }
@@ -30,8 +30,8 @@ string Troll::Specialattack(Character* player)
 vector<string> Troll::GetAsciiArt()
 {
 	return {
-"\\@\\  â”Œâ–³-_-â–³â”  /@/",
-" \\ \\_[â— U â—]_/ / ",
+"\\@\\  ¦£¡â-_-¡â¦¤  /@/",
+" \\ \\_[¡İ U ¡İ]_/ / ",
 "  \\   \\_W_/   /  ",
 "  /___________\\  "
 	};
