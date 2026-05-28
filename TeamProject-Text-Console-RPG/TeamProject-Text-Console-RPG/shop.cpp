@@ -2,30 +2,69 @@
 
 // 생성자
 Shop::Shop() : m_itemCount(0), m_shopSelectNum((int)SHOP::SHOP_TOWN)
-{
-    Item inputItem1(ITEM::ITEM_WEAPON, "평범한 장검", 10, 5,
-        "어느 상점에서나 살 수 있는 장검", 10);
+{    //전사 무기
+    Item inputItem1(ITEM::ITEM_WEAPON, "평범한 장검", 15, 10,
+        "어느 상점에서나 살 수 있는 장검", 1);
 
-    Item inputItem2(ITEM::ITEM_WEAPON, "바스타드 소드", 30, 20,
-        "황무지에서 경험을 쌓은 호인들의 무기", 5);
+    Item inputItem2(ITEM::ITEM_WEAPON, "바스타드 소드", 60, 40,
+        "황무지에서 경험을 쌓은 호인들의 무기", 1);
 
-    Item inputItem3(ITEM::ITEM_WEAPON, "엑스칼리버", 100, 50,
+    Item inputItem3(ITEM::ITEM_WEAPON, "엑스칼리버", 135, 90,
         "선택 받은 자만이 뽑을 수 있다던 그 검", 1);
+     // 마법사 무기
+    Item inputItem4(ITEM::ITEM_WEAPON, "불꽃의 지팡이", 15, 10,
+        "붉은 마력이 깃들어 화염 마법의 위력을 높여주는 지팡이", 1);
 
-    Item inputItem4(ITEM::ITEM_ARMOR, "가죽 갑옷", 10, 10,
-        "탄탄한 가죽으로 만든 갑옷", 10);
+    Item inputItem5(ITEM::ITEM_WEAPON, "현자의 지팡이", 60, 38,
+        "오래된 현자들이 사용하던 신비로운 마법 지팡이", 1);
 
-    Item inputItem5(ITEM::ITEM_ACCESSORY, "마법 진주 목걸이", 25, 15,
-        "특별한 진주로 세공한 목걸이", 8);
+    Item inputItem6(ITEM::ITEM_WEAPON, "달빛 수정 지팡이", 135, 88,
+        "달빛의 힘을 머금은 수정으로 제작된 고급 지팡이", 1);
+    // 도적 무기
+    Item inputItem7(ITEM::ITEM_WEAPON, "그림자 단검", 15, 12,
+        "어둠 속에서 빠르게 적을 베어내는 도적의 단검", 1);
 
-    Item inputItem6(ITEM::ITEM_HP_POTION, "HP 포션", 10, 50,
-        "HP를 회복시키는 포션", 10);
+    Item inputItem8(ITEM::ITEM_WEAPON, "맹독의 단검", 60, 42,
+        "날카로운 칼날에 치명적인 독이 발라진 단검", 1);
 
-    Item inputItem7(ITEM::ITEM_MP_POTION, "MP 포션", 15, 30,
-        "MP를 회복시키는 포션", 10);
+    Item inputItem9(ITEM::ITEM_WEAPON, "암살자의 쌍단검", 135, 92,
+        "수많은 암살 임무에 사용되었다는 전설의 단검", 1);
+    // 궁수 무기
+    Item inputItem10(ITEM::ITEM_WEAPON, "사냥꾼의 활", 15, 11,
+        "초보 궁수들이 가장 많이 사용하는 기본 활", 1);
 
-    Item inputItem8(ITEM::ITEM_ATTACK_POTION, "공격력 포션", 20, 10,
-        "공격력을 증가시키는 포션", 10);
+    Item inputItem11(ITEM::ITEM_WEAPON, "바람의 장궁", 60, 39,
+        "바람처럼 빠른 화살을 발사할 수 있는 장궁", 1);
+
+    Item inputItem12(ITEM::ITEM_WEAPON, "천공의 엘프 활", 135, 89,
+        "엘프 장인들이 제작한 전설의 활", 1);
+    //갑옷
+    Item inputItem13(ITEM::ITEM_ARMOR, "가죽 갑옷", 15, 10,
+        "탄탄한 가죽으로 만든 갑옷", 1);
+
+    Item inputItem14(ITEM::ITEM_ARMOR, "철 갑옷", 60, 30,
+        "철판으로 제작된 튼튼한 갑옷", 1);
+
+    Item inputItem15(ITEM::ITEM_ARMOR, "기사 갑옷", 135, 60,
+        "기사들이 사용하던 견고한 갑옷", 1);
+    //목걸이
+    Item inputItem16(ITEM::ITEM_ACCESSORY, "마법 진주 목걸이", 15, 5,
+        "특별한 진주로 세공한 목걸이", 1);
+
+    Item inputItem17(ITEM::ITEM_ACCESSORY, "힘의 목걸이", 60, 30,
+        "전설의 전사가 사용했다는 힘의 목걸이", 1);
+
+    Item inputItem18(ITEM::ITEM_ACCESSORY, "수호의 목걸이",135, 60,
+        "강력한 결계의 힘이 담긴 수호의 목걸이", 1);
+    //포션
+    Item inputItem19(ITEM::ITEM_HP_POTION, "HP 포션", 15, 10,
+        "HP를 회복시키는 포션", 20);
+
+    Item inputItem20(ITEM::ITEM_MP_POTION, "MP 포션", 15, 10,
+        "MP를 회복시키는 포션", 20);
+
+    Item inputItem21(ITEM::ITEM_ATTACK_POTION, "공격력 포션", 15, 10,
+        "공격력을 증가시키는 포션", 20);
 
     m_vItem.push_back(inputItem1);
     m_vItem.push_back(inputItem2);
@@ -35,7 +74,20 @@ Shop::Shop() : m_itemCount(0), m_shopSelectNum((int)SHOP::SHOP_TOWN)
     m_vItem.push_back(inputItem6);
     m_vItem.push_back(inputItem7);
     m_vItem.push_back(inputItem8);
-}
+    m_vItem.push_back(inputItem9);
+    m_vItem.push_back(inputItem10);
+    m_vItem.push_back(inputItem11);
+    m_vItem.push_back(inputItem12);
+    m_vItem.push_back(inputItem13);
+    m_vItem.push_back(inputItem14);
+    m_vItem.push_back(inputItem15);
+    m_vItem.push_back(inputItem16);
+    m_vItem.push_back(inputItem17);
+    m_vItem.push_back(inputItem18);
+    m_vItem.push_back(inputItem19);
+    m_vItem.push_back(inputItem20);
+    m_vItem.push_back(inputItem21);
+} 
 
 // 상점 아이템 출력
 void Shop::ShowShopItem()
@@ -129,7 +181,10 @@ void Shop::ShopBuyItemPage(Character* player)
             WrongSelect = ((m_shopSelectNum < 0) || (m_shopSelectNum > m_itemCount));
         }
 
-        bool NotEnoughMoney = m_vItem[m_shopSelectNum - 1].GetPrice() > player->Getgold();
+        int itemIndex = static_cast<int>(m_shopSelectNum) - 1;
+
+        bool NotEnoughMoney =
+            m_vItem[itemIndex].GetPrice() > player->Getgold();
 
         if (NotEnoughMoney)
         {
