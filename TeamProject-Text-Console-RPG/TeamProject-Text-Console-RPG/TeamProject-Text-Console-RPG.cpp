@@ -7,6 +7,7 @@
 #include "shop.h"
 #include "ShopManager.h"
 #include "Inventory.h"
+#include "AchievementManager.h"
 
 #include "Warrior.h"
 #include "Mage.h"
@@ -331,6 +332,7 @@ UIManager ui;
     GameManager gameManager;
     Character* player = CreateCharacter();
     MainGame mainGame(player);
+    AchievementManager A;
 
     cout << endl;
     cout << " 캐릭터 생성 완료! " << endl;
@@ -444,7 +446,7 @@ UIManager ui;
             break;
         case 72:
         {
-            int ending = gameManager.Battle(player, 2);
+            int ending = gameManager.Battle(player, 2, &A);
             cin.ignore(1000, '\n');
 
             if (ending == 1)
