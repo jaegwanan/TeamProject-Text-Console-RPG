@@ -23,8 +23,6 @@ void Character::Basicattack(Monster* monster)
     int hitcount = 1;
     int damage = attack;
     int totaldamage = hitcount * damage;
-    
-    cout << "\n" << Attackmessage() << endl;
     monster->Takedamage(totaldamage);
 }
 
@@ -57,9 +55,6 @@ void Character::Gainexp(int amount)
         level++;
 
         Applylevelupstats();
-
-        cout << " 레벨 업! 현재 레벨: " << level << endl;
-        Printexpbar();
 
     }
 }

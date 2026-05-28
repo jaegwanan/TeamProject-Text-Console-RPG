@@ -2,6 +2,7 @@
 #include <iostream>
 #include <windows.h>
 #include <conio.h> // _getch() 사용을 위해 필요
+#include <algorithm>
 
 using namespace std;
 
@@ -59,8 +60,8 @@ void UIManager::DrawMonsterStatus(Monster* monster)
 
     gotoxy(45, 3);
     // 주의: Monster.h에 getHealth()와 getMaxHealth() 게터가 선언되어 있어야 합니다.
-    cout << "HP: " << GetGaugeBar(monster->Gethp(), monster->Getmaxhp(), 15)
-        << " " << monster->Gethp() << "/" << monster->Getmaxhp();
+    cout << "HP: " << GetGaugeBar(max(0, monster->Gethp()), monster->Getmaxhp(), 15)
+        << " " << max(0, monster->Gethp()) << "/" << monster->Getmaxhp();
 }
 
 // 전투 화면 좌측 하단에 플레이어의 상태창을 그리는 함수
@@ -82,8 +83,16 @@ void UIManager::DrawPlayerStatus(Character* player)
 
     // 3. 체력 바와 수치 출력
     // 주의: Character.h에 getHealth()와 getMaxHealth() 게터가 선언되어 있어야 합니다.
-    cout << "HP: " << GetGaugeBar(player->Gethp(), player->Getmaxhp(), 15)
-        << " " << player->Gethp() << "/" << player->Getmaxhp();
+    cout << "HP : " << GetGaugeBar(max(0, player->Gethp()), player->Getmaxhp(), 15)
+        << " " << max(0, player->Gethp()) << "/" << player->Getmaxhp();
+
+    gotoxy(5, 10);
+    cout << "MP : " << GetGaugeBar(max(0, player->Getmp()), player->Getmaxmp(), 15)
+        << " " << max(0, player->Getmp()) << "/" << player->Getmaxmp();
+
+    gotoxy(5, 11);
+    cout << "EXP: " << GetGaugeBar(player->Getexp(), player->Getrequiredexp(), 15)
+        << " " << player->Getexp() << "/" << player->Getrequiredexp();
 }
 
 // 매 턴마다 하단에 전투 선택지 메뉴를 띄우는 함수
@@ -160,7 +169,7 @@ void UIManager::DrawPlayerAscii(Character* player)
 
     for (int i = 0; i < art.size(); i++)
     {
-        gotoxy(5, 11 + i);
+        gotoxy(5, 13 + i);
         cout << art[i];
     }
 }
@@ -185,9 +194,9 @@ void UIManager::DrawBattleScreen(Character* player, Monster* monster, string mes
     DrawPlayerAscii(player);
     DrawPlayerStatus(player);
 
-    gotoxy(0, 15);
+    gotoxy(0, 22);
     cout << "--------------------------------------------------------------------------------";
-    gotoxy(2, 16);
+    gotoxy(2, 23);
 
     if (showMenu)
     {
@@ -199,38 +208,35 @@ void UIManager::DrawBattleScreen(Character* player, Monster* monster, string mes
         cout << message;
     }
 
-    gotoxy(0, 17);
+    gotoxy(0, 24);
     cout << "--------------------------------------------------------------------------------";
 
     if (showMenu)
     {
-        gotoxy(2, 18);
+        gotoxy(2, 25);
         cout << "선택: ";
     }
     else
     {
-        gotoxy(2, 18);
+        gotoxy(2, 25);
         cout << "계속하려면 엔터...";
     }
 }
 
 void UIManager::UpdateBattleMessage(string message)
 {
-    gotoxy(0, 15);
-
+    gotoxy(0, 22);
     cout << "                                                                                ";
-    gotoxy(0, 15);
 
+    gotoxy(0, 22);
     cout << "--------------------------------------------------------------------------------";
 
-    gotoxy(2, 16);
-
+    gotoxy(2, 23);
     cout << "                                                                                ";
-    gotoxy(2, 16);
 
+    gotoxy(2, 23);
     cout << message;
 
-    gotoxy(0, 17);
-
+    gotoxy(0, 24);
     cout << "--------------------------------------------------------------------------------";
 }

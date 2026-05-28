@@ -22,39 +22,45 @@ int Archer::Getrequiredexp()
 void Archer::Applylevelupstats()
 {
     maxhp += 15;
-    hp = maxhp;
     maxmp += 12;
-    mp = maxmp;
     attack += 10;
 }
 
-bool Archer::Skill(Monster* monster)
+vector<string> Archer::Skill(Monster* monster)
 {
+    vector<string> messages;
+
     if (mp < 20)
     {
-        return false;
+        messages.push_back("MP가 부족해 스킬을 사용할 수 없다.");
+        return messages;
     }
 
     mp -= 20;
 
-    cout << " 집중 사격!" << endl;
-
     int damage = attack * 2;
-
     int critChance = rand() % 100 + 1;
 
     if (critChance <= 40)
     {
         damage *= 2;
-
-        cout << " 급소 적중!! 치명타!" << endl;
+        messages.push_back("집중 사격! 급소 적중! 치명타!");
     }
-
-    cout << damage << " 데미지!" << endl;
+    else
+    {
+        messages.push_back("집중 사격!");
+    }
 
     monster->Takedamage(damage);
 
-    return true;
+    messages.push_back(
+        monster->Getname() +
+        "에게 " +
+        to_string(damage) +
+        " 데미지!"
+    );
+
+    return messages;
 }
 
 string Archer::Getskillname()
