@@ -163,59 +163,79 @@ bool Monsterattack(Character* player, Monster* monster) // 이 함수 하나로 몬스터
     return 0;
 }
 
-bool Useitem(Character* player, AchievementManager* achManager)
+string Useitem(Character* player, AchievementManager* achManager)
 {
     vector<Item>* bag = player->GetInventory()->GetBag();
 
     if (bag->empty())
     {
-        cout << "사용할 아이템이 없습니다.\n";
-        return false;
+        return "사용할 아이템이 없습니다.";
     }
 
+    system("cls");
     cout << "===== 아이템 목록 =====\n";
 
     for (int i = 0; i < bag->size(); ++i)
     {
-        cout << i + 1 << ". ";
-        cout << bag->at(i).GetName();
-        cout << " x" << bag->at(i).GetCount() << "\n";
+        cout << i + 1 << ". "
+            << bag->at(i).GetName()
+            << " x" << bag->at(i).GetCount() << "\n";
     }
 
     int select;
-
     cout << "사용할 아이템 번호 : ";
     cin >> select;
 
     if (select <= 0 || select > bag->size())
     {
-        return false;
+        return "아이템을 사용하지 않았다.";
     }
 
     Item& item = bag->at(select - 1);
-
     string usedItemName = item.GetName();
+    string message;
 
     switch (item.GetType())
     {
     case ITEM::ITEM_HP_POTION:
+    {
+        int beforeHp = player->Gethp();
         player->Sethp(player->Gethp() + item.GetAbility());
-        cout << "HP가" << item.GetAbility() << "회복되었다.\n";
+        int realRecovery = player->Gethp() - beforeHp;
+
+        message = usedItemName + " 사용! 체력 " + to_string(realRecovery) + " 회복!";
         break;
+    }
 
     case ITEM::ITEM_MP_POTION:
+    {
+        int beforeMp = player->Getmp();
         player->Setmp(player->Getmp() + item.GetAbility());
-        cout << "MP가" << item.GetAbility() << "회복되었다.\n";
+        int realRecovery = player->Getmp() - beforeMp;
+
+        message = usedItemName + " 사용! 마나 " + to_string(realRecovery) + " 회복!";
         break;
+    }
 
     case ITEM::ITEM_ATTACK_POTION:
         player->Setattack(player->Getattack() + item.GetAbility());
-        cout << "공격력이" << item.GetAbility() << "증가했다.\n";
+        message = usedItemName + " 사용! 공격력 " + to_string(item.GetAbility()) + " 증가!";
+        break;
+
+    case ITEM::ITEM_DETOX_POTION:
+        if (player->Getpoisoned())
+        {
+            player->Setpoisoned(false);
+            message = usedItemName + " 사용! 독이 치료되었다!";
+        }
+        else
+        {
+            return "이미 독 상태가 아니다.";
+        }
         break;
 
     default:
-        cout << "사용할 수 없는 아이템이다.\n";
-        return false;
+        return "전투 중 사용할 수 없는 아이템이다.";
     }
 
     item.SetCount(item.GetCount() - 1);
@@ -224,10 +244,10 @@ bool Useitem(Character* player, AchievementManager* achManager)
     {
         bag->erase(bag->begin() + (select - 1));
     }
-    achManager->UpdateItem(usedItemName);
-    cin.get();
 
-    return true;
+    achManager->UpdateItem(usedItemName);
+
+    return message;
 }
 
 void AddDropItem(Character* player, Item item)
@@ -442,24 +462,20 @@ int GameManager::Battle(Character* player, int Num, AchievementManager* achManag
 
         case 3:
         {
-            system("cls");
+            string itemMessage = Useitem(player, achManager);
+            cin.ignore(1000, '\n');
+            UIManager::DrawBattleScreen(player, monster, itemMessage, false);
+            cin.get();
 
-            if (Useitem(player, achManager))
+            if (itemMessage == "아이템을 사용하지 않았다." ||
+                itemMessage == "사용할 아이템이 없습니다." ||
+                itemMessage == "전투 중 사용할 수 없는 아이템이다." ||
+                itemMessage == "이미 독 상태가 아니다.")
             {
-                battleMessage = "아이템을 사용했다!";
-                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                cin.get();
-
-                break;
-            }
-            else
-            {
-                battleMessage = "아이템을 사용하지 않았다.";
-                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                cin.get();
-
                 continue;
             }
+
+            break;
         }
 
         case 4:
@@ -584,24 +600,21 @@ int GameManager::Battle(Character* player, int Num, AchievementManager* achManag
                 {
                     if (randomvalue > 70)
                     {
-                        system("cls");
+                        string itemMessage = Useitem(player, achManager);
+                        cin.ignore(1000, '\n');
+                        battleMessage = "자동 전투: " + itemMessage;
+                        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                        cin.get();
 
-                        if (Useitem(player, achManager))
+                        if (itemMessage == "아이템을 사용하지 않았다." ||
+                            itemMessage == "사용할 아이템이 없습니다." ||
+                            itemMessage == "전투 중 사용할 수 없는 아이템이다." ||
+                            itemMessage == "이미 독 상태가 아니다.")
                         {
-                            battleMessage = "자동 전투: 아이템을 사용했다!";
-                            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                            cin.get();
-
-                            break;
-                        }
-                        else
-                        {
-                            battleMessage = "아이템을 사용하지 않았다.";
-                            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                            cin.get();
-
                             continue;
                         }
+
+                        break;
                     }
                     else
                     {

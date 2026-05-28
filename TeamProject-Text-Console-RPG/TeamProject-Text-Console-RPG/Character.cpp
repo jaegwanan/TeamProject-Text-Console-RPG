@@ -97,14 +97,10 @@ void Character::Setlevel(int level)
 
 void Character::Sethp(int hp)
 {
-    if (hp > maxhp)
-    {
-        this->hp = maxhp;
-    }
-    else
-    {
-        this->hp = hp;
-    }
+    this->hp = min(hp, maxhp);
+
+    if (this->hp < 0)
+        this->hp = 0;
 }
 
 void Character::Setmaxhp(int maxhp)
@@ -114,14 +110,10 @@ void Character::Setmaxhp(int maxhp)
 
 void Character::Setmp(int mp)
 {
-    if (mp > maxmp)
-    {
-        this->mp = maxmp;
-    }
-    else
-    {
-        this->mp = mp;
-    }
+    this->mp = min(mp, maxmp);
+
+    if (this->mp < 0)
+        this->mp = 0;
 }
 
 void Character::Setmaxmp(int maxmp)
