@@ -789,7 +789,6 @@ int GameManager::Battle(Character* player, int Num, AchievementManager* achManag
       
         int beforeLevel = player->Getlevel();
         player->Gainexp(exp);
-        cin.get();
         int afterLevel = player->Getlevel();
         
 
