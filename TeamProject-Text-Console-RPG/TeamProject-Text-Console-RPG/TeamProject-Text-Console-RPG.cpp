@@ -7,6 +7,7 @@
 #include "shop.h"
 #include "ShopManager.h"
 #include "Inventory.h"
+#include "AchievementManager.h"
 
 #include "Warrior.h"
 #include "Mage.h"
@@ -21,6 +22,7 @@ class Warrior;
 class Mage;
 class Thief;
 class Archer;
+
 
 MainGame::MainGame(Character* player) : m_player(player), m_shop(new Shop()), m_mainSelectNum((int)LOCATION::LOCATION_TOWN)
 {
@@ -150,6 +152,7 @@ int main()
     GameManager gameManager;
     Character* player = CreateCharacter();
     MainGame mainGame(player);
+    AchievementManager A;
 
     cout << endl;
     cout << " 캐릭터 생성 완료! " << endl;
@@ -199,7 +202,7 @@ int main()
 
         case 2:
         {
-            int battle = gameManager.Battle(player, 1);
+            int battle = gameManager.Battle(player, 1, &A);
             player->Setpoisoned(false);
             cin.ignore(1000, '\n');
 
@@ -245,7 +248,7 @@ int main()
         }
         case 72:
         {
-            int ending = gameManager.Battle(player, 2);
+            int ending = gameManager.Battle(player, 2, &A);
             cin.ignore(1000, '\n');
 
             if (ending == 1)
