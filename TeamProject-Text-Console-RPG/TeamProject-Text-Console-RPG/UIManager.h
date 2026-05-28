@@ -28,5 +28,5 @@ public:
 
     static void PrintWrongInput();
 
-    int ShowTitleScreen();
+    static void ShowTitleScreen();
 };
