@@ -26,3 +26,13 @@ string Goblin::Specialattack(Character* player)
 
 	return message;
 }
+
+vector<string> Goblin::GetAsciiArt()
+{
+	return {
+"   .--._      ",
+"  /     \\    ",
+" [===##==]  A ",
+" ( ^ o ^ )  Y "
+	};
+}

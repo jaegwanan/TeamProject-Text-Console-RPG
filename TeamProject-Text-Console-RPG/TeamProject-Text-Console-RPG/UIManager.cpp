@@ -176,12 +176,13 @@ void UIManager::DrawPlayerAscii(Character* player)
 
 void UIManager::DrawMonsterAscii(Monster* monster)
 {
-    gotoxy(55, 4);
-    cout << "  /\\_/\\";
-    gotoxy(55, 5);
-    cout << " ( o.o )";
-    gotoxy(55, 6);
-    cout << "  > ^ <";
+    vector<string> art = monster->GetAsciiArt();
+
+    for (int i = 0; i < art.size(); i++)
+    {
+        gotoxy(55, 4 + i);
+        cout << art[i];
+    }
 }
 
 void UIManager::DrawBattleScreen(Character* player, Monster* monster, string message, bool showMenu)
