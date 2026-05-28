@@ -62,6 +62,8 @@ public:
     virtual int Getrequiredexp() = 0;
     virtual void Applylevelupstats() = 0;
 
+    virtual std::vector<std::string> GetAsciiArt() = 0; // battle ASCII
+
     // setter
     void Setjob(std::string job);
     void Setlevel(int level);

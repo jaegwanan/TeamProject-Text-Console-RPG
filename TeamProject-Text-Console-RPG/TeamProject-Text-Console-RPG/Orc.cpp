@@ -4,32 +4,25 @@
 
 using namespace std;
 
-void Orc::Basicattack(Character* player)
+string Orc::Basicattack(Character* player)
 {
 	int hitcount = 1;
 	int damage = Getattack();
 	int totaldamage = hitcount * damage;
 
-	cout << "오크가 발길질을 한다!\n" << damage << " 대미지" << endl;
-
 	player->Takedamage(totaldamage);
-	cin.get();
+	string message = "오크가 주먹질을 한다! " + to_string(damage) + "대미지\n";
+
+	return message;
 }
 
-void Orc::Specialattack(Character* player)
+string Orc::Specialattack(Character* player)
 {
-	int hitcount = 2;
 	int damage = Getattack();
-	int totaldamage = hitcount * damage;
 
-	cout << "오크가 " << hitcount << "연속 공격을 한다!\n" << endl;
+	player->Takedamage(damage);
 
-	for (int i = 0; i < hitcount; i++)
-	{
-		cout << damage << "의 대미지!" << endl;
-		Sleep(150);
-	}
+	string message = "오크의 연속 공격! " + player->Getname() + "에게 " + to_string(damage) + " 데미지!";
 
-	player->Takedamage(totaldamage);
-	cin.get();
+	return message;
 }

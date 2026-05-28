@@ -4,32 +4,25 @@
 
 using namespace std;
 
-void Troll::Basicattack(Character* player)
+string Troll::Basicattack(Character* player)
 {
 	int hitcount = 1;
 	int damage = Getattack();
 	int totaldamage = hitcount * damage;
 
-	cout << "트롤이 몽둥이를 휘두른다!\n" << damage << " 대미지" << endl;
+	player->Takedamage(totaldamage); 
+	string message = "트롤이 몽둥이를 휘두른다! " + to_string(damage) + "대미지\n";
 
-	player->Takedamage(totaldamage);
-	cin.get();
+	return message;
 }
 
-void Troll::Specialattack(Character* player)
+string Troll::Specialattack(Character* player)
 {
-	int hitcount = 5;
 	int damage = Getattack();
-	int totaldamage = hitcount * damage;
 
-	cout << "트롤이 " << hitcount << "연속 공격을 한다!\n" << endl;
+	player->Takedamage(damage);
 
-	for (int i = 0; i < hitcount; i++)
-	{
-		cout << damage << "의 대미지!" << endl;
-		Sleep(150);
-	}
+	string message = "트롤의 연속 공격! " + player->Getname() + "에게 " + to_string(damage) + " 데미지!";
 
-	player->Takedamage(totaldamage);
-	cin.get();
+	return message;
 }

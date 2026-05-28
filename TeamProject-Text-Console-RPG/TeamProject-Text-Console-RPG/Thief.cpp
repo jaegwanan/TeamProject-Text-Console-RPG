@@ -65,5 +65,15 @@ bool Thief::Skill(Monster* monster)
 
 string Thief::Getskillname()
 {
-    return " 楷加海扁";
+    return "楷加海扁";
+}
+
+vector<string> Thief::GetAsciiArt()
+{
+    return {
+"   .--.    /\\\\",
+"  |####|  /__\\\\",
+" /|####|\\\\  ||",
+"    /\\\\"
+    };
 }

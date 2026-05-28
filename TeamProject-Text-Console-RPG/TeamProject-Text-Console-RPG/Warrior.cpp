@@ -48,6 +48,15 @@ bool Warrior::Skill(Monster* monster)
 
 string Warrior::Getskillname()
 {
-    return " 파워 스트라이크";
+    return "파워 스트라이크";
 }
 
+vector<string> Warrior::GetAsciiArt()
+{
+    return {
+  "   /^\\\\      /\\\\",
+  "  |###| <==|==|",
+  " /|###|\\\\    ||",
+  "   / \\\\"
+    };
+}
