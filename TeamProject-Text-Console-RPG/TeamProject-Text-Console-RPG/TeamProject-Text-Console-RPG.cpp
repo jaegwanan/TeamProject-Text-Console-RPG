@@ -6,6 +6,7 @@
 #include "GameManager.h"
 #include "shop.h"
 #include "ShopManager.h"
+#include "Inventory.h"
 
 #include "Warrior.h"
 #include "Mage.h"
@@ -303,7 +304,7 @@ void MainGame::ShowInventoryPage(Character* player)
             break;
 
         case 2:
-            m_player->GetInventory()->ShowPlayerEquip();
+            m_player->GetInventory()->ShowPlayerEquip(m_player);
             break;
 
         case 3:

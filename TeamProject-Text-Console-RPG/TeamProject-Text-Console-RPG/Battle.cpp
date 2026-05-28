@@ -8,7 +8,7 @@
 #include "Character.h"
 #include "Monster.h"
 #include "Item.h"
-
+#include "Inventory.h"
 #include "UIManager.h"
 
 using namespace std;
