@@ -1,4 +1,4 @@
-#include "Inventory.h"
+ #include "Inventory.h"
 
 // »ý¼ºÀÚ
 Inventory::Inventory()
