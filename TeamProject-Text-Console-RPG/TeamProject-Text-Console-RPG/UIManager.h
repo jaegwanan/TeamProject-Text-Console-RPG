@@ -26,4 +26,7 @@ public:
     static void DrawPlayerAscii(Character* player);
     static void DrawMonsterAscii(Monster* monster);
     static void UpdateBattleMessage(string message);
+
+    static string InputBox(string message, vector<string> asciiArt);
+    static int SelectBox(string message, vector<string> options, vector<string> asciiArt);
 };

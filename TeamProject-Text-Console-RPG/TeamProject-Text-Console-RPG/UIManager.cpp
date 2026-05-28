@@ -273,9 +273,9 @@ void UIManager::DrawBattleScreen(Character* player, Monster* monster, string mes
     DrawPlayerAscii(player);
     DrawPlayerStatus(player);
 
-    gotoxy(0, 22);
+    gotoxy(0, 19);
     cout << "--------------------------------------------------------------------------------";
-    gotoxy(2, 23);
+    gotoxy(2, 20);
 
     if (showMenu)
     {
@@ -287,17 +287,17 @@ void UIManager::DrawBattleScreen(Character* player, Monster* monster, string mes
         cout << message;
     }
 
-    gotoxy(0, 24);
+    gotoxy(0, 21);
     cout << "--------------------------------------------------------------------------------";
 
     if (showMenu)
     {
-        gotoxy(2, 25);
+        gotoxy(2, 22);
         cout << "선택: ";
     }
     else
     {
-        gotoxy(2, 25);
+        gotoxy(2, 22);
         cout << "계속하려면 엔터...";
     }
 }
@@ -570,5 +570,134 @@ void UIManager::ShowEnding()
             cin.get();
             continue;
         }
+    }
+}
+
+string UIManager::InputBox(string message, vector<string> asciiArt)
+{
+    while (true)
+    {
+        system("cls");
+
+        for (int i = 0; i < asciiArt.size(); i++)
+        {
+            gotoxy(20, 3 + i);
+            cout << asciiArt[i];
+        }
+
+        gotoxy(42, 5);
+        cout << "┌───────────────────────────────────────────────────────────────┐";
+
+        gotoxy(42, 6);
+        cout << "│ " << message;
+
+        gotoxy(42, 7);
+        cout << "└───────────────────────────────────────────────────────────────┘";
+
+        gotoxy(10, 14);
+        cout << "=========================================================================";
+
+        gotoxy(10, 15);
+        cout << "모험가명 입력 : ";
+
+        string input;
+        getline(cin, input);
+
+        if (input.empty())
+        {
+            message = "모험가명은 반드시 필요하다네..";
+            continue;
+        }
+
+        return input;
+    }
+}
+
+int UIManager::SelectBox(string message, vector<string> options, vector<string> asciiArt)
+{
+    while (true)
+    {
+        system("cls");
+
+        for (int i = 0; i < asciiArt.size(); i++)
+        {
+            gotoxy(18, 3 + i);
+            cout << asciiArt[i];
+        }
+
+        gotoxy(42, 5);
+        cout << "┌───────────────────────────────┐";
+
+        gotoxy(42, 6);
+        cout << "│ " << message;
+
+        gotoxy(42, 7);
+        cout << "└───────────────────────────────┘";
+
+        gotoxy(10, 14);
+        cout << "=========================================================================";
+
+        gotoxy(30, 15);
+        cout << "1. " << options[0];
+
+        gotoxy(50, 15);
+        cout << "2. " << options[1];
+
+        gotoxy(30, 17);
+        cout << "3. " << options[2];
+
+        gotoxy(50, 17);
+        cout << "4. " << options[3];
+
+        gotoxy(10, 18);
+        cout << "=========================================================================";
+
+        gotoxy(10, 19);
+        cout << "선택 : ";
+
+        int choice;
+
+        if (!(cin >> choice))
+        {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            message = "숫자로 입력해주게..";
+            continue;
+        }
+
+        cin.ignore(1000, '\n');
+
+        if (choice < 1 || choice > 4)
+        {
+            message = "올바른 선택을 해주게나...";
+            continue;
+        }
+
+        system("cls");
+
+        for (int i = 0; i < asciiArt.size(); i++)
+        {
+            gotoxy(18, 3 + i);
+            cout << asciiArt[i];
+        }
+
+        gotoxy(42, 5);
+        cout << "┌──────────────────────────────────────┐";
+
+        gotoxy(42, 6);
+        cout << "│ 음, 잘 알겠네. 그럼 무운을 빌지.";
+
+        gotoxy(42, 7);
+        cout << "└──────────────────────────────────────┘";
+
+        gotoxy(10, 14);
+        cout << "=========================================================================";
+
+        gotoxy(10, 15);
+        cout << "계속하려면 엔터..";
+
+        cin.get();
+
+        return choice;
     }
 }

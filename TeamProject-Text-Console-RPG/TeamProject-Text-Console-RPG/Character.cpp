@@ -13,10 +13,34 @@ Character::Character(std::string name)
 
 void Character::Displaystatus()
 {
-    cout << "------------------------------------------------------------------------------------------------------" << endl;
-    cout << "이름: " << name << "  |  " << "직업: " << job << "  |  " << "Lv." << level << "  |  경험치: " << exp << "/" << Getrequiredexp() << endl;
-    cout << "HP: " << maxhp << "  |  " << "MP: " << maxmp << "  |  " << "공격력: " << attack << "  |  " << "소유금액: " << gold << endl;
-    cout << "------------------------------------------------------------------------------------------------------" << endl;
+    system("cls");
+
+    vector<string> art = GetAsciiArt();
+
+    // 아스키 출력
+    for (int i = 0; i < art.size(); i++)
+    {
+        cout << "                    " << art[i] << endl;
+    }
+
+    cout << endl;
+
+    cout << "       ---------------------------------------------------------------" << endl;
+
+    cout << "          이름: " << name
+        << "  |  직업: " << job
+        << "  |  Lv." << level
+        << "  |  경험치: " << exp << "/" << Getrequiredexp()
+        << endl;
+
+    cout << "          HP: " << hp << "/" << maxhp
+        << "  |  MP: " << mp << "/" << maxmp
+        << "  |  공격력: " << attack
+        << "  |  소유금액: " << gold
+        << endl;
+
+    cout << "       ---------------------------------------------------------------" << endl;
+
 
 }
 
