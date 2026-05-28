@@ -156,12 +156,13 @@ int UIManager::ShowTitleScreen()
 
 void UIManager::DrawPlayerAscii(Character* player)
 {
-    gotoxy(6, 8);
-    cout << "   O";
-    gotoxy(6, 9);
-    cout << "  /|\\";
-    gotoxy(6, 10);
-    cout << "  / \\";
+    vector<string> art = player->GetAsciiArt();
+
+    for (int i = 0; i < art.size(); i++)
+    {
+        gotoxy(5, 11 + i);
+        cout << art[i];
+    }
 }
 
 void UIManager::DrawMonsterAscii(Monster* monster)

@@ -15,6 +15,7 @@ public:
     bool Skill(Monster* monster) override;
 
     std::string Getskillname() override;
+    vector<string> GetAsciiArt() override;
 };
 
 

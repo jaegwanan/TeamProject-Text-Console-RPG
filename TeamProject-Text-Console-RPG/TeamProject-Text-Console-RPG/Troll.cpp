@@ -10,8 +10,8 @@ string Troll::Basicattack(Character* player)
 	int damage = Getattack();
 	int totaldamage = hitcount * damage;
 
-	player->Takedamage(totaldamage);
-	string message = "트롤이 몽둥이를 휘두른다!" + to_string(damage) + "대미지\n";
+	player->Takedamage(totaldamage); 
+	string message = "트롤이 몽둥이를 휘두른다! " + to_string(damage) + "대미지\n";
 
 	return message;
 }

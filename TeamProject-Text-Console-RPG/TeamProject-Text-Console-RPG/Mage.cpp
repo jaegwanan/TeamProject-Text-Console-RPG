@@ -48,7 +48,15 @@ bool Mage::Skill(Monster* monster)
 
 string Mage::Getskillname()
 {
-    return " 파이어 볼";
+    return "파이어 볼";
 }
 
-
+vector<string> Mage::GetAsciiArt()
+{
+    return {
+ "    /\\\\      *",
+ "   /__\\\\    /|",
+ "  |####|   /_|",
+ "    /\\\\"
+    };
+}

@@ -11,7 +11,7 @@ string Slime::Basicattack(Character* player)
 	int totaldamage = hitcount * damage;
 
 	player->Takedamage(totaldamage);
-	string message = "슬라임이 끈끈이를 날린다!" + to_string(damage) + "대미지\n";
+	string message = "슬라임이 끈끈이를 날린다! " + to_string(damage) + "대미지\n";
 
 	return message;
 }

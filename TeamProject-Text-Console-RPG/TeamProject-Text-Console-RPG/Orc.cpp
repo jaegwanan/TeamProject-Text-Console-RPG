@@ -11,7 +11,7 @@ string Orc::Basicattack(Character* player)
 	int totaldamage = hitcount * damage;
 
 	player->Takedamage(totaldamage);
-	string message = "오크가 주먹질을 한다!" + to_string(damage) + "대미지\n";
+	string message = "오크가 주먹질을 한다! " + to_string(damage) + "대미지\n";
 
 	return message;
 }
