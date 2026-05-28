@@ -700,49 +700,56 @@ int GameManager::Battle(Character* player, int Num, AchievementManager* achManag
         }
 
         // 턴 종료 회복
-        if (player->Getpoisoned() == false)
+        if (player->Gethp() > 0)
         {
-            if (Num == 1)
+            if (player->Getpoisoned() == false)
             {
-                int hprecovery = static_cast<int>(player->Gethp() * 0.05);
-                int mprecovery = static_cast<int>(player->Getmp() * 0.05);
+                if (Num == 1)
+                {
+                    int hprecovery = static_cast<int>(player->Gethp() * 0.05);
+                    int mprecovery = static_cast<int>(player->Getmp() * 0.05);
 
-                player->Sethp(player->Gethp() + hprecovery);
-                player->Setmp(player->Getmp() + mprecovery);
+                    player->Sethp(player->Gethp() + hprecovery);
+                    player->Setmp(player->Getmp() + mprecovery);
 
-                battleMessage =
-                    "시간이 지나며 체력이 " +
-                    to_string(hprecovery) +
-                    ", 마나가 " +
-                    to_string(mprecovery) +
-                    " 회복했다.";
+                    battleMessage =
+                        "시간이 지나며 체력이 " +
+                        to_string(hprecovery) +
+                        ", 마나가 " +
+                        to_string(mprecovery) +
+                        " 회복했다.";
 
-                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                cin.get();
+                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                    cin.get();
+                }
+                else if (Num == 2)
+                {
+                    battleMessage = "당신은 " + monstername + " 의 기운에 압도되고 있다.";
+                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                    cin.get();
+                    int hprecovery = static_cast<int>(player->Gethp() * 0.05);
+                    int mprecovery = static_cast<int>(player->Getmp() * 0.05);
+
+                    player->Sethp(player->Gethp() - hprecovery);
+                    player->Setmp(player->Getmp() - mprecovery);
+
+                    battleMessage = monstername + " 의 기운이 당신에게 피해를 준다.\n" + to_string(hprecovery) + " 의 체력과 " + to_string(mprecovery) + " 의 마나를 잃었다.";
+                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                    cin.get();
+                }
             }
-            else if (Num == 2)
+            else
             {
-                battleMessage = "당신은 " + monstername + " 의 기운에 압도되고 있다.";
+                battleMessage = "당신은 독에 중독되어 자연회복이 되지 않는다.";
+
                 UIManager::DrawBattleScreen(player, monster, battleMessage, false);
                 cin.get();
-                int hprecovery = static_cast<int>(player->Gethp() * 0.05);
-                int mprecovery = static_cast<int>(player->Getmp() * 0.05);
 
-                player->Sethp(player->Gethp() - hprecovery);
-                player->Setmp(player->Getmp() - mprecovery);
-
-                battleMessage = monstername + " 의 기운이 당신에게 피해를 준다.\n" + to_string(hprecovery) + " 의 체력과 " + to_string(mprecovery) + " 의 마나를 잃었다.";
-                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                cin.get();
             }
         }
-        else
+        else if (player->Gethp() <= 0)
         {
-            battleMessage = "당신은 독에 중독되어 자연회복이 되지 않는다.";
-
-            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-            cin.get();
-
+            break;
         }
 
     } // 와일문 끝
