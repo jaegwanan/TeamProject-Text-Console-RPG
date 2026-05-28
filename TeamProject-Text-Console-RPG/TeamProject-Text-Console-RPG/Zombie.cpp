@@ -31,10 +31,10 @@ string Zombie::Specialattack(Character* player)
 vector<string> Zombie::GetAsciiArt()
 {
 	return {
-"   .--._      ",
-"  /     \\    ",
-" [===##==]  A ",
-" ( ^ o ^ )  Y "
+"  \\\\  ___  // ",
+"   \\\\[●W●]//  ",
+"    |     |   ",
+"    |_____|   "
 	};
 }
 
@@ -46,7 +46,5 @@ void Zombie::Takedamage(int playerattack)
 	{
 		this->hp = this->maxhp / 2;
 		this->isrevived = true;
-
-		cout << "좀비가 절반의 체력을 부활했다..." << endl;
 	}
 }

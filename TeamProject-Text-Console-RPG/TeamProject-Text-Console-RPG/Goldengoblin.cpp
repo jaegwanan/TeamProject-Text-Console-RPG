@@ -33,9 +33,9 @@ string Goldengoblin::Specialattack(Character* player) // µµ¸Á
 vector<string> Goldengoblin::GetAsciiArt()
 {
 	return {
-"   .--._      ",
-"  /     \\    ",
-" [===##==]  A ",
-" ( ^ o ^ )  Y "
+"    /l__/l     ",
+"   (¡Û W ¡Û )-¦¤  ",
+"  E_)    E_)|  ",
+"    l_/ l_)-¦¥  "
 	};
 }
