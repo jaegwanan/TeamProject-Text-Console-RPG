@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <fstream>
+#include <cstdlib>
 
 #include "Character.h"
 #include "GameManager.h"
@@ -14,6 +16,7 @@
 #include "Archer.h"
 
 #include "UIManager.h"
+#include "AchievementManager.h"
 
 using namespace std;
 
@@ -230,7 +233,6 @@ void MainGame::ShowShopPage()
     }
 }
 
-
 Character* CreateCharacter()
 {
     string name;
@@ -281,7 +283,12 @@ Character* CreateCharacter()
     }
 }
 
-UIManager ui;
+int main()
+{
+    AchievementManager achManager;
+    GameManager gameManager;
+    Character* player = nullptr;
+    int currentSaveSlot = 1;
 
     while (true)
     {
@@ -307,6 +314,8 @@ UIManager ui;
 
             cout << endl << " 캐릭터 생성 완료! " << endl;
             player->Displaystatus();
+            cin.ignore(1000, '\n');
+            cin.get();
 
             SaveGame(player, &achManager, currentSaveSlot);
             break;
@@ -327,16 +336,20 @@ UIManager ui;
             currentSaveSlot = slotChoice;
             player = LoadGame(currentSaveSlot, &achManager);
 
+            if (player != nullptr) break;
+        }
+        else if (startMenuChoice == 3) {
+            achManager.DisplayStatsAndTitles();
+        }
+        else if (startMenuChoice == 4) {
+            return 0; // 게임 종료
+        }
+        else {
+            UIManager::PrintWrongInput();
+        }
+    }
 
-    GameManager gameManager;
-    Character* player = CreateCharacter();
     MainGame mainGame(player);
-
-    cout << endl;
-    cout << " 캐릭터 생성 완료! " << endl;
-    player->Displaystatus();
-    cin.ignore(1000, '\n');
-    cin.get();
 
     while (true)
     {
@@ -350,6 +363,8 @@ UIManager ui;
         cout << " 3. 인벤토리" << endl;
         cout << " 4. 상점" << endl;
         cout << " 5. 휴식" << endl;
+        cout << " 6. 칭호 장착 및 업적 확인" << endl;
+        cout << " 7. 게임 저장하기 (현재 슬롯: " << currentSaveSlot << "번)" << endl;
         cout << " 72. 마왕성으로 향한다." << endl;
         cout << " 0. 게임 종료" << endl;
         cout << "============================" << endl;
@@ -383,7 +398,6 @@ UIManager ui;
             int battle = gameManager.Battle(player, 1, &achManager);
             cin.clear();
             cin.ignore(1000, '\n');
-
 
             if (battle == 1)
             {
@@ -422,6 +436,7 @@ UIManager ui;
             player->Sethp(player->Gethp() + hprecovery);
             player->Setmp(player->Getmp() + mprecovery);
             cout << "당신은 휴식을 취해 체력을 " << hprecovery << ", 마나를 " << mprecovery << " 회복했다.\n";
+            system("pause"); // 안내 문구를 볼 수 있도록 멈춤
             break;
         }
         case 6:
@@ -444,7 +459,7 @@ UIManager ui;
             break;
         case 72:
         {
-            int ending = gameManager.Battle(player, 2);
+            int ending = gameManager.Battle(player, 2, &achManager); // 보스전에도 업적매니저 전달
             cin.ignore(1000, '\n');
 
             if (ending == 1)
