@@ -154,6 +154,7 @@ int main()
     MainGame mainGame(player);
     AchievementManager A;
 
+
     cout << endl;
     cout << " 캐릭터 생성 완료! " << endl;
     player->Displaystatus();
