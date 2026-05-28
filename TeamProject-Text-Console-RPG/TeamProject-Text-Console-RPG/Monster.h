@@ -46,7 +46,7 @@ public:
     virtual std::string Basicattack(Character* player) = 0; //일반공격 가상
     virtual std::string Specialattack(Character* player) = 0; //특수공격 가상
         
-    void Takedamage(int damage);
+    virtual void Takedamage(int damage);
 
     virtual ~Monster() {}
 };
@@ -170,6 +170,74 @@ public:
 
     std::string Basicattack(Character* player) override;
     std::string Specialattack(Character* player) override;
+};
+
+// Goldengoblin
+class Goldengoblin : public Monster
+{
+public:
+    Goldengoblin(int level)
+        : Monster("황금 고블린", 1, 0) // 임시값
+    {
+        static std::random_device rd;  // 난수 시드 생성
+        static std::mt19937 gen(rd()); // 난수 생성 엔진
+
+        std::uniform_int_distribution<int> Healthrandom(level * 17, level * 22);
+        //std::uniform_int_distribution<int> Attackrandom(level * 5, level * 10);
+
+        // 초기화
+        int finalhealth = Healthrandom(gen);
+        this->maxhp = finalhealth;
+        this->hp = finalhealth;
+        //this->attack = Attackrandom(gen);
+
+        this->level = level;
+        this->exp = level;
+        this->gold = level;
+        this->itemname = "황금 고블린의 보물상자";
+    }
+    std::vector<std::string> GetAsciiArt() override;
+
+    // 구현 필요
+    std::string Basicattack(Character* player) override;
+    std::string Specialattack(Character* player) override;
+};
+
+// Zombie
+class Zombie : public Monster
+{
+private:
+    bool isrevived = false; 
+    bool reviveReady = false;
+public:
+    Zombie(int level)
+        : Monster("좀비", 0, 0) // 임시값
+    {
+        static std::random_device rd;  // 난수 시드 생성
+        static std::mt19937 gen(rd()); // 난수 생성 엔진
+
+        std::uniform_int_distribution<int> Healthrandom(level * 20, level * 25);
+        std::uniform_int_distribution<int> Attackrandom(level * 7, level * 9);
+
+        // 초기화
+        int finalhealth = Healthrandom(gen);
+        this->maxhp = finalhealth;
+        this->hp = finalhealth;
+        this->attack = Attackrandom(gen);
+
+        this->level = level;
+        this->exp = 15 + (level * 4);
+        this->gold = 10 + (level * 2);
+        this->itemname = "좀비 고기";
+    }
+    std::vector<std::string> GetAsciiArt() override;
+
+    std::string Basicattack(Character* player) override;
+    std::string Specialattack(Character* player) override;
+
+    void Takedamage(int damage) override; // 부활로직 추가할라고
+    std::string Getrevivemessage();
+    void Revive();
 };
 
 // Boss

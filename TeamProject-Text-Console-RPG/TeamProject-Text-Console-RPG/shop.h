@@ -1,8 +1,9 @@
 #pragma once
+
 #include <vector>
 #include <string>
-#include "item.h"
-#include "character.h"
+#include "Item.h"
+#include "Character.h"
 
 using namespace std;
 
@@ -23,11 +24,13 @@ private:
 
 public:
     Shop();
+
     void ShowShopItem();
     void ShopBuyItemPage(Character* player);
     void ShopSellItemPage(Character* player);
+
     void BuyItem(int itemIdx, Character* player);
     void SellItem(int itemIdx, Character* player);
-    int IsItemExist(const string& itemName);
 
+    int IsItemExist(const string& itemName);
 };

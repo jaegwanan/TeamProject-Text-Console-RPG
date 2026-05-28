@@ -3,6 +3,8 @@
 #include "Header.h"
 #include "Item.h"
 
+class Character;
+
 class Inventory
 {
 private:
@@ -47,9 +49,9 @@ public:
 
     void ShowPlayerBag();
 
-    void ShowPlayerEquip();
+    void ShowPlayerEquip(Character* player);
     void ShowEquipText();
-    void ChangePlayerEquip(int itemIdx);
+    void ChangePlayerEquip(Character* player, int itemIdx);
 
     int IsItemExist(const string& itemName);
 };

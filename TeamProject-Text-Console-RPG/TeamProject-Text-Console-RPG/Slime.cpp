@@ -26,3 +26,13 @@ string Slime::Specialattack(Character* player)
 
 	return message;
 }
+
+vector<string> Slime::GetAsciiArt()
+{
+	return {
+"  .@@@@@@     ",
+" .@##`   @   ",
+" @##.   `@@    ",
+"  @@@@@@@@`    "
+	};
+}

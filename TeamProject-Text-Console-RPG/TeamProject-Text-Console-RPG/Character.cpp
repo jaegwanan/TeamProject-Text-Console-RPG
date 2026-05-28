@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "Inventory.h"
 #include <iostream>
 #include <string>
 
@@ -12,9 +13,10 @@ Character::Character(std::string name)
 
 void Character::Displaystatus()
 {
-    cout << "---------------------------------" << endl;
-    cout << "이름: " << name << "  |  " << "직업: " << job << "  |  " << "Lv." << level << endl;
-    cout << "HP: " << hp << "  |  " << "공격력: " << attack << "  |  " << "경험치: " << exp << "/" <<Getrequiredexp() << endl;
+    cout << "------------------------------------------------------------------------------------------------------" << endl;
+    cout << "이름: " << name << "  |  " << "직업: " << job << "  |  " << "Lv." << level << "  |  경험치: " << exp << "/" << Getrequiredexp() << endl;
+    cout << "HP: " << maxhp << "  |  " << "MP: " << maxmp << "  |  " << "공격력: " << attack << "  |  " << "소유금액: " << gold << endl;
+    cout << "------------------------------------------------------------------------------------------------------" << endl;
 
 }
 
@@ -45,9 +47,7 @@ void Character::Takedamage(int monsterattack)
 
 void Character::Gainexp(int amount)
 {   
-    cout << amount << " EXP 획득!" << endl;
     exp += amount;
-    Printexpbar();
 
     while (exp >= Getrequiredexp())
     {
@@ -144,6 +144,11 @@ void Character::Setgold(int gold)
     this->gold = gold;
 }
 
+void Character::Setpoisoned(bool poisoned)
+{
+    this->ispoisoned = poisoned;
+}
+
 // getter
 std::string Character::Getjob()
 {
@@ -188,4 +193,9 @@ int Character::Getexp()
 int Character::Getgold()
 {
     return gold;
+}
+
+int Character::Getpoisoned()
+{
+    return ispoisoned;
 }
