@@ -268,8 +268,6 @@ int GameManager::Battle(Character* player, int Num)
         battleMessage = monstername + "이(가) 나타났다!";
         UIManager::DrawBattleScreen(player, monster, battleMessage, false);
 
-        cin.clear();
-        cin.ignore(1000, '\n');
         cin.get();
     }
     else
