@@ -11,6 +11,7 @@
 #include "Inventory.h"
 #include "UIManager.h"
 
+
 using namespace std;
 
 void Basicattack(Character* player, Monster* monster)
@@ -367,6 +368,23 @@ int GameManager::Battle(Character* player, int Num)
             UIManager::DrawBattleScreen(player, monster, battleMessage, false);
             cin.get();
 
+            Zombie* zombie = dynamic_cast<Zombie*>(monster);
+
+            if (zombie != nullptr)
+            {
+                string reviveMessage = zombie->Getrevivemessage();
+
+                if (!reviveMessage.empty())
+                {
+                    UIManager::DrawBattleScreen(player, monster, reviveMessage, false);
+                    cin.get();
+                    zombie->Revive();
+
+                    UIManager::DrawBattleScreen(player, monster, "좀비가 절반의 체력으로 부활했다!", false);
+                    cin.get();
+                }
+            }
+
             break;
         }
 
@@ -392,8 +410,27 @@ int GameManager::Battle(Character* player, int Num)
                 UIManager::DrawBattleScreen(player, monster, skillMessages[i], false);
                 cin.get();
 
+                Zombie* zombie = dynamic_cast<Zombie*>(monster);
+
+                if (zombie != nullptr)
+                {
+                    string reviveMessage = zombie->Getrevivemessage();
+
+                    if (!reviveMessage.empty())
+                    {
+                        UIManager::DrawBattleScreen(player, monster, reviveMessage, false);
+                        cin.get();
+
+                        zombie->Revive();
+
+                        UIManager::DrawBattleScreen(player, monster, "좀비가 절반의 체력으로 부활했다!", false);
+                        cin.get();
+                    }
+                }
+
                 if (monster->Gethp() <= 0)
                     break;
+                
             }
 
             break;
@@ -473,6 +510,23 @@ int GameManager::Battle(Character* player, int Num)
                 UIManager::DrawBattleScreen(player, monster, battleMessage, false);
                 cin.get();
 
+                Zombie* zombie = dynamic_cast<Zombie*>(monster);
+
+                if (zombie != nullptr)
+                {
+                    string reviveMessage = zombie->Getrevivemessage();
+
+                    if (!reviveMessage.empty())
+                    {
+                        UIManager::DrawBattleScreen(player, monster, reviveMessage, false);
+                        cin.get();
+                        zombie->Revive();
+
+                        UIManager::DrawBattleScreen(player, monster, "좀비가 절반의 체력으로 부활했다!", false);
+                        cin.get();
+                    }
+                }
+
                 break;
             }
             else if (monsterhp < playerhp && playermp >= mp)
@@ -496,7 +550,23 @@ int GameManager::Battle(Character* player, int Num)
 
                     UIManager::DrawBattleScreen(player, monster, "자동전투: " + skillMessages[i], false);
                     cin.get();
+                    
+                    Zombie* zombie = dynamic_cast<Zombie*>(monster);
 
+                    if (zombie != nullptr)
+                    {
+                        string reviveMessage = zombie->Getrevivemessage();
+
+                        if (!reviveMessage.empty())
+                        {
+                            UIManager::DrawBattleScreen(player, monster, reviveMessage, false);
+                            cin.get();
+                            zombie->Revive();
+
+                            UIManager::DrawBattleScreen(player, monster, "좀비가 절반의 체력으로 부활했다!", false);
+                            cin.get();
+                        }
+                    }
                     if (monster->Gethp() <= 0)
                         break;
                 }
