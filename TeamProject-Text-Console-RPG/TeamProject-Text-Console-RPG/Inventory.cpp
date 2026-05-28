@@ -1,4 +1,4 @@
- #include "Inventory.h"
+#include "Inventory.h"
 
 // 생성자
 Inventory::Inventory()
@@ -68,7 +68,7 @@ void Inventory::ShowPlayerBag()
 }
 
 // 장비 확인 및 교체
-void Inventory::ShowPlayerEquip()
+void Inventory::ShowPlayerEquip(Character* player)
 {
     ShowEquipText();
 
@@ -173,7 +173,7 @@ void Inventory::ShowPlayerEquip()
     }
     else
     {
-        ChangePlayerEquip(m_inventorySelectNum - 1);
+        ChangePlayerEquip(player, m_inventorySelectNum - 1);
     }
 }
 
@@ -205,7 +205,7 @@ void Inventory::ShowEquipText()
 }
 
 // 장비 교체
-void Inventory::ChangePlayerEquip(int itemIdx)
+void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
 {
     int existItem;
 
