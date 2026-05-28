@@ -22,48 +22,52 @@ int Thief::Getrequiredexp()
 void Thief::Applylevelupstats()
 {
     maxhp += 20;
-    hp = maxhp;
     maxmp += 10;
-    mp = maxmp;
     attack += 15;
 }
 
-bool Thief::Skill(Monster* monster)
+vector<string> Thief::Skill(Monster* monster)
 {
+    vector<string> messages;
+
     if (mp < 25)
     {
-        return false;
+        messages.push_back("MP가 부족해 스킬을 사용할 수 없다.");
+        return messages;
     }
 
     mp -= 25;
 
-    cout << " 연속베기!" << endl;
-
-    int totalDamage = 0;
+    messages.push_back("연속베기!");
 
     for (int i = 0; i < 3; i++)
     {
-        int damage = attack * 0.7; 
+        int damage = attack * 0.7;
 
-        int critChance = rand() % 100 + 1;
-
-        if (critChance <= 30)
-        {
-            damage *= 2;
-            cout << " 치명타! ";
-        }
-
-        cout << damage << " 데미지!" << endl;
-        monster->Takedamage(damage);
-
-        totalDamage += damage;
+        messages.push_back(
+            to_string(i + 1) +
+            "타! " +
+            monster->Getname() +
+            "에게 " +
+            to_string(damage) +
+            " 데미지!"
+        );
     }
 
-    cout << " 총 " << totalDamage << " 데미지!" << endl;
-    return true;
+    return messages;
 }
 
 string Thief::Getskillname()
 {
-    return " 연속베기";
+    return "연속베기";
+}
+
+vector<string> Thief::GetAsciiArt()
+{
+    return {
+"   .--.    /\\\\",
+"  |####|  /__\\\\",
+" /|####|\\\\  ||",
+"    /\\\\"
+    };
 }
