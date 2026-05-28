@@ -19,6 +19,8 @@ public:
     static void PrintWrongInput();
 
     static int ShowTitleScreen();
+    static void ShowStartScreen();
+    static void ShowEnding();
 
     static void DrawBattleScreen(Character* player, Monster* monster, std::string message, bool showMenu = true);
     static void DrawPlayerAscii(Character* player);

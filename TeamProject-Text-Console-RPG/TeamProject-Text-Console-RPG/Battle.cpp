@@ -794,6 +794,14 @@ int GameManager::Battle(Character* player, int Num, AchievementManager* achManag
         UIManager::DrawBattleScreen(player, monster, battleMessage, false);
         cin.get();
 
+        if (Num == 2)
+        {
+            UIManager::ShowEnding();
+
+            delete monster;
+            return 5;
+        }
+
         string item = monster->Getitemname();
         int exp = monster->Getexp();
         int gold = monster->Getgold();

@@ -283,15 +283,21 @@ Character* CreateCharacter()
     }
 }
 
+UIManager ui;
+
 int main()
 {
     AchievementManager achManager;
     GameManager gameManager;
     Character* player = nullptr;
     int currentSaveSlot = 1;
+    
+    ui.ShowStartScreen();
+    cin.get();
 
     while (true)
     {
+        system("cls");
         int startMenuChoice = UIManager::ShowTitleScreen();
 
         if (startMenuChoice == 1) {
@@ -340,6 +346,8 @@ int main()
         }
         else if (startMenuChoice == 3) {
             achManager.DisplayStatsAndTitles();
+            cin.get();
+            system("cls");
         }
         else if (startMenuChoice == 4) {
             return 0; // 게임 종료
