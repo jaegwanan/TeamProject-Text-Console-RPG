@@ -16,8 +16,3 @@ void Monster::Takedamage(int playerattack)
 		cout << endl;
 	}
 }
-
-vector<string> Orc::GetAsciiArt() { return { "   ,____.     ", "   | Ò_Ó|     ", "   /( | )\\    ", "  ========    " }; }
-vector<string> Troll::GetAsciiArt() { return { "   .----.     ", "   | >_<|     ", "   \\( | )/    ", "  ========    " }; }
-vector<string> Slime::GetAsciiArt() { return { "    ____      ", "   /O__O\\     ", "  |______|    ", "  ========    " }; }
-vector<string> Boss::GetAsciiArt() { return { "  [CALAMITY]  ", "  (((o_o)))   ", "   \\/ | \\/    ", "  ========    " }; }
