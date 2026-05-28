@@ -50,7 +50,7 @@ void Shop::ShowShopItem()
         cout << "=================================================" << endl;
         cout << ++m_itemCount << "번째 아이템" << endl;
         m_viItem->ShowItemInfo();
-        Sleep(1000);
+        Sleep(300);
     }
 
     cout << "=================================================" << endl;
@@ -74,7 +74,7 @@ void Shop::ShopBuyItemPage(Character* player)
             cout << "=================================================" << endl;
             cout << "상점 메뉴로 돌아갑니다." << endl;
             cout << "=================================================" << endl;
-            Sleep(1000);
+            Sleep(300);
             return;
         }
 
@@ -93,7 +93,7 @@ void Shop::ShopBuyItemPage(Character* player)
             cout << "=================================================" << endl;
             cout << "상점 메뉴로 돌아갑니다." << endl;
             cout << "=================================================" << endl;
-            Sleep(500);
+            Sleep(300);
             return;
         }
 
@@ -122,7 +122,7 @@ void Shop::ShopBuyItemPage(Character* player)
                 cout << "=================================================" << endl;
                 cout << "상점 메뉴로 돌아갑니다." << endl;
                 cout << "=================================================" << endl;
-                Sleep(500);
+                Sleep(300);
                 return;
             }
 
@@ -136,7 +136,7 @@ void Shop::ShopBuyItemPage(Character* player)
             cout << "=================================================" << endl;
             cout << "상점 주인 : 그냥 드릴수는 없어요! 돈이 부족하시네요." << endl;
             cout << "=================================================" << endl;
-            Sleep(1000);
+            Sleep(300);
         }
         else
         {
@@ -163,7 +163,7 @@ void Shop::ShopSellItemPage(Character* player)
             cout << "=================================================" << endl;
             cout << "상점 메뉴로 돌아갑니다." << endl;
             cout << "=================================================" << endl;
-            Sleep(1000);
+            Sleep(300);
             return;
         }
 
@@ -184,7 +184,7 @@ void Shop::ShopSellItemPage(Character* player)
             cout << "=================================================" << endl;
             cout << "상점 메뉴로 돌아갑니다." << endl;
             cout << "=================================================" << endl;
-            Sleep(500);
+            Sleep(300);
             return;
         }
 
@@ -213,7 +213,7 @@ void Shop::ShopSellItemPage(Character* player)
                 cout << "=================================================" << endl;
                 cout << "상점 메뉴로 돌아갑니다." << endl;
                 cout << "=================================================" << endl;
-                Sleep(500);
+                Sleep(300);
                 return;
             }
 
@@ -254,7 +254,7 @@ void Shop::BuyItem(int itemIdx, Character* player)
     cout << "=================================================" << endl;
     cout << "아이템을 구매했습니다." << endl;
     cout << "=================================================" << endl;
-    Sleep(1000);
+    Sleep(300);
 }
 
 // 아이템 판매
@@ -290,7 +290,7 @@ void Shop::SellItem(int itemIdx, Character* player)
     cout << "아이템을 판매했습니다." << endl;
     cout << "판매 금액 : " << sellPrice << " 골드" << endl;
     cout << "=================================================" << endl;
-    Sleep(1000);
+    Sleep(300);
 }
 
 // 상점에 같은 아이템이 있는지 확인

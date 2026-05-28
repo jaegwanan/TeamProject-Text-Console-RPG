@@ -3,6 +3,8 @@
 #include <vector>
 #include <map>  
 
+class Character;
+
 enum class AchType {
     KILL,
     LEVEL,
@@ -24,6 +26,8 @@ private:
     std::map<std::string, int> itemStats;
     int runAwayCount = 0;
 
+    std::vector<Achievement> achievementList;
+
 public:
     AchievementManager();
 
@@ -36,4 +40,9 @@ public:
     void DisplayStatsAndTitles();
 
     void EquipTitleMenu(Character* player);
+
+    std::map<std::string, int>& GetKillStats() { return killStats; }
+    std::map<std::string, int>& GetItemStats() { return itemStats; }
+    int& GetRunAwayCount() { return runAwayCount; }
+    std::vector<Achievement>& GetAchievementList() { return achievementList; }
 };
