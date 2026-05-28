@@ -120,7 +120,7 @@ void story()
     cin.get();
 }
 
-void UIManager::ShowTitleScreen()
+int UIManager::ShowTitleScreen()
 {
     while(true)
     {
@@ -172,7 +172,7 @@ void UIManager::ShowTitleScreen()
 
         case 2:
             
-            return;
+
        
         default:
             system("cls");
