@@ -30,9 +30,4 @@ public:
     void SellItem(int itemIdx, Character* player);
     int IsItemExist(const string& itemName);
 
-private:
-    vector<Item> m_vItem;
-    vector<Item>::iterator m_viItem;
-    int m_itemCount;
-    int m_shopSelectNum;
 };

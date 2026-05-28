@@ -13,4 +13,5 @@ class GameManager
 {
 public:
     void Battle(Character* player);
+    bool Bossbattle(Character* player);
 };
