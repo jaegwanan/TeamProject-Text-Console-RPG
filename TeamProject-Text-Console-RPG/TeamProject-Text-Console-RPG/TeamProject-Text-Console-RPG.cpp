@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <fstream>
+#include <cstdlib>
 
 #include "Character.h"
 #include "GameManager.h"
@@ -12,9 +14,9 @@
 #include "Mage.h"
 #include "Thief.h"
 #include "Archer.h"
-#include "AchievementManager.h"
 
 #include "UIManager.h"
+#include "AchievementManager.h"
 
 using namespace std;
 
@@ -22,6 +24,149 @@ class Warrior;
 class Mage;
 class Thief;
 class Archer;
+
+void ShowSaveSlots()
+{
+    cout << "=================================================" << endl;
+    cout << "              [ 세이브 파일 확인 ]               " << endl;
+    cout << "=================================================" << endl;
+    for (int i = 1; i <= 4; i++)
+    {
+        string filename = "save" + to_string(i) + ".txt";
+        ifstream fin(filename);
+        if (fin) {
+            string name, job;
+            int level;
+            fin >> name >> job >> level;
+            cout << "  [" << i << "번 슬롯] " << name << " (Lv." << level << " " << job << ")" << endl;
+            fin.close();
+        }
+        else {
+            cout << "  [" << i << "번 슬롯] --- 빈 슬롯 ---" << endl;
+        }
+    }
+    cout << "=================================================" << endl;
+}
+
+void SaveGame(Character* player, AchievementManager* achManager, int slot)
+{
+    string filename = "save" + to_string(slot) + ".txt";
+    ofstream fout(filename);
+    if (!fout) return;
+
+    fout << player->Getname() << endl;
+    fout << player->Getjob() << endl;
+    fout << player->Getlevel() << endl;
+    fout << player->Gethp() << endl;
+    fout << player->Getmaxhp() << endl;
+    fout << player->Getmp() << endl;
+    fout << player->Getmaxmp() << endl;
+    fout << player->Getattack() << endl;
+    fout << player->Getexp() << endl;
+    fout << player->Getgold() << endl;
+
+    string title = player->getActiveTitle();
+    if (title.empty()) title = "None";
+    for (char& c : title) { if (c == ' ') c = '_'; }
+    fout << title << endl;
+
+    fout << achManager->GetRunAwayCount() << endl;
+
+    auto& killStats = achManager->GetKillStats();
+    fout << killStats.size() << endl;
+    for (auto& pair : killStats) {
+        string safeName = pair.first;
+        for (char& c : safeName) { if (c == ' ') c = '_'; }
+        fout << safeName << " " << pair.second << endl;
+    }
+
+    auto& itemStats = achManager->GetItemStats();
+    fout << itemStats.size() << endl;
+    for (auto& pair : itemStats) {
+        string safeName = pair.first;
+        for (char& c : safeName) { if (c == ' ') c = '_'; }
+        fout << safeName << " " << pair.second << endl;
+    }
+
+    auto& achList = achManager->GetAchievementList();
+    fout << achList.size() << endl;
+    for (auto& ach : achList) {
+        fout << ach.isUnlocked << " ";
+    }
+    fout << endl;
+
+    fout.close();
+    UIManager::PrintMessage(to_string(slot) + "번 슬롯에 성공적으로 게임이 저장되었습니다!");
+}
+
+Character* LoadGame(int slot, AchievementManager* achManager)
+{
+    string filename = "save" + to_string(slot) + ".txt";
+    ifstream fin(filename);
+    if (!fin) {
+        UIManager::PrintMessage("해당 슬롯에 저장된 데이터가 없습니다!");
+        return nullptr;
+    }
+
+    string name, job, title;
+    int level, hp, maxhp, mp, maxmp, attack, exp, gold;
+
+    fin >> name >> job >> level >> hp >> maxhp >> mp >> maxmp >> attack >> exp >> gold >> title;
+
+    Character* player = nullptr;
+    if (job == "전사") player = new Warrior(name);
+    else if (job == "마법사") player = new Mage(name);
+    else if (job == "도적") player = new Thief(name);
+    else if (job == "궁수") player = new Archer(name);
+    else player = new Warrior(name);
+
+    player->Setlevel(level);
+    player->Setmaxhp(maxhp);
+    player->Sethp(hp);
+    player->Setmaxmp(maxmp);
+    player->Setmp(mp);
+    player->Setattack(attack);
+    player->Setexp(exp);
+    player->Setgold(gold);
+
+    if (title != "None") {
+        for (char& c : title) { if (c == '_') c = ' '; }
+        player->setActiveTitle(title);
+    }
+
+    int runAway, killSize, itemSize, achSize;
+    if (fin >> runAway) {
+        achManager->GetRunAwayCount() = runAway;
+
+        fin >> killSize;
+        for (int i = 0; i < killSize; i++) {
+            string safeName; int count;
+            fin >> safeName >> count;
+            for (char& c : safeName) { if (c == '_') c = ' '; }
+            achManager->GetKillStats()[safeName] = count;
+        }
+
+        fin >> itemSize;
+        for (int i = 0; i < itemSize; i++) {
+            string safeName; int count;
+            fin >> safeName >> count;
+            for (char& c : safeName) { if (c == '_') c = ' '; }
+            achManager->GetItemStats()[safeName] = count;
+        }
+
+        fin >> achSize;
+        auto& achList = achManager->GetAchievementList();
+        for (int i = 0; i < achSize; i++) {
+            bool unlocked;
+            fin >> unlocked;
+            if (i < achList.size()) achList[i].isUnlocked = unlocked;
+        }
+    }
+
+    fin.close();
+    UIManager::PrintMessage(to_string(slot) + "번 데이터를 성공적으로 불러왔습니다!");
+    return player;
+}
 
 MainGame::MainGame(Character* player) : m_player(player), m_shop(new Shop()), m_mainSelectNum((int)LOCATION::LOCATION_TOWN)
 {
@@ -88,35 +233,41 @@ void MainGame::ShowShopPage()
     }
 }
 
-
 Character* CreateCharacter()
 {
-    string name;
-    int choice;
+    vector<string> guildMaster =
+    {
+        "      ┌─────┐      ",
+        "     ┌┘─   ─└┐     ",
+        "     | ●   ● |  |  ",
+        "     └┐  U  ┌┘  [] ",
+        "    _-└┐ = ┌┘--_|| ",
+        "   |   └┬─┬┘  ,__| ",
+        "   |____| |___|    "
+    };
 
-    cout << " 길드에 등록하기 위해서는 모험가 명이 필요합니다." << endl;
-    cout << " 리암의 모험가 명을 입력하세요: ";
-    cin >> name;
+    cin.ignore(1000, '\n');
+
+    string name = UIManager::InputBox(
+        "길드 등록을 위해 모험가명이 필요하다네. 모험가 명이 무엇인가?",
+        guildMaster
+    );
 
     while (true)
     {
-        cout << " 직업을 선택하세요." << endl;
-        cout << " 1. 전사" << endl;
-        cout << " 2. 마법사" << endl;
-        cout << " 3. 도적" << endl;
-        cout << " 4. 궁수" << endl;
-        cout << " 선택: ";
-
-        if (!(cin >> choice)) // 여기서 입력 받고
+        vector<string> jobs =
         {
-            system("cls");
-            cout << "잘못된 입력입니다.\n";
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cin.get();
+            "전사",
+            "마법사",
+            "도적",
+            "궁수"
+        };
 
-            continue;
-        }
+        int choice = UIManager::SelectBox(
+            "자네 직업은 무엇으로 할게냐?",
+            jobs,
+            guildMaster
+        );
 
         switch (choice)
         {
@@ -129,12 +280,8 @@ Character* CreateCharacter()
         case 4:
             return new Archer(name);
         default:
-            system("cls");
-            cout << "잘못된 입력입니다\n";
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cin.get();
-            continue;
+            UIManager::PrintMessage("잘못된 입력입니다.");
+            break;
         }
     }
 }
@@ -143,37 +290,92 @@ UIManager ui;
 
 int main()
 {
-    ui.ShowTitleScreen();
-    cin.get();
-    system("cls");
-
     AchievementManager achManager;
     GameManager gameManager;
-    Character* player = CreateCharacter();
-    MainGame mainGame(player);
-
-    cout << endl;
-    cout << " 캐릭터 생성 완료! " << endl;
-    player->Displaystatus();
-    cin.ignore(1000, '\n');
+    Character* player = nullptr;
+    int currentSaveSlot = 1;
+    
+    ui.ShowStartScreen();
     cin.get();
 
     while (true)
     {
         system("cls");
+        int startMenuChoice = UIManager::ShowTitleScreen();
 
-        cout << "============================" << endl;
-        cout << "        TEXT RPG" << endl;
-        cout << "============================" << endl;
-        cout << " 1. 상태 보기" << endl;
-        cout << " 2. 전투 시작" << endl;
-        cout << " 3. 인벤토리" << endl;
-        cout << " 4. 상점" << endl;
-        cout << " 5. 휴식" << endl;
-        cout << " 72. 마왕성으로 향한다." << endl;
-        cout << " 0. 게임 종료" << endl;
-        cout << "============================" << endl;
-        cout << " 선택: ";
+        if (startMenuChoice == 1) {
+            system("cls");
+            ShowSaveSlots();
+
+            cout << " 저장할 슬롯 번호를 선택하세요 (1~4, 0번은 뒤로가기) : ";
+            int slotChoice;
+            if (!(cin >> slotChoice) || slotChoice < 0 || slotChoice > 4) {
+                cin.clear(); cin.ignore(1000, '\n');
+                UIManager::PrintMessage("잘못된 번호입니다.");
+                continue;
+            }
+            if (slotChoice == 0) continue;
+
+            currentSaveSlot = slotChoice;
+            system("cls");
+
+            player = CreateCharacter();
+
+            system("cls");
+            SaveGame(player, &achManager, currentSaveSlot);
+            break;
+        }
+        else if (startMenuChoice == 2) {
+            system("cls");
+            ShowSaveSlots();
+
+            cout << " 불러올 슬롯 번호를 선택하세요 (1~4, 0번은 뒤로가기) : ";
+            int slotChoice;
+            if (!(cin >> slotChoice) || slotChoice < 0 || slotChoice > 4) {
+                cin.clear(); cin.ignore(1000, '\n');
+                UIManager::PrintMessage("잘못된 번호입니다.");
+                continue;
+            }
+            if (slotChoice == 0) continue;
+
+            currentSaveSlot = slotChoice;
+            player = LoadGame(currentSaveSlot, &achManager);
+
+            if (player != nullptr) break;
+        }
+        else if (startMenuChoice == 3) {
+            achManager.DisplayStatsAndTitles();
+            cin.get();
+            system("cls");
+        }
+        else if (startMenuChoice == 4) {
+            return 0; // 게임 종료
+        }
+        else {
+            UIManager::PrintWrongInput();
+        }
+    }
+
+    MainGame mainGame(player);
+
+    while (true)
+    {
+        system("cls");
+
+        cout << "                   ======================================" << endl;
+        cout << "                            [ C A L A M I T Y ]  " << endl;
+        cout << "                   ======================================" << endl;
+        cout << "                         1. 상태 보기" << endl;
+        cout << "                         2. 전투 시작" << endl;
+        cout << "                         3. 인벤토리" << endl;
+        cout << "                         4. 상점" << endl;
+        cout << "                         5. 휴식" << endl;
+        cout << "                         6. 칭호 장착 및 업적 확인" << endl;
+        cout << "                         7. 게임 저장하기 (현재 슬롯: " << currentSaveSlot << "번)" << endl;
+        cout << "                         72. 마왕성으로 향한다." << endl;
+        cout << "                         0. 게임 종료" << endl;
+        cout << "                   ======================================" << endl;
+        cout << "                         선택: ";
 
         int menu;
 
@@ -201,7 +403,7 @@ int main()
         case 2:
         {
             int battle = gameManager.Battle(player, 1, &achManager);
-            player->Setpoisoned(false);
+            cin.clear();
             cin.ignore(1000, '\n');
 
             if (battle == 1)
@@ -235,18 +437,56 @@ int main()
             break;
         case 5:
         {
+            cout << endl;
+            int beforeHp = player->Gethp();
+            int beforeMp = player->Getmp();
+
             int hprecovery = static_cast<int>(player->Getmaxhp() * 0.4);
             int mprecovery = static_cast<int>(player->Getmaxmp() * 0.4);
 
             player->Sethp(player->Gethp() + hprecovery);
             player->Setmp(player->Getmp() + mprecovery);
-            cout << "당신은 휴식을 취해 체력을 " << hprecovery << ", 마나를 " << mprecovery << " 회복했다.\n";
-            cin.get();
+            
+            int hpRecovery = player->Gethp() - beforeHp;
+            int mpRecovery = player->Getmp() - beforeMp;
+
+            if (hpRecovery == 0 && mpRecovery == 0)
+            {
+                cout << "이미 체력과 마나가 가득 차 있다.\n";
+            }
+            else {
+                cout << "당신은 휴식을 취했다.\n";
+                cout << "체력 " << hpRecovery << ", 마나 " << mpRecovery << " 회복했다.\n";
+            }
+
+            if (player->Getpoisoned()) {
+                cout << "몸에 퍼진 독이 사라졌다.\n";
+                player->Setpoisoned(false);
+            }
+            system("pause"); // 안내 문구를 볼 수 있도록 멈춤
             break;
         }
+        case 6:
+            achManager.EquipTitleMenu(player);
+            break;
+        case 7:
+            system("cls");
+            ShowSaveSlots();
+            cout << " 몇번 슬롯에 덮어씌우시겠습니까? (1~4, 0번은 취소) : ";
+            int saveChoice;
+            if (!(cin >> saveChoice) || saveChoice < 0 || saveChoice > 4) {
+                cin.clear(); cin.ignore(1000, '\n');
+                UIManager::PrintMessage("잘못된 번호입니다.");
+                break;
+            }
+            if (saveChoice == 0) break;
+
+            currentSaveSlot = saveChoice;
+            SaveGame(player, &achManager, currentSaveSlot);
+            break;
         case 72:
         {
-            int ending = gameManager.Battle(player, 2, &achManager);
+            int ending = gameManager.Battle(player, 2, &achManager); // 보스전에도 업적매니저 전달
             cin.ignore(1000, '\n');
 
             if (ending == 1)

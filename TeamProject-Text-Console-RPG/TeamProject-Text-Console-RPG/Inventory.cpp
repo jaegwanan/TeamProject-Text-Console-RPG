@@ -208,9 +208,12 @@ void Inventory::ShowEquipText()
 // 장비 교체
 void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
 {
+    Item newItem = m_vBag[itemIdx];
     int existItem;
 
-    if (m_vBag[itemIdx].GetType() == ITEM::ITEM_WEAPON)
+    m_vBag[itemIdx].SetCount(m_vBag[itemIdx].GetCount() - 1);
+
+    if (m_vBag[itemIdx].GetCount() == 0)
     {
         // 기존 무기 공격력 제거
         player->Setattack(player->Getattack() - m_equipWeapon->GetAbility());
@@ -229,10 +232,15 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
             m_vBag.push_back(*m_equipWeapon);
         }
 
+        // 새 무기 장착
         delete m_equipWeapon;
-        m_equipWeapon = new Item(m_vBag[itemIdx]);
+        m_equipWeapon = new Item(newItem);
+
+        // 새 무기 능력치 적용
+        player->Setattack(player->Getattack() + m_equipWeapon->GetAbility());
     }
-    else if (m_vBag[itemIdx].GetType() == ITEM::ITEM_ARMOR)
+
+    else if (newItem.GetType() == ITEM::ITEM_ARMOR)
     {
         // 기존 방어구 능력치 제거
         player->Setattack(player->Getattack() - m_equipArmor->GetAbility());
@@ -251,8 +259,18 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
             m_vBag.push_back(*m_equipArmor);
         }
 
+        // 새 방어구 장착
         delete m_equipArmor;
-        m_equipArmor = new Item(m_vBag[itemIdx]);
+        m_equipArmor = new Item(newItem);
+
+        // 새 방어구 능력치 적용
+        player->Setmaxhp(player->Getmaxhp() + m_equipArmor->GetAbility());
+        player->Sethp(player->Gethp() + m_equipArmor->GetAbility());
+
+        if (player->Gethp() > player->Getmaxhp())
+        {
+            player->Sethp(player->Getmaxhp());
+        }
     }
     else if (m_vBag[itemIdx].GetType() == ITEM::ITEM_ACCESSORY)
     {
@@ -273,15 +291,18 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
             m_vBag.push_back(*m_equipAccessory);
         }
 
+        // 새 장신구 장착
         delete m_equipAccessory;
-        m_equipAccessory = new Item(m_vBag[itemIdx]);
-    }
+        m_equipAccessory = new Item(newItem);
 
-    m_vBag[itemIdx].SetCount(m_vBag[itemIdx].GetCount() - 1);
+        // 새 장신구 능력치 적용
+        player->Setmaxmp(player->Getmaxmp() + m_equipAccessory->GetAbility());
+        player->Setmp(player->Getmp() + m_equipAccessory->GetAbility());
 
-    if (m_vBag[itemIdx].GetCount() == 0)
-    {
-        m_vBag.erase(m_vBag.begin() + itemIdx);
+        if (player->Getmp() > player->Getmaxmp())
+        {
+            player->Setmp(player->Getmaxmp());
+        }
     }
 
     cout << "=================================================" << endl;
@@ -290,6 +311,7 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
 
     Sleep(1000);
 }
+
 
 // 아이템 존재 확인
 int Inventory::IsItemExist(const string& itemName)
