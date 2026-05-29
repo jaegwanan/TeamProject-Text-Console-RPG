@@ -362,7 +362,16 @@ int main()
     while (true)
     {
         system("cls");
-
+                 
+        cout << "                   ======================================" << endl;
+        cout << "                                                         " << endl;
+        cout << "                                                         " << endl;
+        cout << "                                                         " << endl;
+        cout << "                                                         " << endl;
+        cout << "                    __                                     " << endl;
+        cout << "                   |                                     " << endl;
+        cout << "                   |                                     " << endl;
+        cout << "                   |                                     " << endl;
         cout << "                   ======================================" << endl;
         cout << "                            [ C A L A M I T Y ]  " << endl;
         cout << "                   ======================================" << endl;
