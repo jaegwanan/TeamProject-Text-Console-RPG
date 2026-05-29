@@ -554,7 +554,7 @@ void UIManager::ShowEnding()
             cout << "            ■ 레벨업 (Level-Up System Developer), 경험치 디자인, 스킬 구현 " << endl;
             cout << "               - 안재관" << endl;
             cout << endl;
-            cout << "            ■ 적 몬스터 생성 (Monster Creator), 몬스터 기믹 구현" << endl;
+            cout << "            ■ 적 몬스터 생성 (Monster Creator), 몬스터 기믹 구현, 스탯 및 게임 밸런스 조정" << endl;
             cout << "               - 양경환" << endl;
             cout << endl;
             cout << "----------------------------------------------------------------------------" << endl;

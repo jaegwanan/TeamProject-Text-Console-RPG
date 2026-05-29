@@ -71,7 +71,7 @@ Monster* Generatemonster(Character* player) // 몬스터 랜덤 생성 함수
 {
     int randomvalue4 = rand() % 100 + 1;
     int level = Generatemonsterlevel(player); // 적 레벨 +-1 랜덤 함수
-    if (randomvalue4 <= 100)
+    if (randomvalue4 <= 15)
     {
         return new Slime(level); // 15프로
     }
