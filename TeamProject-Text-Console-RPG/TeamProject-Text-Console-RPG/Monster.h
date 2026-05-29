@@ -61,8 +61,8 @@ public:
         static std::random_device rd;  // 난수 시드 생성
         static std::mt19937 gen(rd()); // 난수 생성 엔진
 
-        std::uniform_int_distribution<int> Healthrandom(level * 20, level * 30);
-        std::uniform_int_distribution<int> Attackrandom(level * 5, level * 10);
+        std::uniform_int_distribution<int> Healthrandom(level * 20, level * 24);
+        std::uniform_int_distribution<int> Attackrandom(level * 7, level * 9);
 
         // 초기화
         int finalhealth = Healthrandom(gen);
@@ -92,8 +92,8 @@ public:
         static std::random_device rd;  // 난수 시드 생성
         static std::mt19937 gen(rd()); // 난수 생성 엔진
 
-        std::uniform_int_distribution<int> Healthrandom(level * 25, level * 35);
-        std::uniform_int_distribution<int> Attackrandom(level * 7, level * 12);
+        std::uniform_int_distribution<int> Healthrandom(level * 30, level * 38);
+        std::uniform_int_distribution<int> Attackrandom(level * 7, level * 9);
 
         // 초기화
         int finalhealth = Healthrandom(gen);
@@ -122,8 +122,8 @@ public:
         static std::random_device rd;  // 난수 시드 생성
         static std::mt19937 gen(rd()); // 난수 생성 엔진
 
-        std::uniform_int_distribution<int> Healthrandom(level * 35, level * 45);
-        std::uniform_int_distribution<int> Attackrandom(level * 7, level * 12);
+        std::uniform_int_distribution<int> Healthrandom(level * 28, level * 32);
+        std::uniform_int_distribution<int> Attackrandom(level * 5, level * 9);
 
         // 초기화
         int finalhealth = Healthrandom(gen);
@@ -152,8 +152,8 @@ public:
         static std::random_device rd;  // 난수 시드 생성
         static std::mt19937 gen(rd()); // 난수 생성 엔진
 
-        std::uniform_int_distribution<int> Healthrandom(level * 15, level * 25);
-        std::uniform_int_distribution<int> Attackrandom(level * 1, level * 3);
+        std::uniform_int_distribution<int> Healthrandom(level * 40, level * 50);
+        std::uniform_int_distribution<int> Attackrandom(level * 3, level * 4);
 
         // 초기화
         int finalhealth = Healthrandom(gen);
@@ -216,8 +216,8 @@ public:
         static std::random_device rd;  // 난수 시드 생성
         static std::mt19937 gen(rd()); // 난수 생성 엔진
 
-        std::uniform_int_distribution<int> Healthrandom(level * 20, level * 25);
-        std::uniform_int_distribution<int> Attackrandom(level * 7, level * 9);
+        std::uniform_int_distribution<int> Healthrandom(level * 22, level * 26);
+        std::uniform_int_distribution<int> Attackrandom(level * 6, level * 8);
 
         // 초기화
         int finalhealth = Healthrandom(gen);
