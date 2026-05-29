@@ -13,10 +13,34 @@ Character::Character(std::string name)
 
 void Character::Displaystatus()
 {
-    cout << "------------------------------------------------------------------------------------------------------" << endl;
-    cout << "이름: " << name << "  |  " << "직업: " << job << "  |  " << "Lv." << level << "  |  경험치: " << exp << "/" << Getrequiredexp() << endl;
-    cout << "HP: " << maxhp << "  |  " << "MP: " << maxmp << "  |  " << "공격력: " << attack << "  |  " << "소유금액: " << gold << endl;
-    cout << "------------------------------------------------------------------------------------------------------" << endl;
+    system("cls");
+
+    vector<string> art = GetAsciiArt();
+
+    // 아스키 출력
+    for (int i = 0; i < art.size(); i++)
+    {
+        cout << "                    " << art[i] << endl;
+    }
+
+    cout << endl;
+
+    cout << "       ---------------------------------------------------------------" << endl;
+
+    cout << "          이름: " << name
+        << "  |  직업: " << job
+        << "  |  Lv." << level
+        << "  |  경험치: " << exp << "/" << Getrequiredexp()
+        << endl;
+
+    cout << "          HP: " << hp << "/" << maxhp
+        << "  |  MP: " << mp << "/" << maxmp
+        << "  |  공격력: " << attack
+        << "  |  소유금액: " << gold
+        << endl;
+
+    cout << "       ---------------------------------------------------------------" << endl;
+
 
 }
 
@@ -97,14 +121,10 @@ void Character::Setlevel(int level)
 
 void Character::Sethp(int hp)
 {
-    if (hp > maxhp)
-    {
-        this->hp = maxhp;
-    }
-    else
-    {
-        this->hp = hp;
-    }
+    this->hp = min(hp, maxhp);
+
+    if (this->hp < 0)
+        this->hp = 0;
 }
 
 void Character::Setmaxhp(int maxhp)
@@ -114,14 +134,10 @@ void Character::Setmaxhp(int maxhp)
 
 void Character::Setmp(int mp)
 {
-    if (mp > maxmp)
-    {
-        this->mp = maxmp;
-    }
-    else
-    {
-        this->mp = mp;
-    }
+    this->mp = min(mp, maxmp);
+
+    if (this->mp < 0)
+        this->mp = 0;
 }
 
 void Character::Setmaxmp(int maxmp)

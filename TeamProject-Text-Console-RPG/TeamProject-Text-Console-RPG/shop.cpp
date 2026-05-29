@@ -65,6 +65,8 @@ Shop::Shop() : m_itemCount(0), m_shopSelectNum((int)SHOP::SHOP_TOWN)
 
     Item inputItem21(ITEM::ITEM_ATTACK_POTION, "공격력 포션", 15, 10,
         "공격력을 증가시키는 포션", 20);
+    Item inputItem22(ITEM::ITEM_DETOX_POTION, "해독제", 15, 10,
+        "독을 해독하는 포션", 20);
 
     m_vItem.push_back(inputItem1);
     m_vItem.push_back(inputItem2);
@@ -87,6 +89,8 @@ Shop::Shop() : m_itemCount(0), m_shopSelectNum((int)SHOP::SHOP_TOWN)
     m_vItem.push_back(inputItem19);
     m_vItem.push_back(inputItem20);
     m_vItem.push_back(inputItem21);
+    m_vItem.push_back(inputItem22);
+
 } 
 
 // 상점 아이템 출력

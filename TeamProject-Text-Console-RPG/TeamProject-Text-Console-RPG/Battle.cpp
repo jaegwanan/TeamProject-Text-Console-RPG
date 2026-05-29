@@ -163,59 +163,79 @@ bool Monsterattack(Character* player, Monster* monster) // 이 함수 하나로 몬스터
     return 0;
 }
 
-bool Useitem(Character* player, AchievementManager* achManager)
+string Useitem(Character* player, AchievementManager* achManager)
 {
     vector<Item>* bag = player->GetInventory()->GetBag();
 
     if (bag->empty())
     {
-        cout << "사용할 아이템이 없습니다.\n";
-        return false;
+        return "사용할 아이템이 없습니다.";
     }
 
+    system("cls");
     cout << "===== 아이템 목록 =====\n";
 
     for (int i = 0; i < bag->size(); ++i)
     {
-        cout << i + 1 << ". ";
-        cout << bag->at(i).GetName();
-        cout << " x" << bag->at(i).GetCount() << "\n";
+        cout << i + 1 << ". "
+            << bag->at(i).GetName()
+            << " x" << bag->at(i).GetCount() << "\n";
     }
 
     int select;
-
     cout << "사용할 아이템 번호 : ";
     cin >> select;
 
     if (select <= 0 || select > bag->size())
     {
-        return false;
+        return "아이템을 사용하지 않았다.";
     }
 
     Item& item = bag->at(select - 1);
-
     string usedItemName = item.GetName();
+    string message;
 
     switch (item.GetType())
     {
     case ITEM::ITEM_HP_POTION:
+    {
+        int beforeHp = player->Gethp();
         player->Sethp(player->Gethp() + item.GetAbility());
-        cout << "HP가" << item.GetAbility() << "회복되었다.\n";
+        int realRecovery = player->Gethp() - beforeHp;
+
+        message = usedItemName + " 사용! 체력 " + to_string(realRecovery) + " 회복!";
         break;
+    }
 
     case ITEM::ITEM_MP_POTION:
+    {
+        int beforeMp = player->Getmp();
         player->Setmp(player->Getmp() + item.GetAbility());
-        cout << "MP가" << item.GetAbility() << "회복되었다.\n";
+        int realRecovery = player->Getmp() - beforeMp;
+
+        message = usedItemName + " 사용! 마나 " + to_string(realRecovery) + " 회복!";
         break;
+    }
 
     case ITEM::ITEM_ATTACK_POTION:
         player->Setattack(player->Getattack() + item.GetAbility());
-        cout << "공격력이" << item.GetAbility() << "증가했다.\n";
+        message = usedItemName + " 사용! 공격력 " + to_string(item.GetAbility()) + " 증가!";
+        break;
+
+    case ITEM::ITEM_DETOX_POTION:
+        if (player->Getpoisoned())
+        {
+            player->Setpoisoned(false);
+            message = usedItemName + " 사용! 독이 치료되었다!";
+        }
+        else
+        {
+            return "이미 독 상태가 아니다.";
+        }
         break;
 
     default:
-        cout << "사용할 수 없는 아이템이다.\n";
-        return false;
+        return "전투 중 사용할 수 없는 아이템이다.";
     }
 
     item.SetCount(item.GetCount() - 1);
@@ -224,10 +244,10 @@ bool Useitem(Character* player, AchievementManager* achManager)
     {
         bag->erase(bag->begin() + (select - 1));
     }
-    achManager->UpdateItem(usedItemName);
-    cin.get();
 
-    return true;
+    achManager->UpdateItem(usedItemName);
+
+    return message;
 }
 
 void AddDropItem(Character* player, Item item)
@@ -442,24 +462,20 @@ int GameManager::Battle(Character* player, int Num, AchievementManager* achManag
 
         case 3:
         {
-            system("cls");
+            string itemMessage = Useitem(player, achManager);
+            cin.ignore(1000, '\n');
+            UIManager::DrawBattleScreen(player, monster, itemMessage, false);
+            cin.get();
 
-            if (Useitem(player, achManager))
+            if (itemMessage == "아이템을 사용하지 않았다." ||
+                itemMessage == "사용할 아이템이 없습니다." ||
+                itemMessage == "전투 중 사용할 수 없는 아이템이다." ||
+                itemMessage == "이미 독 상태가 아니다.")
             {
-                battleMessage = "아이템을 사용했다!";
-                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                cin.get();
-
-                break;
-            }
-            else
-            {
-                battleMessage = "아이템을 사용하지 않았다.";
-                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                cin.get();
-
                 continue;
             }
+
+            break;
         }
 
         case 4:
@@ -500,61 +516,22 @@ int GameManager::Battle(Character* player, int Num, AchievementManager* achManag
         {
             autobattle = true;
 
-            int playerhp = player->Gethp();
-            int playermp = player->Getmp();
-            int monsterhp = monster->Gethp();
-            int randomvalue = rand() % 100 + 1;
-            int mp = 100;
-
-            if (monsterhp < playerhp && playermp < mp)
+            while (true)
             {
-                Basicattack(player, monster);
+                int playerhp = player->Gethp();
+                int playermp = player->Getmp();
+                int monsterhp = monster->Gethp();
+                int randomvalue = rand() % 100 + 1;
+                int mp = 100;
 
-                battleMessage = "자동 전투: " + player->Getname() + "이(가) 공격했다!" + player->Attackmessage() + " \n";
-                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                cin.get();
-
-                Zombie* zombie = dynamic_cast<Zombie*>(monster);
-
-                if (zombie != nullptr)
+                if (monsterhp < playerhp && playermp < mp)
                 {
-                    string reviveMessage = zombie->Getrevivemessage();
+                    Basicattack(player, monster);
 
-                    if (!reviveMessage.empty())
-                    {
-                        UIManager::DrawBattleScreen(player, monster, reviveMessage, false);
-                        cin.get();
-                        zombie->Revive();
-
-                        UIManager::DrawBattleScreen(player, monster, "좀비가 절반의 체력으로 부활했다!", false);
-                        cin.get();
-                    }
-                }
-
-                break;
-            }
-            else if (monsterhp < playerhp && playermp >= mp)
-            {
-                vector<string> skillMessages = player->Skill(monster);
-
-                if (skillMessages[0] == "MP가 부족해 스킬을 사용할 수 없다.")
-                {
-                    UIManager::DrawBattleScreen(player, monster, skillMessages[0], false);
+                    battleMessage = "자동 전투: " + player->Getname() + "이(가) 공격했다!" + player->Attackmessage() + " \n";
+                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
                     cin.get();
-                    continue;
-                }
 
-                for (int i = 0; i < skillMessages.size(); i++)
-                {
-                    if (player->Getjob() == "도적" && i > 0)
-                    {
-                        int damage = player->Getattack() * 0.7;
-                        monster->Takedamage(damage);
-                    }
-
-                    UIManager::DrawBattleScreen(player, monster, "자동전투: " + skillMessages[i], false);
-                    cin.get();
-                    
                     Zombie* zombie = dynamic_cast<Zombie*>(monster);
 
                     if (zombie != nullptr)
@@ -571,99 +548,142 @@ int GameManager::Battle(Character* player, int Num, AchievementManager* achManag
                             cin.get();
                         }
                     }
-                    if (monster->Gethp() <= 0)
-                        break;
+
+                    break;
                 }
-
-                break;
-            }
-            else if (monsterhp >= playerhp && playermp < mp)
-            {
-                if (randomvalue > 70)
+                else if (monsterhp < playerhp && playermp >= mp)
                 {
-                    system("cls");
+                    vector<string> skillMessages = player->Skill(monster);
 
-                    if (Useitem(player, achManager))    
+                    if (skillMessages[0] == "MP가 부족해 스킬을 사용할 수 없다.")
                     {
-                        battleMessage = "자동 전투: 아이템을 사용했다!";
+                        UIManager::DrawBattleScreen(player, monster, skillMessages[0], false);
+                        cin.get();
+                        continue;
+                    }
+
+                    for (int i = 0; i < skillMessages.size(); i++)
+                    {
+                        if (player->Getjob() == "도적" && i > 0)
+                        {
+                            int damage = player->Getattack() * 0.7;
+                            monster->Takedamage(damage);
+                        }
+
+                        UIManager::DrawBattleScreen(player, monster, "자동전투: " + skillMessages[i], false);
+                        cin.get();
+
+                        Zombie* zombie = dynamic_cast<Zombie*>(monster);
+
+                        if (zombie != nullptr)
+                        {
+                            string reviveMessage = zombie->Getrevivemessage();
+
+                            if (!reviveMessage.empty())
+                            {
+                                UIManager::DrawBattleScreen(player, monster, reviveMessage, false);
+                                cin.get();
+                                zombie->Revive();
+
+                                UIManager::DrawBattleScreen(player, monster, "좀비가 절반의 체력으로 부활했다!", false);
+                                cin.get();
+                            }
+                        }
+
+                        if (monster->Gethp() <= 0)
+                            break;
+                    }
+
+                    break;
+                }
+                else if (monsterhp >= playerhp && playermp < mp)
+                {
+                    if (randomvalue > 70)
+                    {
+                        string itemMessage = Useitem(player, achManager);
+                        cin.ignore(1000, '\n');
+                        battleMessage = "자동 전투: " + itemMessage;
                         UIManager::DrawBattleScreen(player, monster, battleMessage, false);
                         cin.get();
+
+                        if (itemMessage == "아이템을 사용하지 않았다." ||
+                            itemMessage == "사용할 아이템이 없습니다." ||
+                            itemMessage == "전투 중 사용할 수 없는 아이템이다." ||
+                            itemMessage == "이미 독 상태가 아니다.")
+                        {
+                            continue;
+                        }
 
                         break;
                     }
                     else
                     {
-                        battleMessage = "아이템을 사용하지 않았다.";
-                        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                        cin.get();
+                        if (Num == 1)
+                        {
+                            if (Pantierun(player, monsterlevel))
+                            {
+                                battleMessage = "자동 전투: 무사히 도망쳤다!";
+                                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                                cin.get();
+                                achManager->UpdateRunAway();
+                                delete monster;
+                                return 4;
+                            }
+                            else
+                            {
+                                battleMessage = "자동 전투: 도망치지 못했다.";
+                                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                                cin.get();
 
-                        continue;
+                                break;
+                            }
+                        }
+                        else if (Num == 2)
+                        {
+                            battleMessage = "자동 전투: 당신은 도망치려 했다.";
+                            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                            cin.get();
+                            battleMessage = "자동 전투: 도망칠 수 있을 거라 생각했나?";
+
+                            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                            cin.get();
+
+                            continue;
+                        }
                     }
                 }
-                else
+                else if (monsterhp >= playerhp && playermp >= 100)
                 {
-                    if (Num == 1)
-                    {
-                        if (Pantierun(player, monsterlevel))
-                        {
-                            battleMessage = "자동 전투: 무사히 도망쳤다!";
-                            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                            cin.get();
-                            achManager->UpdateRunAway();
-                            delete monster;
-                            return 4;
-                        }
-                        else
-                        {
-                            battleMessage = "자동 전투: 도망치지 못했다.";
-                            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                            cin.get();
+                    vector<string> skillMessages = player->Skill(monster);
 
+                    if (skillMessages[0] == "MP가 부족해 스킬을 사용할 수 없다.")
+                    {
+                        UIManager::DrawBattleScreen(player, monster, skillMessages[0], false);
+                        cin.get();
+                        continue;
+                    }
+
+                    for (int i = 0; i < skillMessages.size(); i++)
+                    {
+                        if (player->Getjob() == "도적" && i > 0)
+                        {
+                            int damage = player->Getattack() * 0.7;
+                            monster->Takedamage(damage);
+                        }
+
+                        UIManager::DrawBattleScreen(player, monster, "자동전투: " + skillMessages[i], false);
+                        cin.get();
+
+                        if (monster->Gethp() <= 0)
                             break;
-                        }
-                    }
-                    else if (Num == 2)
-                    {
-                        battleMessage = "자동 전투: 당신은 도망치려 했다.";
-                        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                        cin.get();
-                        battleMessage = "자동 전투: 도망칠 수 있을 거라 생각했나?";
-
-                        UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                        cin.get();
-
-                        continue;
-                    }
-                }
-            }
-            else if (monsterhp >= playerhp && playermp >= 100)
-            {
-                vector<string> skillMessages = player->Skill(monster);
-
-                if (skillMessages[0] == "MP가 부족해 스킬을 사용할 수 없다.")
-                {
-                    UIManager::DrawBattleScreen(player, monster, skillMessages[0], false);
-                    cin.get();
-                    continue;
-                }
-
-                for (int i = 0; i < skillMessages.size(); i++)
-                {
-                    if (player->Getjob() == "도적" && i > 0)
-                    {
-                        int damage = player->Getattack() * 0.7;
-                        monster->Takedamage(damage);
                     }
 
-                    UIManager::DrawBattleScreen(player, monster, "자동전투: " + skillMessages[i], false);
-                    cin.get();
-
-                    if (monster->Gethp() <= 0)
-                        break;
+                    break;
                 }
 
                 break;
             }
+
             break;
         }
 
@@ -693,49 +713,56 @@ int GameManager::Battle(Character* player, int Num, AchievementManager* achManag
         }
 
         // 턴 종료 회복
-        if (player->Getpoisoned() == false)
+        if (player->Gethp() > 0)
         {
-            if (Num == 1)
+            if (player->Getpoisoned() == false)
             {
-                int hprecovery = static_cast<int>(player->Gethp() * 0.05);
-                int mprecovery = static_cast<int>(player->Getmp() * 0.05);
+                if (Num == 1)
+                {
+                    int hprecovery = static_cast<int>(player->Gethp() * 0.05);
+                    int mprecovery = static_cast<int>(player->Getmp() * 0.05);
 
-                player->Sethp(player->Gethp() + hprecovery);
-                player->Setmp(player->Getmp() + mprecovery);
+                    player->Sethp(player->Gethp() + hprecovery);
+                    player->Setmp(player->Getmp() + mprecovery);
 
-                battleMessage =
-                    "시간이 지나며 체력이 " +
-                    to_string(hprecovery) +
-                    ", 마나가 " +
-                    to_string(mprecovery) +
-                    " 회복했다.";
+                    battleMessage =
+                        "시간이 지나며 체력이 " +
+                        to_string(hprecovery) +
+                        ", 마나가 " +
+                        to_string(mprecovery) +
+                        " 회복했다.";
 
-                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                cin.get();
+                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                    cin.get();
+                }
+                else if (Num == 2)
+                {
+                    battleMessage = "당신은 " + monstername + " 의 기운에 압도되고 있다.";
+                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                    cin.get();
+                    int hprecovery = static_cast<int>(player->Gethp() * 0.05);
+                    int mprecovery = static_cast<int>(player->Getmp() * 0.05);
+
+                    player->Sethp(player->Gethp() - hprecovery);
+                    player->Setmp(player->Getmp() - mprecovery);
+
+                    battleMessage = monstername + " 의 기운이 당신에게 피해를 준다.\n" + to_string(hprecovery) + " 의 체력과 " + to_string(mprecovery) + " 의 마나를 잃었다.";
+                    UIManager::DrawBattleScreen(player, monster, battleMessage, false);
+                    cin.get();
+                }
             }
-            else if (Num == 2)
+            else
             {
-                battleMessage = "당신은 " + monstername + " 의 기운에 압도되고 있다.";
+                battleMessage = "당신은 독에 중독되어 자연회복이 되지 않는다.";
+
                 UIManager::DrawBattleScreen(player, monster, battleMessage, false);
                 cin.get();
-                int hprecovery = static_cast<int>(player->Gethp() * 0.05);
-                int mprecovery = static_cast<int>(player->Getmp() * 0.05);
 
-                player->Sethp(player->Gethp() - hprecovery);
-                player->Setmp(player->Getmp() - mprecovery);
-
-                battleMessage = monstername + " 의 기운이 당신에게 피해를 준다.\n" + to_string(hprecovery) + " 의 체력과 " + to_string(mprecovery) + " 의 마나를 잃었다.";
-                UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-                cin.get();
             }
         }
-        else
+        else if (player->Gethp() <= 0)
         {
-            battleMessage = "당신은 독에 중독되어 자연회복이 되지 않는다.";
-
-            UIManager::DrawBattleScreen(player, monster, battleMessage, false);
-            cin.get();
-
+            break;
         }
 
     } // 와일문 끝
@@ -780,6 +807,14 @@ int GameManager::Battle(Character* player, int Num, AchievementManager* achManag
         UIManager::DrawBattleScreen(player, monster, battleMessage, false);
         cin.get();
 
+        if (Num == 2)
+        {
+            UIManager::ShowEnding();
+
+            delete monster;
+            return 5;
+        }
+
         string item = monster->Getitemname();
         int exp = monster->Getexp();
         int gold = monster->Getgold();
@@ -789,7 +824,6 @@ int GameManager::Battle(Character* player, int Num, AchievementManager* achManag
       
         int beforeLevel = player->Getlevel();
         player->Gainexp(exp);
-        cin.get();
         int afterLevel = player->Getlevel();
         
 

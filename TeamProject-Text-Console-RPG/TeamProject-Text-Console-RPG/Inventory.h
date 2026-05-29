@@ -2,6 +2,7 @@
 
 #include "Header.h"
 #include "Item.h"
+#include "Inventory.h"
 
 class Character;
 

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="us-ascii"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -158,6 +158,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="save.txt" />
+    <Text Include="save1.txt" />
+    <Text Include="save2.txt" />
+    <Text Include="save3.txt" />
+    <Text Include="save4.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
