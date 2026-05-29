@@ -97,7 +97,7 @@ void UIManager::DrawBattleMenu()
     cout << "  4. 도망간다" << endl;
     cout << "  5. 자동 전투 (랜덤 행동)" << endl;
     cout << "--------------------------------------------------------------------------------" << endl;
-    cout << "  >> 입력: ";
+    cout << "  >> 입력: ";    
 }
 
 void UIManager::PrintRunSuccess()
