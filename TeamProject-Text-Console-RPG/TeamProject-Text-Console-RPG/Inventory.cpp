@@ -1,5 +1,6 @@
 #include "Inventory.h"
-#include "Character.h"
+#include "Character.h" 
+
 // 생성자
 Inventory::Inventory()
     : m_bagItemCount(0),
@@ -214,16 +215,12 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
 
     if (m_vBag[itemIdx].GetCount() == 0)
     {
-        m_vBag.erase(m_vBag.begin() + itemIdx);
-    }
-
-    //  장비 타입별 교체
-    if (newItem.GetType() == ITEM::ITEM_WEAPON)
-    {
-        // 기존 무기 능력치 제거
+        // 기존 무기 공격력 제거
         player->Setattack(player->Getattack() - m_equipWeapon->GetAbility());
 
-        // 기존 무기를 가방에 다시 넣기
+        // 새 무기 공격력 추가
+        player->Setattack(player->Getattack() + m_vBag[itemIdx].GetAbility());
+
         existItem = IsItemExist(m_equipWeapon->GetName());
 
         if (existItem > -1)
@@ -246,14 +243,11 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
     else if (newItem.GetType() == ITEM::ITEM_ARMOR)
     {
         // 기존 방어구 능력치 제거
-        player->Setmaxhp(player->Getmaxhp() - m_equipArmor->GetAbility());
+        player->Setattack(player->Getattack() - m_equipArmor->GetAbility());
 
-        if (player->Gethp() > player->Getmaxhp())
-        {
-            player->Sethp(player->Getmaxhp());
-        }
+        // 새 방어구 능력치 추가
+        player->Setattack(player->Getattack() + m_vBag[itemIdx].GetAbility());
 
-        // 기존 방어구를 가방에 다시 넣기
         existItem = IsItemExist(m_equipArmor->GetName());
 
         if (existItem > -1)
@@ -278,18 +272,14 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
             player->Sethp(player->Getmaxhp());
         }
     }
-
-    else if (newItem.GetType() == ITEM::ITEM_ACCESSORY)
+    else if (m_vBag[itemIdx].GetType() == ITEM::ITEM_ACCESSORY)
     {
-        // 기존 장신구 능력치 제거
-        player->Setmaxmp(player->Getmaxmp() - m_equipAccessory->GetAbility());
+        // 기존 장신구 공격력 제거
+        player->Setattack(player->Getattack() - m_equipAccessory->GetAbility());
 
-        if (player->Getmp() > player->Getmaxmp())
-        {
-            player->Setmp(player->Getmaxmp());
-        }
+        // 새 장신구 공격력 추가
+        player->Setattack(player->Getattack() + m_vBag[itemIdx].GetAbility());
 
-        // 기존 장신구를 가방에 다시 넣기
         existItem = IsItemExist(m_equipAccessory->GetName());
 
         if (existItem > -1)

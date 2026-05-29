@@ -294,7 +294,8 @@ int main()
     GameManager gameManager;
     Character* player = nullptr;
     int currentSaveSlot = 1;
-    
+   
+
     ui.ShowStartScreen();
     cin.get();
 
