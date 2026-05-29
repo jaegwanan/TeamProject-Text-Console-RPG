@@ -9,6 +9,7 @@ Character::Character(std::string name)
 {
     this->name = name;
     m_inventory = new Inventory();
+    attack += 5; // 평범한 장검
 }
 
 void Character::Displaystatus()

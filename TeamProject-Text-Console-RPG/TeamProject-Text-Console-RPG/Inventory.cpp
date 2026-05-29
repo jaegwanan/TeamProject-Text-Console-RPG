@@ -1,5 +1,6 @@
 #include "Inventory.h"
-#include "Character.h"
+#include "Character.h" 
+
 // 생성자
 Inventory::Inventory()
     : m_bagItemCount(0),
@@ -210,6 +211,7 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
     Item newItem = m_vBag[itemIdx];
     int existItem;
 
+    // 선택한 아이템을 먼저 가방에서 1개 제거
     m_vBag[itemIdx].SetCount(m_vBag[itemIdx].GetCount() - 1);
 
     if (m_vBag[itemIdx].GetCount() == 0)
@@ -217,13 +219,12 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
         m_vBag.erase(m_vBag.begin() + itemIdx);
     }
 
-    //  장비 타입별 교체
     if (newItem.GetType() == ITEM::ITEM_WEAPON)
     {
         // 기존 무기 능력치 제거
         player->Setattack(player->Getattack() - m_equipWeapon->GetAbility());
 
-        // 기존 무기를 가방에 다시 넣기
+        // 기존 무기를 가방에 넣기
         existItem = IsItemExist(m_equipWeapon->GetName());
 
         if (existItem > -1)
@@ -253,7 +254,7 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
             player->Sethp(player->Getmaxhp());
         }
 
-        // 기존 방어구를 가방에 다시 넣기
+        // 기존 방어구를 가방에 넣기
         existItem = IsItemExist(m_equipArmor->GetName());
 
         if (existItem > -1)
@@ -271,7 +272,6 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
 
         // 새 방어구 능력치 적용
         player->Setmaxhp(player->Getmaxhp() + m_equipArmor->GetAbility());
-        player->Sethp(player->Gethp() + m_equipArmor->GetAbility());
 
         if (player->Gethp() > player->Getmaxhp())
         {
@@ -289,7 +289,7 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
             player->Setmp(player->Getmaxmp());
         }
 
-        // 기존 장신구를 가방에 다시 넣기
+        // 기존 장신구를 가방에 넣기
         existItem = IsItemExist(m_equipAccessory->GetName());
 
         if (existItem > -1)
@@ -307,7 +307,6 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
 
         // 새 장신구 능력치 적용
         player->Setmaxmp(player->Getmaxmp() + m_equipAccessory->GetAbility());
-        player->Setmp(player->Getmp() + m_equipAccessory->GetAbility());
 
         if (player->Getmp() > player->Getmaxmp())
         {
@@ -321,7 +320,6 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
 
     Sleep(1000);
 }
-
 
 // 아이템 존재 확인
 int Inventory::IsItemExist(const string& itemName)
