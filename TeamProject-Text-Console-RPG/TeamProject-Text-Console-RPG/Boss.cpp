@@ -22,7 +22,7 @@ string Boss::Specialattack(Character* player)
 
 	player->Takedamage(damage);
 
-	string message = "오크의 연속 공격! " + player->Getname() + "에게 " + to_string(damage) + " 데미지!";
+	string message = "오크의 연속 공격! " + player->Getname() + "에게 " + to_string(damage) + " 대미지!";
 
 	return message;
 }

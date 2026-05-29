@@ -23,7 +23,7 @@ string Zombie::Specialattack(Character* player)
 	player->Takedamage(damage);
 	player->Setpoisoned(true);
 
-	string message = "좀비가 깨물었다! " + player->Getname() + "에게 " + to_string(damage) + " 데미지!";
+	string message = "좀비가 깨물었다! " + player->Getname() + "에게 " + to_string(damage) + " 대미지!";
 
 	return message;
 }
