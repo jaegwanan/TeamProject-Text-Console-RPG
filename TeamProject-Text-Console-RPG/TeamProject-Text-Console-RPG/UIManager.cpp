@@ -515,7 +515,9 @@ void UIManager::ShowEnding()
             cout << endl;
             cout << "LIAM CATY" << endl; cin.get();
             cout << endl << endl << endl;
-            cout << "칼라미티(Calamity)" << cin.get() << "-> 리암 케이시(Liam Caty)" << endl; cin.get();
+            cout << "칼라미티(Calamity)";
+            cin.get();
+            cout << "-> 리암 케이시(Liam Caty)" << endl; cin.get();
             cout << endl;
             cout << "재앙은 반복된다."; cin.get();
             cout << "주인공 : 리암 케이시(Liam Caty)"; cin.get();

@@ -11,7 +11,7 @@ Mage::Mage(std::string name) : Character(name)
 
 std::string Mage::Attackmessage()
 {
-    return "매직 미사일";
+    return "매직 미사일!";
 }
 
 int Mage::Getrequiredexp()
