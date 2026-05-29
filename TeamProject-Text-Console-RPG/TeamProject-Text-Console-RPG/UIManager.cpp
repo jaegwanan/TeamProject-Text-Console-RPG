@@ -188,7 +188,12 @@ int UIManager::ShowTitleScreen()
     cout << "  >> 용사여, 선택을 내리시게: ";
 
     int choice;
-    cin >> choice;
+    if (!(cin >> choice))
+    {
+        cin.clear();
+        cin.ignore(1000, '\n');
+    }
+
 
     return choice;
 }
