@@ -237,13 +237,13 @@ Character* CreateCharacter()
 {
     vector<string> guildMaster =
     {
-        "        ______",
-        "       /      \\",
-        "      |  o  o  |",
-        "      |   __   |",
-        "      |________|",
-        "      /|  ||  |\\",
-        "     /_|__||__|_\\"
+        "      ┌─────┐      ",
+        "     ┌┘─   ─└┐     ",
+        "     | ●   ● |  |  ",
+        "     └┐  U  ┌┘  [] ",
+        "    _-└┐ = ┌┘--_|| ",
+        "   |   └┬─┬┘  ,__| ",
+        "   |____| |___|    "
     };
 
     cin.ignore(1000, '\n');
@@ -294,7 +294,8 @@ int main()
     GameManager gameManager;
     Character* player = nullptr;
     int currentSaveSlot = 1;
-    
+   
+
     ui.ShowStartScreen();
     cin.get();
 
@@ -361,10 +362,19 @@ int main()
     while (true)
     {
         system("cls");
-
-        cout << "                   ======================================" << endl;
-        cout << "                            [ C A L A M I T Y ]  " << endl;
-        cout << "                   ======================================" << endl;
+                 
+        cout << "                                                             " << endl;
+        cout << "                   ______                                   " << endl;
+        cout << "                        /\\                                   " << endl;
+        cout << "                       /  \\                     ┼_____      " << endl;
+        cout << "                      /    \\─□─□─□─□─□─□─□─□─□─/ \\    \\─□─  " << endl;
+        cout << "                   __/┤    ├\\ ┌┬┬┬┬┬┬┬┬┬┬┐    /   \\    \\    " << endl;
+        cout << "                      │    │  ├┴┴┴┴┴┴┴┴┴┴┤   /┤   ├\\____\\   " << endl;
+        cout << "                      │ ┌─┐│  │          │    │┌─┐│[][]│    " << endl;
+        cout << "                   ___│ │ ││  │          │    ││ ││____│    " << endl;
+        cout << "                   =======================================" << endl;
+        cout << "                                 [ T O W N ]              " << endl;
+        cout << "                   =======================================" << endl;
         cout << "                         1. 상태 보기" << endl;
         cout << "                         2. 전투 시작" << endl;
         cout << "                         3. 인벤토리" << endl;
@@ -374,7 +384,7 @@ int main()
         cout << "                         7. 게임 저장하기 (현재 슬롯: " << currentSaveSlot << "번)" << endl;
         cout << "                         72. 마왕성으로 향한다." << endl;
         cout << "                         0. 게임 종료" << endl;
-        cout << "                   ======================================" << endl;
+        cout << "                   =======================================" << endl;
         cout << "                         선택: ";
 
         int menu;

@@ -22,7 +22,19 @@ string Troll::Specialattack(Character* player)
 
 	player->Takedamage(damage);
 
-	string message = "트롤의 연속 공격! " + player->Getname() + "에게 " + to_string(damage) + " 데미지!";
+	int mpdamage = 10;
+	int currentmp = player->Getmp();
+
+	if (currentmp >= mpdamage)
+	{
+		player->Setmp(currentmp - mpdamage);
+	}
+	else
+	{
+		player->Setmp(0);
+	}
+
+	string message = "트롤이 신비한 힘으로 마나를 강탈한다! " + player->Getname() + "에게 " + to_string(damage) + " 대미지! (mp " + to_string(mpdamage) + " 감소)";
 
 	return message;
 }
