@@ -51,6 +51,9 @@ void Item::ShowItemInfo()
     case ITEM::ITEM_ATTACK_POTION:
         cout << "공격력 증가 포션";
         break;
+    case ITEM::ITEM_DETOX_POTION:
+        cout << "해독제";
+        break;
 
     default:
         cout << "없음";

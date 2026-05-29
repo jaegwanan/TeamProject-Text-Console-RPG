@@ -235,32 +235,39 @@ void MainGame::ShowShopPage()
 
 Character* CreateCharacter()
 {
-    string name;
-    int choice;
+    vector<string> guildMaster =
+    {
+        "        ______",
+        "       /      \\",
+        "      |  o  o  |",
+        "      |   __   |",
+        "      |________|",
+        "      /|  ||  |\\",
+        "     /_|__||__|_\\"
+    };
 
-    cout << " 길드에 등록하기 위해서는 모험가 명이 필요합니다." << endl;
-    cout << " 리암의 모험가 명을 입력하세요: ";
-    cin >> name;
+    cin.ignore(1000, '\n');
+
+    string name = UIManager::InputBox(
+        "길드 등록을 위해 모험가명이 필요하다네. 모험가 명이 무엇인가?",
+        guildMaster
+    );
 
     while (true)
     {
-        cout << " 직업을 선택하세요." << endl;
-        cout << " 1. 전사" << endl;
-        cout << " 2. 마법사" << endl;
-        cout << " 3. 도적" << endl;
-        cout << " 4. 궁수" << endl;
-        cout << " 선택: ";
-
-        if (!(cin >> choice)) // 여기서 입력 받고
+        vector<string> jobs =
         {
-            system("cls");
-            cout << "잘못된 입력입니다.\n";
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cin.get();
+            "전사",
+            "마법사",
+            "도적",
+            "궁수"
+        };
 
-            continue;
-        }
+        int choice = UIManager::SelectBox(
+            "자네 직업은 무엇으로 할게냐?",
+            jobs,
+            guildMaster
+        );
 
         switch (choice)
         {
@@ -273,15 +280,13 @@ Character* CreateCharacter()
         case 4:
             return new Archer(name);
         default:
-            system("cls");
-            cout << "잘못된 입력입니다\n";
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cin.get();
-            continue;
+            UIManager::PrintMessage("잘못된 입력입니다.");
+            break;
         }
     }
 }
+
+UIManager ui;
 
 int main()
 {
@@ -289,9 +294,13 @@ int main()
     GameManager gameManager;
     Character* player = nullptr;
     int currentSaveSlot = 1;
+    
+    ui.ShowStartScreen();
+    cin.get();
 
     while (true)
     {
+        system("cls");
         int startMenuChoice = UIManager::ShowTitleScreen();
 
         if (startMenuChoice == 1) {
@@ -312,11 +321,7 @@ int main()
 
             player = CreateCharacter();
 
-            cout << endl << " 캐릭터 생성 완료! " << endl;
-            player->Displaystatus();
-            cin.ignore(1000, '\n');
-            cin.get();
-
+            system("cls");
             SaveGame(player, &achManager, currentSaveSlot);
             break;
         }
@@ -340,6 +345,8 @@ int main()
         }
         else if (startMenuChoice == 3) {
             achManager.DisplayStatsAndTitles();
+            cin.get();
+            system("cls");
         }
         else if (startMenuChoice == 4) {
             return 0; // 게임 종료
@@ -355,20 +362,20 @@ int main()
     {
         system("cls");
 
-        cout << "============================" << endl;
-        cout << "        TEXT RPG" << endl;
-        cout << "============================" << endl;
-        cout << " 1. 상태 보기" << endl;
-        cout << " 2. 전투 시작" << endl;
-        cout << " 3. 인벤토리" << endl;
-        cout << " 4. 상점" << endl;
-        cout << " 5. 휴식" << endl;
-        cout << " 6. 칭호 장착 및 업적 확인" << endl;
-        cout << " 7. 게임 저장하기 (현재 슬롯: " << currentSaveSlot << "번)" << endl;
-        cout << " 72. 마왕성으로 향한다." << endl;
-        cout << " 0. 게임 종료" << endl;
-        cout << "============================" << endl;
-        cout << " 선택: ";
+        cout << "                   ======================================" << endl;
+        cout << "                            [ C A L A M I T Y ]  " << endl;
+        cout << "                   ======================================" << endl;
+        cout << "                         1. 상태 보기" << endl;
+        cout << "                         2. 전투 시작" << endl;
+        cout << "                         3. 인벤토리" << endl;
+        cout << "                         4. 상점" << endl;
+        cout << "                         5. 휴식" << endl;
+        cout << "                         6. 칭호 장착 및 업적 확인" << endl;
+        cout << "                         7. 게임 저장하기 (현재 슬롯: " << currentSaveSlot << "번)" << endl;
+        cout << "                         72. 마왕성으로 향한다." << endl;
+        cout << "                         0. 게임 종료" << endl;
+        cout << "                   ======================================" << endl;
+        cout << "                         선택: ";
 
         int menu;
 
@@ -430,12 +437,32 @@ int main()
             break;
         case 5:
         {
+            cout << endl;
+            int beforeHp = player->Gethp();
+            int beforeMp = player->Getmp();
+
             int hprecovery = static_cast<int>(player->Getmaxhp() * 0.4);
             int mprecovery = static_cast<int>(player->Getmaxmp() * 0.4);
 
             player->Sethp(player->Gethp() + hprecovery);
             player->Setmp(player->Getmp() + mprecovery);
-            cout << "당신은 휴식을 취해 체력을 " << hprecovery << ", 마나를 " << mprecovery << " 회복했다.\n";
+            
+            int hpRecovery = player->Gethp() - beforeHp;
+            int mpRecovery = player->Getmp() - beforeMp;
+
+            if (hpRecovery == 0 && mpRecovery == 0)
+            {
+                cout << "이미 체력과 마나가 가득 차 있다.\n";
+            }
+            else {
+                cout << "당신은 휴식을 취했다.\n";
+                cout << "체력 " << hpRecovery << ", 마나 " << mpRecovery << " 회복했다.\n";
+            }
+
+            if (player->Getpoisoned()) {
+                cout << "몸에 퍼진 독이 사라졌다.\n";
+                player->Setpoisoned(false);
+            }
             system("pause"); // 안내 문구를 볼 수 있도록 멈춤
             break;
         }
