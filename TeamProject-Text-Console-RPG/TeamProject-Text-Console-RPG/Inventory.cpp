@@ -1,4 +1,5 @@
 #include "Inventory.h"
+#include "Character.h" 
 
 // 생성자
 Inventory::Inventory()
@@ -211,6 +212,12 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
 
     if (m_vBag[itemIdx].GetType() == ITEM::ITEM_WEAPON)
     {
+        // 기존 무기 공격력 제거
+        player->Setattack(player->Getattack() - m_equipWeapon->GetAbility());
+
+        // 새 무기 공격력 추가
+        player->Setattack(player->Getattack() + m_vBag[itemIdx].GetAbility());
+
         existItem = IsItemExist(m_equipWeapon->GetName());
 
         if (existItem > -1)
@@ -227,6 +234,12 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
     }
     else if (m_vBag[itemIdx].GetType() == ITEM::ITEM_ARMOR)
     {
+        // 기존 방어구 능력치 제거
+        player->Setattack(player->Getattack() - m_equipArmor->GetAbility());
+
+        // 새 방어구 능력치 추가
+        player->Setattack(player->Getattack() + m_vBag[itemIdx].GetAbility());
+
         existItem = IsItemExist(m_equipArmor->GetName());
 
         if (existItem > -1)
@@ -243,6 +256,12 @@ void Inventory::ChangePlayerEquip(Character* player, int itemIdx)
     }
     else if (m_vBag[itemIdx].GetType() == ITEM::ITEM_ACCESSORY)
     {
+        // 기존 장신구 공격력 제거
+        player->Setattack(player->Getattack() - m_equipAccessory->GetAbility());
+
+        // 새 장신구 공격력 추가
+        player->Setattack(player->Getattack() + m_vBag[itemIdx].GetAbility());
+
         existItem = IsItemExist(m_equipAccessory->GetName());
 
         if (existItem > -1)
